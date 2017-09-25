@@ -43,4 +43,10 @@ public class DeptServiceImpl implements DeptService {
 		return deptDao.getDeptCount();
 	}
 
+	@Override
+	public DeptBean getDeptById(int deptId) {
+		// TODO Auto-generated method stub
+		return deptDao.getDeptById(deptId);
+	}
+
 }

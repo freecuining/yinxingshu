@@ -16,6 +16,12 @@ public interface DeptDao {
 	public List<DeptBean> getDept();
 	
 	/**
+	 * 查询未被删除并且启用状态所有部门方法
+	 * @return
+	 */
+	public DeptBean getDeptById(int deptId);
+	
+	/**
 	 * 添加一个部门
 	 * @param deptBean
 	 * @return
