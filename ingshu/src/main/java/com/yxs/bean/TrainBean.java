@@ -1,5 +1,5 @@
 /*
- * ÅàÑµBean²ã
+ * åŸ¹è®­Beanå±‚
  * 
  */
 package com.yxs.bean;
@@ -8,27 +8,27 @@ import java.io.Serializable;
 
 public class TrainBean  implements Serializable {
    private int  traId;
-   private String traName;//ÅàÑµÃû³Æ
-   private  String traTeacher;//ÅàÑµÀÏÊ¦
-   private String  traStateTime;//ÅàÑµ¿ªÊ¼Ê±¼ä
-   private  String  traEddTime;//ÅàÑµ½áÊøÊ±¼ä
-   private  String  traRequired;//ÅàÑµÄ¿µÄ
-   private  String  traIntro;//ÅàÑµ¼ò½é
-   private String   traResouce;//ÅàÑµ×ÊÁÏ
-   private  String  traState;//ÉóºË×´Ì¬
-   private  String  traOpinion;//ÉóºËÒâ¼û
-   private  int  traResult;//ÅàÑµ·´À¡£¨×´Ì¬Öµ     ÓÅ     Á¼   ²î£©
-   private  String  trasummary;//ÅàÑµ×Ü½á
-   private  String  evaluationResult;//¿¼ºË½á¹û
+   private String traName;//åŸ¹è®­åç§°
+   private  String traTeacher;//åŸ¹è®­è€å¸ˆ
+   private String  traStartTime;//åŸ¹è®­å¼€å§‹æ—¶é—´
+   private  String  traEddTime;//åŸ¹è®­ç»“æŸæ—¶é—´
+   private  String  traRequired;//åŸ¹è®­ç›®çš„
+   private  String  traIntro;//åŸ¹è®­ç®€ä»‹
+   private String   traResouce;//åŸ¹è®­èµ„æ–™
+   private  String  traState;//å®¡æ ¸çŠ¶æ€
+   private  String  traOpinion;//å®¡æ ¸æ„è§
+   private  int  traResult;//åŸ¹è®­åé¦ˆï¼ˆçŠ¶æ€å€¼     ä¼˜     è‰¯   å·®ï¼‰
+   private  String  trasummary;//åŸ¹è®­æ€»ç»“
+   private  String  evaluationResult;//è€ƒæ ¸ç»“æœ
    
-public TrainBean(int traId, String traName, String traTeacher, String traStateTime, String traEddTime,
+public TrainBean(int traId, String traName, String traTeacher, String traStartTime, String traEddTime,
 		String traRequired, String traIntro, String traResouce, String traState, String traOpinion, int traResult,
 		String trasummary, String evaluationResult) {
 	super();
 	this.traId = traId;
 	this.traName = traName;
 	this.traTeacher = traTeacher;
-	this.traStateTime = traStateTime;
+	this.traStartTime = traStartTime;
 	this.traEddTime = traEddTime;
 	this.traRequired = traRequired;
 	this.traIntro = traIntro;
@@ -62,10 +62,10 @@ public void setTraTeacher(String traTeacher) {
 	this.traTeacher = traTeacher;
 }
 public String getTraStateTime() {
-	return traStateTime;
+	return traStartTime;
 }
 public void setTraStateTime(String traStateTime) {
-	this.traStateTime = traStateTime;
+	this.traStartTime = traStateTime;
 }
 public String getTraEddTime() {
 	return traEddTime;

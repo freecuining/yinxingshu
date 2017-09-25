@@ -10,42 +10,43 @@
 
         <div class="div_head">
             <span>
-                <span style="float:left">当前位置是：-》培训管理 -》培训反馈</span>
+                <span style="float:left">当前位置是：-》培训管理 -》培训复核</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="../peixunfankui/list.html">【返回】</a>
+                    <a style="text-decoration: none" href="../peixunfuhe/list.html">【返回】</a>
                 </span>
             </span>
         </div>
         <div></div>
 
         <div style="font-size: 13px;margin: 10px 5px">
+            <form action="./admin.php?c=goods&a=add" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">培训名称<span style="color:red">*</span>：</td>
-                    <td>技术专家和教学专家的合作</td>
+                    <td><input type="text" name="f_goods_name" readonly value="技术专家和教学专家的合作" /></td>
                 </tr>
                 <tr>
                     <td>培训讲师<span style="color:red">*</span>：</td>
                     <td>
-                      杨驰
+                       <input type="text" name="f_goods_name" readonly value="杨驰" /> 
                     </td>
                 </tr>
                
                 <tr>
                     <td>培训时间<span style="color:red">*</span>：</td>
                     <td>
-						2013-10-10
+						<input type="text" name="f_goods_price" readonly value="2013-10-10" /></td>
                 </tr>
                 <tr>
                     <td>至</td>
                     <td>
-						2013-12-10
+						<input type="text" readonly name="f_goods_image" readonly value="2013-12-10" />
 					</td>
                 </tr>
                 <tr>
                     <td>培训目的<span style="color:red">*</span>：</td>
                     <td>
-                        一个新开辟领域的探讨，探讨摸索
+                        <textarea readonly>一个新开辟领域的探讨，探讨摸索</textarea>
                     </td>
                 </tr>
 
@@ -53,69 +54,45 @@
 				<tr>
                     <td>参训人员<span style="color:red">*</span>：</td>
                     <td>
-                       李明、 潘贞玉、 李治、 武欣、 孙威、 韩健、 周嵘、 李红、 乔伟、 冯娜娜、 王艳丽、 蒋红林、 韩露、 于学杰、 李娜、 王俊鑫、 田仲义、 袁震
+                        <textarea readonly >李明、 潘贞玉、 李治、 武欣、 孙威、 韩健、 周嵘、 李红、 乔伟、 冯娜娜、 王艳丽、 蒋红林、 韩露、 于学杰、 李娜、 王俊鑫、 田仲义、 袁震</textarea>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>培训简介：</td>
                     <td>
-                       技术专家和教学专家合作开发技术类课程的方法，包括开发流程、岗位职责与沟通方式。
+                        <textarea readonly >技术专家和教学专家合作开发技术类课程的方法，包括开发流程、岗位职责与沟通方式。</textarea>
+                    </td>                
+                </tr>
+
+				<tr>
+                    <td>培训资料：</td>
+                    <td>
+                        <input type="file" name="f_goods_image" value=""/>
                     </td>                
                 </tr>
 
 				<tr>
                     <td></td>
                     <td>
-                        <a href="" >技术专家和教学专家的合作.zip</a>
+                        <a href="" >技术专家和教学专家的合作.zip</a> &nbsp;&nbsp;<a href="">删除</a>
                     </td>                
                 </tr>
 				<tr>
 					<td>审核意见：</td>
 					<td>
-						审核通过，可以组织培训。
+						<textarea></textarea>
 					</td>
 				</tr>
 				
-
-            </table>
-
-
-        </div>
-	<hr>
-	培训反馈
-		<div style="font-size: 13px;margin: 10px 5px">
-			 <table border="1" width="100%" class="table_a">
                 <tr>
-                    <td width="120px;">培训反馈<span style="color:red">*</span>：</td>
-                    <td><select>
-						<option>请选择</option>
-						<option>优</option>
-						<option>良</option>
-						<option>差</option>
-					</select></td>
-                </tr>
-                <tr>
-                    <td>培训总结<span style="color:red">*</span>：</td>
-                    <td>
-                      <textarea>培训总结......</textarea>
-                    </td>
-                </tr>
-               
-                <tr>
-                    <td>考核结果<span style="color:red">*</span>：</td>
-                    <td>
-						<textarea>考核结果......</textarea>
-					</td>
-                </tr>
-                 <tr>
                     <td colspan="2" align="center">
-                        <input type="submit" value="保存">
+                        <input type="submit" value="审核通过">
+						<input type="submit" value="驳回">
                     </td>
                 </tr>  
-				
-
             </table>
-		</div>
+            </form>
+        </div>
     </body>
 </html>

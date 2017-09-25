@@ -17,7 +17,7 @@ import com.yxs.service.TrainService;
 @Controller
 @RequestMapping("Ain")
 public class TrainController {
-  //ÓÉÌí¼ÓÒ³ÃæÌø×ª¹ıÀ´ÔÙ½²Ìí¼ÓµÄÊı¾İ´«µ½Ö÷Ò³ÃæÊı¾İÉÏ
+  //ç”±æ·»åŠ é¡µé¢è·³è½¬è¿‡æ¥å†è®²æ·»åŠ çš„æ•°æ®ä¼ åˆ°ä¸»é¡µé¢æ•°æ®ä¸Š
 	@Autowired
 	private TrainService trainService;
 	@RequestMapping("insertAin.do")
@@ -25,17 +25,17 @@ public class TrainController {
 		trainService.insertAin(ain);
 		return this.queryAinAll(1);
 	}
-	//²éÑ¯   ÅàÑµ¼Æ»®Ò³Ãæ  ËùÓĞ   ²¢ÇÒ´øÓĞ·ÖÒ³
+	//æŸ¥è¯¢   åŸ¹è®­è®¡åˆ’é¡µé¢  æ‰€æœ‰   å¹¶ä¸”å¸¦æœ‰åˆ†é¡µ
 	@RequestMapping("queryAinAll.do")
 	private ModelAndView queryAinAll(@RequestParam(defaultValue = "1")Integer nowPage){
 		// TODO Auto-generated method stub
-		//·ÖÒ³
+		//åˆ†é¡µ
 		Integer  pageSize = 5;
-		//Îªtrue´ú±íÓĞ×ÜÌõÊıµÄÍ³¼Æ
+		//ä¸ºtrueä»£è¡¨æœ‰æ€»æ¡æ•°çš„ç»Ÿè®¡
 		Page page = PageHelper.startPage(nowPage,pageSize,true);
 		
 		List<TrainBean> beans = trainService.queryAinAll();
-		//×ÜÌåÌõÊı
+		//æ€»ä½“æ¡æ•°
 		Integer totalCount = Integer.parseInt(page.getTotal()+"");
 		Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
 		ModelAndView modelAndView = new ModelAndView("/peixun/peixunjihua/list.jsp");
