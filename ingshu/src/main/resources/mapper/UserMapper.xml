@@ -18,10 +18,17 @@
 		<result column="img" jdbcType="VARCHAR" property="img" />
 		<result column="user_remark" jdbcType="VARCHAR" property="userRemark" />
 		<result column="login_count" jdbcType="INTEGER" property="loginCount" />
-		<result column="del" jdbcType="INTEGER" property="del" />
+		<result column="user_del" jdbcType="INTEGER" property="del" />
+		<result column="add_time" jdbcType="VARCHAR" property="addTime" />
 	</resultMap>
 	<select id="login" resultMap="loginran">
-	select user_id,dept_id,user_code,loginname,password,user_name,sex,id_card,phone,del from user_tb
-	where loginname=#{loginName} and password=#{password}
+	select user_id,dept_id,user_code,loginname,password,user_name,sex,id_card,phone,mobile_phone,user_email,address,user_img,user_remark,login_count,user_del,add_time from user_tb
+	where loginname = #{loginName} and password = #{password}
 	</select>
+	<update id="updateLoginNum">
+		update user_tb set login_count = login_count +1 where
+		user_id = #{userId}
+	</update>
+	
+	
 </mapper>

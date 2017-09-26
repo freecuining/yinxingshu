@@ -81,7 +81,7 @@
 		</tr>
 		<tr>
 			<td align=right>登陆次数：</td>
-			<td style="color: #880000">${sessionScope.ub.loginNum }</td>
+			<td style="color: #880000">${sessionScope.ub.loginCount }</td>
 		</tr>
 		<tr>
 			<td align=right>上线时间：</td>

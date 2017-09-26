@@ -20,32 +20,7 @@ import java.io.Serializable;
 		private String userRemark;//备注
 		private int loginCount;//登录次数
 		private int del;
-		
-		public UserBean(int userId, int deptId, String userCode, String loginName, String password, String userName,
-				int sex, String idCard, String phone, String mobilePhone, String userEmail, String address, String img,
-				String userRemark, int loginCount, int del) {
-			super();
-			this.userId = userId;
-			this.deptId = deptId;
-			this.userCode = userCode;
-			this.loginName = loginName;
-			this.password = password;
-			this.userName = userName;
-			this.sex = sex;
-			this.idCard = idCard;
-			this.phone = phone;
-			this.mobilePhone = mobilePhone;
-			this.userEmail = userEmail;
-			this.address = address;
-			this.img = img;
-			this.userRemark = userRemark;
-			this.loginCount = loginCount;
-			this.del = del;
-		}
-		public UserBean() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+		private String addTime;
 		public int getUserId() {
 			return userId;
 		}
@@ -142,5 +117,39 @@ import java.io.Serializable;
 		public void setDel(int del) {
 			this.del = del;
 		}
+		public String getAddTime() {
+			return addTime;
+		}
+		public void setAddTime(String addTime) {
+			this.addTime = addTime;
+		}
+		public UserBean(int userId, int deptId, String userCode, String loginName, String password, String userName,
+				int sex, String idCard, String phone, String mobilePhone, String userEmail, String address, String img,
+				String userRemark, int loginCount, int del, String addTime) {
+			super();
+			this.userId = userId;
+			this.deptId = deptId;
+			this.userCode = userCode;
+			this.loginName = loginName;
+			this.password = password;
+			this.userName = userName;
+			this.sex = sex;
+			this.idCard = idCard;
+			this.phone = phone;
+			this.mobilePhone = mobilePhone;
+			this.userEmail = userEmail;
+			this.address = address;
+			this.img = img;
+			this.userRemark = userRemark;
+			this.loginCount = loginCount;
+			this.del = del;
+			this.addTime = addTime;
+		}
+		public UserBean() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
+		
+		
 		
 	}
