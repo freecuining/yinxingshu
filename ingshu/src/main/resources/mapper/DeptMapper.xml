@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.yxs.dao.MenuDao">
+<mapper namespace="com.yxs.dao.DeptDao">
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
-
-<!-- 查询所有菜单信息 -->
-	<select id="getMenu" resultType="menuBean">
-		select menu_id, menu_name,
-		menu_url, menu_state, menu_del, menu_remark
-		from menu_tb
-		where menu_del = 0
-
+	
+	<!-- 查询所有部门信息 -->
+	<select id="getDept" resultType="deptBean">
+		select dept_id,
+		dept_code,
+		dept_short_name,
+		dept_name,
+		parent_dept,
+		dept_address,
+		dept_intro,
+		dept_remark,
+		dept_state,
+		dept_del
+		from dept_tb
 	</select>
+
+	<!-- 添加部门信息 -->
+	<insert id="insertDept" parameterType="com.yxs.bean.DeptBean">
+		insert into dept_tb
+		(dept_id,
+		dept_code,
+		dept_short_name,
+		dept_name,
+		parent_dept,
+		dept_address,
+		dept_intro,
+		dept_remark,
+		dept_state,
+		dept_del,
+		dept_url)
+		values
+		(#{deptId},#{deptCode},#{deptShortName},#{deptName},#{parentDept},#{deptAddress},#{deptIntro},#{deptRemark},#{deptState},#{deptDel})
+	</insert>
+	
+	<!-- 根据id查询部门信息 -->
+	<select id="getDeptById" resultType="deptBean">
+		select dept_id,
+		dept_code,
+		dept_short_name,
+		dept_name,
+		parent_dept,
+		dept_address,
+		dept_intro,
+		dept_remark,
+		dept_state,
+		dept_del
+		from dept_tb where dept_id = #{deptId}
+	</select>
+	
 </mapper>

@@ -17,7 +17,7 @@
 
 <script type="text/javascript" src="resource/demo1/dtree.js"></script>
 
-<script type="text/javascript">
+<script language=javascript>
 	function expand(el) {
 		childobj = document.getElementById("child" + el);
 
@@ -46,15 +46,13 @@
 			</td>
 			<td width=1 bgcolor=#d1e6f7></td>
 		</tr>
-		
 	</table>
-	<input type="hidden" id="deptcount" value="${deptCount }" />
 	<script type="text/javascript">
 		d = new dTree('d');
 		d.config.target = "main_right";
 		d.add(0, -1, '部门管理');
 		<c:forEach items="${deptList}" var="dl">
-			d.add("${dl.deptId}", 0, '${dl.deptName}', '${dl.deptUrl}');
+			d.add("${dl.deptId}", "${dl.parentDept}", '${dl.deptName}', 'cn/queryDept?deptId=${dl.deptId}');
 		</c:forEach>
 		document.write(d);
 	</script>

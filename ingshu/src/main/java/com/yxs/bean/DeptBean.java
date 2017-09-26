@@ -2,7 +2,7 @@ package com.yxs.bean;
 
 import java.io.Serializable;
 
-public class DeptBean implements Serializable {
+public class DeptBean implements Serializable{
 
 	private Integer deptId;// 部门id
 	private String deptCode;// 部门编号
@@ -15,7 +15,7 @@ public class DeptBean implements Serializable {
 	private Integer deptState;// 是否启用1：启用；0：未启用
 	private String deptDel;// 是否删除
 	private String deptUrl;//部门的url地址
-
+	
 	public Integer getDeptId() {
 		return deptId;
 	}

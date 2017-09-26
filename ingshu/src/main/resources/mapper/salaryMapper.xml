@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+	<select id="findSalary" resultType="com.yxs.bean.SalaryBean">
+		select
+		salary_id,salary_code,salary_name,salary_maker,salary_register,register_time,base_pay,add_pay,traffic_pay,phone_pay,food_pay,house_pay,away_pay,overtime_pay,salary_remark,salary_state,salary_del,salary_total
+		from salary_tb
+	</select>
+</mapper>
