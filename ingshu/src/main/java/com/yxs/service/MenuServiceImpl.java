@@ -17,7 +17,6 @@ public class MenuServiceImpl implements MenuService {
 	 * 查询所有菜单
 	 * @return
 	 */
-	@Override
 	public List<MenuBean> getMenu() {
 		// TODO Auto-generated method stub
 		return menuDao.getMenu();

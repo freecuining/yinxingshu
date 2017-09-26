@@ -5,10 +5,8 @@ import java.io.Serializable;
 public class ArchiveBean implements Serializable {
 
 	private Integer archiveId;//档案ID
-	private Integer userId;//用户ID
-	private Integer salaryId;//薪酬ID
 	private String  archiveCode;//档案编码
-	private String archivetime;//档案日期
+	private String archiveTime;//档案日期
 	private Integer auditState;//审核状态
 	private Integer archiveState;//档案状态
 	private String bank;//开户行
@@ -19,51 +17,23 @@ public class ArchiveBean implements Serializable {
 	private String leaveTime;//离开时间
 	private String hireDate;//雇用时间
 	private String transferPosition;//调岗时间
-	private Integer Del;//操作状态
+	private Integer del;//操作状态
+	private Integer deptId;
+	private String deptName;
+
+	private Integer userId;
+	private String userName;
+	private Integer sex;
+	private Integer roleId;
+	private String roleCode;
+	private String roleName;
+	private String roleKind;
 	
-	public ArchiveBean() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public ArchiveBean(Integer archiveId, Integer userId, Integer salaryId, String archiveCode, String archivetime,
-			Integer auditState, Integer archiveState, String bank, String bankCard, String socialCard,
-			String familyInfor, String positiveTime, String leaveTime, String hireDate, String transferPosition,
-			Integer del) {
-		super();
-		this.archiveId = archiveId;
-		this.userId = userId;
-		this.salaryId = salaryId;
-		this.archiveCode = archiveCode;
-		this.archivetime = archivetime;
-		this.auditState = auditState;
-		this.archiveState = archiveState;
-		this.bank = bank;
-		this.bankCard = bankCard;
-		this.socialCard = socialCard;
-		this.familyInfor = familyInfor;
-		this.positiveTime = positiveTime;
-		this.leaveTime = leaveTime;
-		this.hireDate = hireDate;
-		this.transferPosition = transferPosition;
-		Del = del;
-	}
 	public Integer getArchiveId() {
 		return archiveId;
 	}
 	public void setArchiveId(Integer archiveId) {
 		this.archiveId = archiveId;
-	}
-	public Integer getUserId() {
-		return userId;
-	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-	public Integer getSalaryId() {
-		return salaryId;
-	}
-	public void setSalaryId(Integer salaryId) {
-		this.salaryId = salaryId;
 	}
 	public String getArchiveCode() {
 		return archiveCode;
@@ -71,11 +41,11 @@ public class ArchiveBean implements Serializable {
 	public void setArchiveCode(String archiveCode) {
 		this.archiveCode = archiveCode;
 	}
-	public String getArchivetime() {
-		return archivetime;
+	public String getArchiveTime() {
+		return archiveTime;
 	}
-	public void setArchivetime(String archivetime) {
-		this.archivetime = archivetime;
+	public void setArchiveTime(String archiveTime) {
+		this.archiveTime = archiveTime;
 	}
 	public Integer getAuditState() {
 		return auditState;
@@ -138,10 +108,58 @@ public class ArchiveBean implements Serializable {
 		this.transferPosition = transferPosition;
 	}
 	public Integer getDel() {
-		return Del;
+		return del;
 	}
 	public void setDel(Integer del) {
-		Del = del;
+		this.del = del;
 	}
-		
+	public Integer getDeptId() {
+		return deptId;
+	}
+	public void setDeptId(Integer deptId) {
+		this.deptId = deptId;
+	}
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
+	}
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public Integer getSex() {
+		return sex;
+	}
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
+	public Integer getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	public String getRoleKind() {
+		return roleKind;
+	}
+	public void setRoleKind(String roleKind) {
+		this.roleKind = roleKind;
+	}
+	
 }
