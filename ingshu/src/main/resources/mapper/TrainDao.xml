@@ -6,10 +6,10 @@
  <resultMap type="com.yxs.bean.TrainBean" id="ain">
   <id property = "traId" column = "tra_id"/>
   <result property = "traName" javaType = "String" column = "tra_name" jdbcType = "VARCHAR"/>
-  <result property = "traTeacher"javaType = "String" column ="tra_teacher" jdbcType = "VARCHAR"/>
-  <result property = "traStartTime"javaType = "String" column ="tra_starttime" jdbcType = "DATE"/>
+  <result property = "traTeacher" javaType = "String" column ="tra_teacher" jdbcType = "VARCHAR"/>
+  <result property = "traStartTime" javaType = "String" column ="tra_starttime" jdbcType = "DATE"/>
   <result property = "traEddTime" javaType = "String" column = "tra_eddtime" jdbcType = "DATE"/>
   <result property = "traRequired" javaType = "String" column = "tra_required" jdbcType = "VARCHAR"/>
-    
+    </resultMap>
   
  </mapper>
