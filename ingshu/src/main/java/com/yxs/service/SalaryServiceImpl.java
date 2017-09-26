@@ -22,7 +22,7 @@ public class SalaryServiceImpl implements SalaryService {
 		List<SalaryBean> l = sd.findSalary();
 		PageInfo<Object> info = new PageInfo(l,pageCount);
 		//
-		return info;  
+		return info;
 	}
 
 }

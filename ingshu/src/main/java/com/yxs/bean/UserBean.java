@@ -20,6 +20,8 @@ import java.io.Serializable;
 		private String userRemark;//备注
 		private int loginCount;//登录次数
 		private int del;
+		private DeptBean deptBean;
+		private RoleBean roleBean;
 		
 		public UserBean(int userId, int deptId, String userCode, String loginName, String password, String userName,
 				int sex, String idCard, String phone, String mobilePhone, String userEmail, String address, String img,
@@ -141,6 +143,18 @@ import java.io.Serializable;
 		}
 		public void setDel(int del) {
 			this.del = del;
+		}
+		public DeptBean getDeptBean() {
+			return deptBean;
+		}
+		public void setDeptBean(DeptBean deptBean) {
+			this.deptBean = deptBean;
+		}
+		public RoleBean getRoleBean() {
+			return roleBean;
+		}
+		public void setRoleBean(RoleBean roleBean) {
+			this.roleBean = roleBean;
 		}
 		
 	}

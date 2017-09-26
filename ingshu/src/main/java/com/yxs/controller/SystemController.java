@@ -10,10 +10,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.github.pagehelper.PageInfo;
 import com.yxs.bean.DeptBean;
 import com.yxs.bean.MenuBean;
+import com.yxs.bean.SalaryBean;
+import com.yxs.bean.UserBean;
 import com.yxs.service.DeptService;
 import com.yxs.service.MenuService;
+import com.yxs.service.UserService;
 import com.yxs.util.State;
 
 @Controller
@@ -25,7 +29,9 @@ public class SystemController {
 	private DeptService deptService;
 	@Autowired
 	private MenuService menuService;
-	
+	@Autowired
+	private UserService userService;
+	private PageInfo info;
 	/**
 	 *系统管理中的部门管理
 	 * @param m
@@ -145,5 +151,28 @@ public class SystemController {
 			m.addAttribute("msg", "删除失败");
 			return "/resource/demo1/view.jsp";
 		}
+	}
+	
+	
+	/**
+	 * 查询所有用户信息
+	 * @param deptId
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/getUser")
+	public String list(int pageNum,Model m){
+		if(pageNum != 0){
+			info = userService.getAllUser(pageNum, State.PAGESIZE, State.PAGECOUNT);
+		}else{
+			pageNum=1;
+			info = userService.getAllUser(pageNum, State.PAGESIZE, State.PAGECOUNT);
+		}
+		//info.getNavigatepageNums();  页面显示12345   ..678910..  格式
+		//info.getTotal();
+		List<UserBean> userList = info.getList();
+		m.addAttribute("userList",userList);
+		m.addAttribute("page", info);
+		return "/resource/demo2/list.jsp";
 	}
 }
