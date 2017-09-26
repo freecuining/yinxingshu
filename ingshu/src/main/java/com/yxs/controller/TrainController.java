@@ -1,6 +1,8 @@
 package com.yxs.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +24,7 @@ public class TrainController {
 	@Autowired
 	private TrainService trainService;
 	@RequestMapping("/insertAin")
- public ModelAndView insertAin(@ModelAttribute TrainBean ain){
+	public ModelAndView insertAin(@ModelAttribute TrainBean ain){
 		trainService.insertAin(ain);
 		return this.queryAinAll(1);
 	}
@@ -135,6 +137,88 @@ public class TrainController {
 	    modelAndView.addObject("totalCount",totalCount);
 		return modelAndView;
 	}
+		//模糊查询分页
+		// 培训页面第一个小模块的模糊查询
+		@RequestMapping("/queryFY")
+		public ModelAndView queryFY(@RequestParam(defaultValue = "1") Integer nowPage,String traName,int traState,String traStartTime,String traEddTime){
+			
+			Map map = new HashMap();
+			map.put("traName", traName);
+			map.put("traState", traState);
+			map.put("traStartTime", traStartTime);
+			map.put("traEddTime", traEddTime);
+
+			Integer pageSize = 5;
+			Page page = PageHelper.startPage(nowPage, pageSize, true);
+			List<TrainBean> beans = trainService.queryFY(map);
+			Integer totalCount = Integer.parseInt(page.getTotal() + "");// 总体条数
+			Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+
+			ModelAndView modelAndView = new ModelAndView("/peixun/peixunjihua/list.jsp");
+			modelAndView.addObject("beans", beans);
+			modelAndView.addObject("traName", traName);
+			modelAndView.addObject("traState", traState);
+			modelAndView.addObject("traStartTime", traStartTime);
+			modelAndView.addObject("traEddTime", traEddTime);
+			modelAndView.addObject("nowPage", nowPage);
+			modelAndView.addObject("totalPage", totalPage);
+			modelAndView.addObject("totalCount", totalCount);
+			return modelAndView;
+			}
+		//培训页面第二个小模块的模糊查询
+				@RequestMapping("/queryFY2")
+				public ModelAndView queryFY2(@RequestParam(defaultValue = "1") Integer nowPage, String traName,
+					String traStartTime,String traEddTime) {
+					Map map = new HashMap();
+					map.put("traName", traName);
+					map.put("traStartTime", traStartTime);
+					map.put("traEddTime", traEddTime);
+
+					Integer pageSize = 5;
+					Page page = PageHelper.startPage(nowPage, pageSize, true);
+					List<TrainBean> beans = trainService.queryFY2(map);
+					Integer totalCount = Integer.parseInt(page.getTotal() + "");// 总体条数
+					Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+
+					ModelAndView modelAndView = new ModelAndView("/peixun/peixunfuhe/list.jsp");
+					modelAndView.addObject("beans", beans);
+					modelAndView.addObject("traName", traName);
+					modelAndView.addObject("traStartTime", traStartTime);
+					modelAndView.addObject("traEddTime", traEddTime);
+					modelAndView.addObject("nowPage", nowPage);
+					modelAndView.addObject("totalPage", totalPage);
+					modelAndView.addObject("totalCount", totalCount);
+					return modelAndView;
+		}
+				//培训页面第三个小模块的模糊查询
+						@RequestMapping("/queryFY3")
+						public ModelAndView queryFY3(@RequestParam(defaultValue = "1") Integer nowPage, String traName,
+							String traStartTime,String traEddTime) {
+							Map map = new HashMap();
+							map.put("traName", traName);
+							map.put("traStartTime", traStartTime);
+							map.put("traEddTime", traEddTime);
+
+							Integer pageSize = 5;
+							Page page = PageHelper.startPage(nowPage, pageSize, true);
+							List<TrainBean> beans = trainService.queryFY3(map);
+							Integer totalCount = Integer.parseInt(page.getTotal() + "");// 总体条数
+							Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+
+							ModelAndView modelAndView = new ModelAndView("/peixun/peixunfankui/list.jsp");
+							modelAndView.addObject("beans", beans);
+							modelAndView.addObject("traName", traName);
+							modelAndView.addObject("traStartTime", traStartTime);
+							modelAndView.addObject("traEddTime", traEddTime);
+							modelAndView.addObject("nowPage", nowPage);
+							modelAndView.addObject("totalPage", totalPage);
+							modelAndView.addObject("totalCount", totalCount);
+							return modelAndView;
+				}
+				
+				
+		}
 	
 	
-}
+	
+

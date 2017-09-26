@@ -14,9 +14,9 @@
   <result property="traRequired" javaType="String" column="tra_required" jdbcType="VARCHAR"/>
   <result property="traIntro" javaType= "String" column="tra_intro" jdbcType="CLOB"/>
   <result property="traResouce" javaType="String" column="tra_resouce" jdbcType="VARCHAR"/>
-  <result property="traState" javaType="Integer" column="tra_state" jdbcType="NUMERIC"/>
+  <result property="traState" javaType="Integer" column="tra_state" jdbcType="INTEGER"/>
   <result property="traOpinion" javaType="String" column="tra_opinion" jdbcType="VARCHAR"/>
-  <result property="traResult" javaType="Integer" column="tra_result" jdbcType="NUMERIC"/>
+  <result property="traResult" javaType="Integer" column="tra_result" jdbcType="INTEGER"/>
   <result property="traSummary" javaType="String" column="tra_summary" jdbcType="CLOB"/>
   <result property="evaluationResult" javaType="String" column ="evaluation_result" jdbcType="CLOB"/>
   <result property="del" javaType="Integer" column="del" jdbcType ="VARCHAR" />
@@ -59,23 +59,23 @@
 <!-- 分页查询  -->
 <!-- 培训计划 -->
 <select  id = "queryFy"  resultMap = "ain">
-<include  refid = "sql_tra" /> where del = '1'
-<if test = "traName ! = null and traNamme ! = ''.toString()" > and  tra_name like '%${traName}'</if>
-<if test = "traState ! = null and traState ! = ''.toString()"> and  tra_state like '%${traState}'</if>
+<include  refid = "sql_tra" /> where del = '0'
+<if test = "traName ! = null and traName ! = ''.toString()" > and  tra_name like 'concat(concat('%',#{traName}),'%')'</if>
+<if test = "traState ! = null and traState ! = ''.toString()"> and  tra_state like 'concat(concat('%',#{traState}),'%')'</if>
 <if test = "traStartTime ! = null and traStartTime ! = ''.toString()"> and tra_starttime &gt;=#{traStartTime}</if>
 <if test = "traEddTime ! = null and traEddTime ! = ''.toString"> and tra_eddtime &lt; =#{traEddTime} </if>
 </select>
 <!--培训复核  -->
 <select  id = "queryFy2"  resultMap = "ain">
-<include  refid = "sql_tra"/> where del = '1' and tra_state = '审核中'
-<if test = "traName ! = null and traName ! = ''.toString()"> and tra_name like '%${traName}'</if>
+<include  refid = "sql_tra"/> where del = '0' and tra_state = '审核中'
+<if test = "traName ! = null and traName ! = ''.toString()"> and tra_name like 'concat(concat('%',#{traName}),'%')'</if>
 <if test = "traStartTime ! = null and traStartTime ! = ''.toString()"> and tra_starttime &gt;=#{traStartTime}</if>
 <if test = "traEddTime ! = null and traEddTime ! = ''.toString"> and tra_eddtime &lt; =#{traEddTime} </if>
 </select>
 <!-- 培训反馈 -->
 <select  id = "queryFy3"  resultMap = "ain">
-<include  refid = "sql_tra"/> where del = '1' and tra_state = '审核中'
-<if test = "traName ! = null and traName ! = ''.toString()"> and tra_name like '%${traName}'</if>
+<include  refid = "sql_tra"/> where del = '0' and tra_state = '审核中'
+<if test = "traName ! = null and traName ! = ''.toString()"> and tra_name like 'concat(concat('%',#{traName}),'%')'</if>
 <if test = "traStartTime ! = null and traStartTime ! = ''.toString()"> and tra_starttime &gt;=#{traStartTime}</if>
 <if test = "traEddTime ! = null and traEddTime ! = ''.toString"> and tra_eddtime &lt; =#{traEddTime} </if>
 </select>
