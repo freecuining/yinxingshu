@@ -69,4 +69,10 @@ public class DeptServiceImpl implements DeptService {
 		return deptDao.getMaxDeptCode();
 	}
 
+	@Override
+	public boolean deleteDeptById(int deptId) {
+		// TODO Auto-generated method stub
+		return deptDao.deleteDeptById(deptId);
+	}
+
 }

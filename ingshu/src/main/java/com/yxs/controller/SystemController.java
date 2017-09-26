@@ -14,6 +14,7 @@ import com.yxs.bean.DeptBean;
 import com.yxs.bean.MenuBean;
 import com.yxs.service.DeptService;
 import com.yxs.service.MenuService;
+import com.yxs.util.State;
 
 @Controller
 @RequestMapping("/cn")
@@ -86,23 +87,14 @@ public class SystemController {
 	 * @return
 	 */
 	@RequestMapping("/updateDept")
-	public String updateDeptById(int deptId,String deptShortName,String deptName,
-			String deptAddress,String deptIntro,String deptRemark,int deptState,Model m){
-		DeptBean deptBean = new DeptBean();
-		deptBean.setDeptId(deptId);
-		deptBean.setDeptShortName(deptShortName);
-		deptBean.setDeptName(deptName);
-		deptBean.setDeptAddress(deptAddress);
-		deptBean.setDeptIntro(deptIntro);
-		deptBean.setDeptRemark(deptRemark);
-		deptBean.setDeptState(deptState);
+	public String updateDeptById(DeptBean deptBean,Model m){
 		boolean is = deptService.updateDeptById(deptBean);
 		if(is){
 			m.addAttribute("msg", "修改成功");
 			return "/cn/queryDept";
 		}else{
 			m.addAttribute("msg", "修改失败");
-			return "cn/pupdateDept?deptId="+deptId;
+			return "cn/pupdateDept?deptId="+deptBean.getDeptId();
 		}
 	}
 	
@@ -127,18 +119,8 @@ public class SystemController {
 	 * @return
 	 */
 	@RequestMapping("/insertDept")
-	public String insertDept(int deptId,int deptCode,String deptShortName,String deptName,int parentDept,
-			String deptAddress,String deptIntro,String deptRemark,int deptState,Model m){
-		DeptBean deptBean = new DeptBean();
-		deptBean.setDeptCode(deptCode+"");
-		deptBean.setDeptShortName(deptShortName);
-		deptBean.setDeptName(deptName);
-		deptBean.setParentDept(parentDept);
-		deptBean.setDeptAddress(deptAddress);
-		deptBean.setDeptIntro(deptIntro);
-		deptBean.setDeptRemark(deptRemark);
-		deptBean.setDeptState(deptState);
-		deptBean.setDeptDel(0);
+	public String insertDept(DeptBean deptBean,Model m){
+		deptBean.setDeptDel(State.UNDELETE);
 		boolean isok = deptService.insertDept(deptBean);
 		if(isok){
 			m.addAttribute("msg", "添加成功");
@@ -146,6 +128,22 @@ public class SystemController {
 		}else{
 			m.addAttribute("msg", "添加失败");
 			return "/cn/pinsertDept";
+		}
+	}
+	
+	/**
+	 * 删除部门
+	 * @return
+	 */
+	@RequestMapping("/deleteDept")
+	public String deleteDeptById(int deptId,Model m){
+		boolean isok = deptService.deleteDeptById(deptId);
+		if(isok){
+			m.addAttribute("msg", "删除成功");
+			return "/resource/demo1/iframe.jsp";
+		}else{
+			m.addAttribute("msg", "删除失败");
+			return "/resource/demo1/view.jsp";
 		}
 	}
 }

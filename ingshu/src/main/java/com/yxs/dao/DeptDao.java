@@ -50,4 +50,10 @@ public interface DeptDao {
 	 * @return
 	 */
 	public String getMaxDeptCode();
+	
+	/**
+	 * 删除部门
+	 * @return
+	 */
+	public boolean deleteDeptById(int deptId);
 }

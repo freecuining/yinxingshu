@@ -78,4 +78,10 @@
 	<select id="getMaxDeptCode" resultType="java.lang.String">
 		select max(dept_code) from dept_tb
 	</select>
+	
+	<!-- 根据部门id删除部门 -->
+	<update id="deleteDeptById">
+		update dept_tb set dept_del = 1 where dept_id = #{deptId}
+	</update>
+	
 </mapper>
