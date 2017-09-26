@@ -2,6 +2,8 @@ package com.yxs.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import com.yxs.bean.DeptBean;
 import com.yxs.bean.MenuBean;
 import com.yxs.service.DeptService;
 import com.yxs.service.MenuService;
+import com.yxs.util.State;
 
 @Controller
 @RequestMapping("/cn")
@@ -56,6 +59,9 @@ public class SystemController {
 	public String queryDeptById(int deptId,Model m){
 		DeptBean deptBean = deptService.getDeptById(deptId);
 		List<DeptBean> deptList = deptService.getDept();
+		//判断当前部门是否有子部门
+		boolean isok = deptService.queryChildDept(deptId);
+		m.addAttribute("isok", isok);
 		m.addAttribute("deptList", deptList);
 		m.addAttribute("deptBean", deptBean);
 		return "/resource/demo1/view.jsp";
@@ -75,4 +81,69 @@ public class SystemController {
 		return "/resource/demo1/edit.jsp";
 	}
 	
+	/**
+	 * 根据id修改部门信息
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/updateDept")
+	public String updateDeptById(DeptBean deptBean,Model m){
+		boolean is = deptService.updateDeptById(deptBean);
+		if(is){
+			m.addAttribute("msg", "修改成功");
+			return "/cn/queryDept";
+		}else{
+			m.addAttribute("msg", "修改失败");
+			return "cn/pupdateDept?deptId="+deptBean.getDeptId();
+		}
+	}
+	
+	/**
+	 * 添加之前的准备工作
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/pinsertDept")
+	public String pinsertDept(int deptId,Model m){
+		DeptBean deptBean = deptService.getDeptById(deptId);
+		int deptCode = Integer.parseInt(deptService.getMaxDeptCode());
+		m.addAttribute("deptId", deptId);
+		m.addAttribute("deptCode", deptCode);
+		m.addAttribute("deptBean", deptBean);
+		return "/resource/demo1/add.jsp";
+	}
+	
+	/**
+	 * 添加一个部门
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/insertDept")
+	public String insertDept(DeptBean deptBean,Model m){
+		deptBean.setDeptDel(State.UNDELETE);
+		boolean isok = deptService.insertDept(deptBean);
+		if(isok){
+			m.addAttribute("msg", "添加成功");
+			return "/resource/demo1/wecom.jsp";
+		}else{
+			m.addAttribute("msg", "添加失败");
+			return "/cn/pinsertDept";
+		}
+	}
+	
+	/**
+	 * 删除部门
+	 * @return
+	 */
+	@RequestMapping("/deleteDept")
+	public String deleteDeptById(int deptId,Model m){
+		boolean isok = deptService.deleteDeptById(deptId);
+		if(isok){
+			m.addAttribute("msg", "删除成功");
+			return "/resource/demo1/iframe.jsp";
+		}else{
+			m.addAttribute("msg", "删除失败");
+			return "/resource/demo1/view.jsp";
+		}
+	}
 }

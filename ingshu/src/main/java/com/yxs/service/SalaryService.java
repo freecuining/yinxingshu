@@ -10,6 +10,6 @@ public interface SalaryService {
 	 * 查询工资表信息
 	 * @return
 	 */
-	public PageInfo findSalary(int pageNum,int pageSize,int pageCount);
+	public PageInfo getSalary(int pageNum,int pageSize,int pageCount);
 
 }
