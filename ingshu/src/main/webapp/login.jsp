@@ -116,7 +116,7 @@
 									<li class="user_main_text">Cookie：</li>
 									<li class="user_main_input"><select name="DropExpiration"
 										id="DropExpiration">
-											<option selected="" value="None">不保存</option>
+											<option selected="selected" value="None">不保存</option>
 											<option value="Day">保存一天</option>
 											<option value="Month">保存一月</option>
 											<option value="Year">保存一年</option>

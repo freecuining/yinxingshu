@@ -1,5 +1,6 @@
 package com.yxs.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,9 @@ import com.yxs.util.State;
 
 @Controller
 @RequestMapping("")
-
 public class UserController {
 
-	public UserService us;
+	private UserService us;
 
 	
  }
