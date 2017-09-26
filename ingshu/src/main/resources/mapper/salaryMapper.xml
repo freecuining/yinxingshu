@@ -3,7 +3,30 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yxs.dao.SalaryDao">
-	<select id="findSalary" resultType="com.yxs.bean.SalaryBean">
+	<resultMap type="com.yxs.bean.SalaryBean" id="Salary">
+		<id column="SALARY_ID" jdbcType="INTEGER" property="salaryId" />
+		<result column="SALARY_CODE" jdbcType="VARCHAR" property="code" />
+		<result column="SALARY_NAME" jdbcType="VARCHAR" property="name" />
+		<result column="SALARY_MAKER" jdbcType="VARCHAR" property="maker" />
+		<result column="SALARY_REGISTER" jdbcType="VARCHAR" property="register" />
+		<result column="REGISTER_TIME" jdbcType="DATE" property="registerTime" />
+		<result column="BASE_PAY" jdbcType="VARCHAR" property="basePay" />
+		<result column="ADD_PAY" jdbcType="VARCHAR" property="addPay" />
+		<result column="TRAFFIC_PAY" jdbcType="VARCHAR" property="trafficPay" />
+		<result column="PHONE_PAY" jdbcType="VARCHAR" property="phonePay" />
+		<result column="FOOD_PAY" jdbcType="VARCHAR" property="footPay" />
+		<result column="HOUSE_PAY" jdbcType="VARCHAR" property="housePay" />
+		<result column="AWAY_PAY" jdbcType="VARCHAR" property="awayPay" />
+		<result column="OVERTIME_PAY" jdbcType="VARCHAR" property="overTimePay" />
+		<result column="SALARY_REMARK" jdbcType="VARCHAR" property="salaryRemark" />
+		<result column="SALARY_TOTAL" jdbcType="INTEGER" property="salaryTotal" />
+		<result column="SALARY_STATE" jdbcType="INTEGER" property="salarySate" />
+		<result column="SALARY_DEL" jdbcType="INTEGER" property="salaryDel" />
+		<result column="SALARY_3" jdbcType="VARCHAR" property="salary3" />
+		<result column="SALARY_4" jdbcType="VARCHAR" property="salary4" />
+
+	</resultMap>
+	<select id="findSalary" resultMap="Salary">
 		select
 		salary_id,salary_code,salary_name,salary_maker,salary_register,register_time,base_pay,add_pay,traffic_pay,phone_pay,food_pay,house_pay,away_pay,overtime_pay,salary_remark,salary_state,salary_del,salary_total
 		from salary_tb
