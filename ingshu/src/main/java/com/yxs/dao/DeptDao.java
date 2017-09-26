@@ -33,4 +33,21 @@ public interface DeptDao {
 	 * @return
 	 */
 	public int getDeptCount();
+	
+	/**
+	 * 修改部门信息
+	 */
+	public boolean updateDeptById(DeptBean deptBean);
+	
+	/**
+	 * 查询子部门个数，用来判断当前部门下是否有子部门
+	 * @return
+	 */
+	public int queryChildDept(int deptId);
+	
+	/**
+	 * 获取部门编号最大值
+	 * @return
+	 */
+	public String getMaxDeptCode();
 }
