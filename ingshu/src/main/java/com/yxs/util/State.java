@@ -17,4 +17,5 @@ public interface State {
 	public static final int PAGECOUNT = 5;//显示5个页码号
 	
 	
+	
 }
