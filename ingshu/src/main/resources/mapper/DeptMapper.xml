@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yxs.dao.DeptDao">
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
-	
+
 	<!-- 查询所有部门信息 -->
 	<select id="getDept" resultType="deptBean">
 		select dept_id,
@@ -16,12 +16,13 @@
 		dept_state,
 		dept_del
 		from dept_tb
+		where
+		dept_del = 0
 	</select>
 
 	<!-- 添加部门信息 -->
 	<insert id="insertDept" parameterType="com.yxs.bean.DeptBean">
-		insert into dept_tb
-		(dept_id,
+		insert into dept_tb(dept_id,
 		dept_code,
 		dept_short_name,
 		dept_name,
@@ -30,15 +31,15 @@
 		dept_intro,
 		dept_remark,
 		dept_state,
-		dept_del,
-		dept_url)
+		dept_del)
 		values
-		(#{deptId},#{deptCode},#{deptShortName},#{deptName},#{parentDept},#{deptAddress},#{deptIntro},#{deptRemark},#{deptState},#{deptDel})
+		(dept_seq.nextval,#{deptCode},#{deptShortName},#{deptName},#{parentDept},#{deptAddress},#{deptIntro},#{deptRemark},#{deptState},#{deptDel})
 	</insert>
-	
+
 	<!-- 根据id查询部门信息 -->
 	<select id="getDeptById" resultType="deptBean">
-		select dept_id,
+		select
+		dept_id,
 		dept_code,
 		dept_short_name,
 		dept_name,
@@ -48,7 +49,33 @@
 		dept_remark,
 		dept_state,
 		dept_del
-		from dept_tb where dept_id = #{deptId}
+		from
+		dept_tb
+		where
+		dept_id = #{deptId}
+	</select>
+
+	<!-- 修改部门信息 -->
+	<update id="updateDeptById" parameterType="com.yxs.bean.DeptBean">
+		update dept_tb set
+		dept_short_name=#{deptShortName},
+		dept_name = #{deptName},
+		dept_address=#{deptAddress},
+		dept_intro=#{deptIntro},
+		dept_remark=#{deptRemark},
+		dept_state=#{deptState}
+		where
+		dept_id = #{deptId}
+	</update>
+
+	<!-- 查询当前部门下的子部门 -->
+	<select id="queryChildDept" resultType="java.lang.Integer">
+		select count(dept_id)
+		from dept_tb where parent_dept = #{deptId}
 	</select>
 	
+	<!-- 查询最大部门编号 -->
+	<select id="getMaxDeptCode" resultType="java.lang.String">
+		select max(dept_code) from dept_tb
+	</select>
 </mapper>

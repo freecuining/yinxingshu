@@ -13,8 +13,7 @@ public class DeptBean implements Serializable{
 	private String deptIntro;// 部门描述
 	private String deptRemark;// 部门备注
 	private Integer deptState;// 是否启用1：启用；0：未启用
-	private String deptDel;// 是否删除
-	private String deptUrl;//部门的url地址
+	private Integer deptDel;// 是否删除
 	
 	public Integer getDeptId() {
 		return deptId;
@@ -88,21 +87,12 @@ public class DeptBean implements Serializable{
 		this.deptState = deptState;
 	}
 
-	public String getDeptDel() {
+	
+	public Integer getDeptDel() {
 		return deptDel;
 	}
 
-	public void setDeptDel(String deptDel) {
+	public void setDeptDel(Integer deptDel) {
 		this.deptDel = deptDel;
 	}
-
-	public String getDeptUrl() {
-		return deptUrl;
-	}
-
-	public void setDeptUrl(String deptUrl) {
-		this.deptUrl = deptUrl;
-	}
-	
-
 }

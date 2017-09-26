@@ -23,7 +23,7 @@ public class DeptServiceImpl implements DeptService {
 	}
 	
 	/**
-	 * 添加部门方法
+	 * 添加一个部门方法
 	 * @return
 	 */
 	public boolean insertDept(DeptBean deptBean) {
@@ -44,6 +44,29 @@ public class DeptServiceImpl implements DeptService {
 	public DeptBean getDeptById(int deptId) {
 		// TODO Auto-generated method stub
 		return deptDao.getDeptById(deptId);
+	}
+
+	
+	public boolean updateDeptById(DeptBean deptBean) {
+		// TODO Auto-generated method stub
+		return deptDao.updateDeptById(deptBean);
+	}
+
+	@Override
+	public boolean queryChildDept(int deptId) {
+		// TODO Auto-generated method stub
+		int childDept = deptDao.queryChildDept(deptId);
+		return childDept>0;
+	}
+
+	/**
+	 * 获取部门编号最大值
+	 * @return
+	 */
+	@Override
+	public String getMaxDeptCode() {
+		// TODO Auto-generated method stub
+		return deptDao.getMaxDeptCode();
 	}
 
 }
