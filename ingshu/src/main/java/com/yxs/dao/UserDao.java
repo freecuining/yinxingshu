@@ -6,6 +6,6 @@ import com.yxs.bean.UserBean;
 
 @Repository
 public interface UserDao {
-
+	public UserBean login(String loginName,String password);
 	
 }

@@ -1,6 +1,8 @@
 package com.yxs.bean;
 
-public class RoleBean {
+import java.io.Serializable;
+
+public class RoleBean implements Serializable {
 
 	private Integer roleId;//角色id
 	private Integer deptId;//部门id
