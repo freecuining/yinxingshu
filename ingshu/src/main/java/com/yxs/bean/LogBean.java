@@ -5,12 +5,24 @@ import java.sql.Date;
 
 public class LogBean implements Serializable{
 	
-	private int logId;
-	private int userId;
-	private int logState;
-	private Date changeTime;
-	private String logRemark;
-	
+	private int logId;//记录Id
+	private int ArchiveId;//档案Id
+	private int logState;//更改状态
+	private Date changeTime;//更改时间
+	private String logRemark;//记录描述
+	private int deptId;//部门Id
+	public int getArchiveId() {
+		return ArchiveId;
+	}
+	public void setArchiveId(int archiveId) {
+		ArchiveId = archiveId;
+	}
+	public int getDeptId() {
+		return deptId;
+	}
+	public void setDeptId(int deptId) {
+		this.deptId = deptId;
+	}
 	public LogBean() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -21,12 +33,7 @@ public class LogBean implements Serializable{
 	public void setLogId(int logId) {
 		this.logId = logId;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	
 	public int getLogState() {
 		return logState;
 	}

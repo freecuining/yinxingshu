@@ -1,7 +1,9 @@
 package com.yxs.service;
 
+
 import com.github.pagehelper.PageInfo;
 import com.yxs.bean.UserBean;
+
 
 public interface UserService {
 

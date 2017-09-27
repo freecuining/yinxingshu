@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xm	UUUUUUl version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
@@ -8,4 +8,5 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" /> <!-- 驼峰命名的自动匹配 -->
 		<setting value="true" name="cacheEnabled" /><!--开启二级缓存 -->
 	</settings>
+	
 </configuration>
