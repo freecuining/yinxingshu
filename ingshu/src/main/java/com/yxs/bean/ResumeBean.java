@@ -1,31 +1,33 @@
 package com.yxs.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ResumeBean {
+public class ResumeBean implements Serializable{
+	
 	private int user_Id;//
-    private int resume_Id;// 应聘职位编码
-    private String name;//姓名
-    private int resume_Sex;//性别
+    private int resume_Id;// 搴旇仒鑱屼綅缂栫爜
+    private String name;//濮撳悕
+    private int resume_Sex;//鎬у埆
     private String resume_Email;//Email
-    private String resume_Phone;//联系电话
-    private String local_Address;//户口所在地
-    private String Home_Assress;//住址
-    private String political;//政治面貌
-    private String card_Id;//身份证号
-    private String salary_Require;//薪资要求
-    private String graduate_school;//毕业院校
-    private int education;//学历
-    private String major;    //专业
-    private int job_State;//是否在职
-    private int fresh_Student;//是否是应届生
-    private int work_Year;//工作经验
-    private String person_Resume;//个人履历
-    private String preson_File;//建立附件
-    private int recommend_State;//招聘类型
-    private Date recommend_time;//登记时间
-    private String resommend_Idea;//面试意见
-    private String interview_Result;//面试结果
+    private String resume_Phone;//鑱旂郴鐢佃瘽
+    private String local_Address;//鎴峰彛鎵�鍦ㄥ湴
+    private String Home_Assress;//浣忓潃
+    private String political;//鏀挎不闈㈣矊
+    private String card_Id;//韬唤璇佸彿
+    private String salary_Require;//钖祫瑕佹眰
+    private String graduate_school;//姣曚笟闄㈡牎
+    private int education;//瀛﹀巻
+    private String major;    //涓撲笟
+    private int job_State;//鏄惁鍦ㄨ亴
+    private int fresh_Student;//鏄惁鏄簲灞婄敓
+    private int work_Year;//宸ヤ綔缁忛獙
+    private String person_Resume;//涓汉灞ュ巻
+    private String preson_File;//寤虹珛闄勪欢
+    private int recommend_State;//鎷涜仒绫诲瀷
+    private Date recommend_time;//鐧昏鏃堕棿
+    private String resommend_Idea;//闈㈣瘯鎰忚
+    private String interview_Result;//闈㈣瘯缁撴灉
     private int attribute_109;//
     private String attribute_105;//
     private int attribute_92; //   
@@ -222,7 +224,6 @@ public class ResumeBean {
 	public void setAttribute_92(int attribute_92) {
 		this.attribute_92 = attribute_92;
 	}
-
 
     
 }

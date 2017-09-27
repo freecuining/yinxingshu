@@ -18,10 +18,58 @@
 		<result column="img" jdbcType="VARCHAR" property="img" />
 		<result column="user_remark" jdbcType="VARCHAR" property="userRemark" />
 		<result column="login_count" jdbcType="INTEGER" property="loginCount" />
-		<result column="del" jdbcType="INTEGER" property="del" />
+		<result column="user_del" jdbcType="INTEGER" property="del" />
+		<result column="add_time" jdbcType="VARCHAR" property="addTime" />
 	</resultMap>
 	<select id="login" resultMap="loginran">
-	select user_id,dept_id,user_code,loginname,password,user_name,sex,id_card,phone,del from user_tb
-	where loginname=#{loginName} and password=#{password}
+	select user_id,dept_id,user_code,loginname,password,user_name,sex,id_card,phone,mobile_phone,user_email,address,user_img,user_remark,login_count,user_del,add_time from user_tb
+	where loginname = #{loginName} and password = #{password}
+	</select>
+	
+	<update id="updateLoginNum">
+		update user_tb set login_count = login_count +1 where
+		user_id = #{userId}
+	</update>
+	
+	<resultMap id="myUser" type="com.yxs.bean.UserBean">
+		<id column="user_id" property="userId" />
+		<result column="user_code" property="userCode" />
+		<result column="loginname" property="loginName" />
+		<result column="password" property="password" />
+		<result column="user_name" property="userName" />
+		<result column="sex" property="sex" />
+		<result column="id_card" property="idCard" />
+		<result column="phone" property="phone" />
+		<result column="mobile_phone" property="mobilePhone" />
+		<result column="user_email" property="userEmail" />
+		<result column="address" property="address" />
+		<result column="img" property="img" />
+		<result column="user_remark" property="userRemark" />
+		<result column="user_del" property="del" />
+		<result column="dept_id" property="deptBean.deptId"/>
+		<result column="dept_name" property="deptBean.deptName"/>
+		<result column="role_id" property="roleBean.roleId"/>
+		<result column="role_name" property="roleBean.roleName"/>
+	</resultMap>
+	<select id="getAllUser" resultMap="myUser">
+		select u.user_id user_id,
+             u.user_code user_code,
+             u.loginname loginname,
+             u.password password,
+             u.user_name user_name,
+             u.sex sex,
+             u.id_card id_card,
+             u.phone phone,
+             u.user_del user_del,
+             d.dept_id dept_id,
+             d.dept_name dept_name,
+             r.role_id role_id,
+             r.role_name role_name
+        from user_tb u, dept_tb d, role_tb r,user_role ur
+       where u.dept_id = d.dept_id
+         and d.dept_id = r.dept_id
+         and u.user_id = ur.user_id
+         and r.role_id = ur.role_id
+         and u.user_del = 0  
 	</select>
 </mapper>

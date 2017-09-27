@@ -2,7 +2,10 @@ package com.yxs.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yxs.bean.DeptBean;
+import com.yxs.bean.SalaryBean;
 
 public interface DeptService {
 
@@ -54,4 +57,5 @@ public interface DeptService {
 	 * @return
 	 */
 	public boolean deleteDeptById(int deptId);
+	
 }
