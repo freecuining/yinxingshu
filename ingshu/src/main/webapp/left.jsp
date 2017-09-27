@@ -68,7 +68,7 @@
 
 
 
-				</c:forEach> <!-- <table cellspacing=0 cellpadding=0 width=150 border=0>
+				</c:forEach>  <table cellspacing=0 cellpadding=0 width=150 border=0>
 					<tr height=22>
 						<td style="padding-left: 30px" background=./img/menu_bt.jpg>
 							<a class=menuparent onclick=expand(1) href="javascript:void(0);">个人信息</a>
@@ -84,13 +84,13 @@
 					<tr height=20>
 						<td align=middle width=30><img height=9
 							src="img/menu_icon.gif" width=9></td>
-						<td><a class=menuchild href="msg.html" target="right">个人信息修改</a>
+						<td><a class=menuchild href="msg.jsp" target="right">个人信息修改</a>
 						</td>
 					</tr>
 					<tr height=20>
 						<td align=middle width=30><img height=9
 							src="img/menu_icon.gif" width=9></td>
-						<td><a class=menuchild href="password.html" target="right">密码修改</a>
+						<td><a class=menuchild href="password.jsp" target="right">密码修改</a>
 						</td>
 					</tr>
 
@@ -347,7 +347,7 @@
 					<tr height=4>
 						<td colspan=2></td>
 					</tr>
-				</table> -->
+				</table> 
 			</td>
 			<td width=1 bgcolor=#d1e6f7></td>
 		</tr>

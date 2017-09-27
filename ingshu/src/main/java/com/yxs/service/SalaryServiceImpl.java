@@ -27,7 +27,6 @@ public class SalaryServiceImpl implements SalaryService {
 			l = sd.findSalary();
 			info = new PageInfo(l,pageCount);
 		}
-
 		return info;  
 	}
 

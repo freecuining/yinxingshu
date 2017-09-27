@@ -13,9 +13,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/mine.css" type="text/css" rel="stylesheet">
 <script type="text/javascript">
-
-
-
 </script>
 </head>
 
@@ -29,7 +26,7 @@
 				<a style="text-decoration: none" href="cn/pinsertDept?deptId=${deptBean.deptId }">【添加子部门】</a>
 				</c:if>
 					<c:if test="${!isok}">
-						<a style="text-decoration: none" href="list.html">【删除】</a>
+						<a style="text-decoration: none" href="cn/deleteDept?deptId=${deptBean.deptId }">【删除】</a>
 					</c:if>
 		</span>
 		</span>
@@ -76,7 +73,6 @@
 					<td>备注：</td>
 					<td>${deptBean.deptRemark }</td>
 				</tr>
-
 				<tr>
 					<td>是否启用：</td>
 					<c:if test="${deptBean.deptState==0 }">

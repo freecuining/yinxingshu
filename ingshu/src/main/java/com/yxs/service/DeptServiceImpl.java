@@ -52,7 +52,7 @@ public class DeptServiceImpl implements DeptService {
 		return deptDao.updateDeptById(deptBean);
 	}
 
-	@Override
+	
 	public boolean queryChildDept(int deptId) {
 		// TODO Auto-generated method stub
 		int childDept = deptDao.queryChildDept(deptId);
@@ -63,10 +63,16 @@ public class DeptServiceImpl implements DeptService {
 	 * 获取部门编号最大值
 	 * @return
 	 */
-	@Override
+	
 	public String getMaxDeptCode() {
 		// TODO Auto-generated method stub
 		return deptDao.getMaxDeptCode();
+	}
+
+	
+	public boolean deleteDeptById(int deptId) {
+		// TODO Auto-generated method stub
+		return deptDao.deleteDeptById(deptId);
 	}
 
 }

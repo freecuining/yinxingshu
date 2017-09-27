@@ -15,15 +15,16 @@ public class TrainBean  implements Serializable {
    private  String  traRequired;//培训目的
    private  String  traIntro;//培训简介
    private String   traResouce;//培训资料
-   private  String  traState;//审核状态
+   private  int  traState;//审核状态
    private  String  traOpinion;//审核意见
    private  int  traResult;//培训反馈（状态值     优     良   差）
-   private  String  trasummary;//培训总结
+   private  String  traSummary;//培训总结
    private  String  evaluationResult;//考核结果
-   
+   private  String  attribute_141;//参训人员
+   private  int  del;
 public TrainBean(int traId, String traName, String traTeacher, String traStartTime, String traEddTime,
-		String traRequired, String traIntro, String traResouce, String traState, String traOpinion, int traResult,
-		String trasummary, String evaluationResult) {
+		String traRequired, String traIntro, String traResouce, int traState, String traOpinion, int traResult,
+		String traSummary, String evaluationResult,int del,String attribute_141) {
 	super();
 	this.traId = traId;
 	this.traName = traName;
@@ -36,13 +37,12 @@ public TrainBean(int traId, String traName, String traTeacher, String traStartTi
 	this.traState = traState;
 	this.traOpinion = traOpinion;
 	this.traResult = traResult;
-	this.trasummary = trasummary;
+	this.traSummary = traSummary;
 	this.evaluationResult = evaluationResult;
+    this.del = del;
+    this.attribute_141 = attribute_141;
 }
-public TrainBean() {
-	super();
-	// TODO Auto-generated constructor stub
-}
+
 public int getTraId() {
 	return traId;
 }
@@ -91,10 +91,10 @@ public String getTraResouce() {
 public void setTraResouce(String traResouce) {
 	this.traResouce = traResouce;
 }
-public String getTraState() {
+public int getTraState() {
 	return traState;
 }
-public void setTraState(String traState) {
+public void setTraState(int traState) {
 	this.traState = traState;
 }
 public String getTraOpinion() {
@@ -109,11 +109,11 @@ public int getTraResult() {
 public void setTraResult(int traResult) {
 	this.traResult = traResult;
 }
-public String getTrasummary() {
-	return trasummary;
+public String getTraSummary() {
+	return traSummary;
 }
-public void setTrasummary(String trasummary) {
-	this.trasummary = trasummary;
+public void setTraSummary(String traSummary) {
+	this.traSummary = traSummary;
 }
 public String getEvaluationResult() {
 	return evaluationResult;
@@ -122,5 +122,23 @@ public void setEvaluationResult(String evaluationResult) {
 	this.evaluationResult = evaluationResult;
 }
    
-   
+public int  getdel(){
+	return del;
+}
+public void setdel(int del){
+	this.del = del;
+}
+public String getattribute_141() {
+	return attribute_141;
+}
+public void setattribute_141(String attribute_141) {
+	this.attribute_141 = attribute_141;
+}
+@Override
+public String toString(){
+	return "TrainBean [traId = " + traId+", traName = " + traName +", traTeacher = " + traTeacher +", traStartTime=" + traStartTime
+			+ ", traEddTime=" + traEddTime + ", traRequired=" + traRequired + ", traIntro=" + traIntro + ", traResouce="
+			+ traResouce + ", traState=" + traState + ",traOpinion=" + traOpinion + ", traResult=" + traResult + ", traResult=" + traResult
+			+ ",evaluationResult=" + evaluationResult + ",del=" + del + "]";
+}
 }
