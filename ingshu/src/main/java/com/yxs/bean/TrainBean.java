@@ -20,10 +20,11 @@ public class TrainBean  implements Serializable {
    private  int  traResult;//培训反馈（状态值     优     良   差）
    private  String  traSummary;//培训总结
    private  String  evaluationResult;//考核结果
+   private  String  attribute_141;//参训人员
    private  int  del;
 public TrainBean(int traId, String traName, String traTeacher, String traStartTime, String traEddTime,
 		String traRequired, String traIntro, String traResouce, int traState, String traOpinion, int traResult,
-		String traSummary, String evaluationResult,int del) {
+		String traSummary, String evaluationResult,int del,String attribute_141) {
 	super();
 	this.traId = traId;
 	this.traName = traName;
@@ -39,6 +40,7 @@ public TrainBean(int traId, String traName, String traTeacher, String traStartTi
 	this.traSummary = traSummary;
 	this.evaluationResult = evaluationResult;
     this.del = del;
+    this.attribute_141 = attribute_141;
 }
 
 public int getTraId() {
@@ -125,6 +127,12 @@ public int  getdel(){
 }
 public void setdel(int del){
 	this.del = del;
+}
+public String getattribute_141() {
+	return attribute_141;
+}
+public void setattribute_141(String attribute_141) {
+	this.attribute_141 = attribute_141;
 }
 @Override
 public String toString(){
