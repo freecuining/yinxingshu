@@ -2,7 +2,10 @@ package com.yxs.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.yxs.bean.DeptBean;
+import com.yxs.bean.SalaryBean;
 
 public interface DeptService {
 
@@ -30,4 +33,29 @@ public interface DeptService {
 	 * @return
 	 */
 	public int getDeptCount();
+	
+	/**
+	 * 修改部门信息
+	 */
+	public boolean updateDeptById(DeptBean deptBean);
+	
+	/**
+	 * 查询子部门信息，用来判断当前部门下是否有子部门
+	 * @return
+	 */
+	public boolean queryChildDept(int deptId);
+	
+	
+	/**
+	 * 获取部门编号最大值
+	 * @return
+	 */
+	public String getMaxDeptCode();
+	
+	/**
+	 * 删除部门
+	 * @return
+	 */
+	public boolean deleteDeptById(int deptId);
+	
 }

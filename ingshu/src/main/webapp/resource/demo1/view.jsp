@@ -12,16 +12,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/mine.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+</script>
 </head>
 
 <body>
-
+<input type="hidden" id="msg" value="${msg }"/>
 	<div class="div_head">
 		<span> <span style="float: left">当前位置是：-系统管理》部门管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold"> <a
-				style="text-decoration: none" href="cn/pupdateDept?deptId=${deptBean.deptId }">【修改】</a> <a
-				style="text-decoration: none" href="add.html">【添加子部门】</a> <a
-				style="text-decoration: none" href="list.html">【删除】</a>
+				style="text-decoration: none" href="cn/pupdateDept?deptId=${deptBean.deptId }">【修改】</a> 
+				<c:if test="${deptBean.parentDept == 0 }">
+				<a style="text-decoration: none" href="cn/pinsertDept?deptId=${deptBean.deptId }">【添加子部门】</a>
+				</c:if>
+					<c:if test="${!isok}">
+						<a style="text-decoration: none" href="cn/deleteDept?deptId=${deptBean.deptId }">【删除】</a>
+					</c:if>
 		</span>
 		</span>
 	</div>
@@ -67,7 +73,6 @@
 					<td>备注：</td>
 					<td>${deptBean.deptRemark }</td>
 				</tr>
-
 				<tr>
 					<td>是否启用：</td>
 					<c:if test="${deptBean.deptState==0 }">
