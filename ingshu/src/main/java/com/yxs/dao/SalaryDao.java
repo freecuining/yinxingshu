@@ -13,5 +13,13 @@ public interface SalaryDao {
 	 * @return
 	 */
 	public List<SalaryBean> findSalary();
+	/**
+	 * 添加工资表信息
+	 */
+	public boolean insertSalary(SalaryBean sb);
+	/**
+	 * 查询薪酬编号信息
+	 */
+	public int findCode(); 
 
 }
