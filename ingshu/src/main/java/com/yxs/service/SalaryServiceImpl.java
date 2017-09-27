@@ -16,13 +16,13 @@ public class SalaryServiceImpl implements SalaryService {
 	@Autowired
 	private SalaryDao sd;
 
-	public PageInfo findSalary(int pageNum,int pageSize,int pageCount) {
+	public PageInfo getSalary(int pageNum,int pageSize,int pageCount) {
 		// TODO Auto-generated method stub
 		PageHelper.startPage(pageNum, pageSize);
 		List<SalaryBean> l = sd.findSalary();
 		PageInfo<Object> info = new PageInfo(l,pageCount);
 		//
-		return info;  
+		return info;
 	}
 
 }

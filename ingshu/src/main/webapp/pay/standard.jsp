@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	isELIgnored="false" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -12,8 +13,30 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>银杏树信息技术服务(北京)有限公司</title>
-<link href="../css/mine.css" type="text/css" rel="stylesheet" />
+<link href="css/mine.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript" src="js/jquery-3.2.1.min.js">
+</script>
+<!-- 全选全不选 -->
+<script type="text/javascript">
+$(function(){
+		$("#selectAll").click(function(){
+			//1.获取当前元素的选中状态 this在funcation中代表的是当前dom对象
+			//alert(this.checked);
+			//alert($(this).attr("checked"));//获取undefined
+			//alert($(this).prop("checked"));
+			
+			//2.获取所有的复选框 让其状态和 当前元素的选中状态保持一致
+			$(".salarySelect").prop("checked",$(this).prop("checked"));
+		});
+		
+   });
+
+
+</script>
+ 
 </head>
+
 <body>
 	<style>
 .tr_color {
@@ -44,8 +67,8 @@
 		<table class="table_a" border="1" width="100%">
 			<tbody>
 				<tr style="font-weight: bold;">
+					<td width="30px;"><input type="checkbox" id="selectAll" /></td>
 					<td width="40px;">序号</td>
-					<td width="30px;"><input type="checkbox" /></td>
 					<td width="80px;">薪酬编码</td>
 					<td>薪酬标准类型</td>
 					<td width="100px;">审核状态</td>
@@ -58,23 +81,69 @@
 					</tr>
 				</c:if>
 				<c:if test="${!empty salaryList }">
-				   <c:forEach items="${ salaryList }" var="salList" varStatus="sl">
-				   		<tr id="product1">
-				   		  <td>${sl.index+1 }</td>
-				   		  <td><input type="checkbox" name="sa" value="${u.userId }" /></td>
-				   		  <td></td>
-				   		  <td></td>
-				   		  <td></td>
-				   		  <td></td>
-				   		  <td></td>
-				   		</tr>
-				   		 <tr>
-                        <td colspan="20" style="text-align: center;">						
-						
-                        </td>
-                    </tr> -->
-				   </c:forEach>
+					<c:forEach items="${ salaryList }" var="s" varStatus="sl">
+						<tr id="product1">
+							<td><input type="checkbox" name="sa"  class="salarySelect"/></td>
+							<td>${sl.index+1 }</td>
+							<td>${s.code }</td>
+							<td>${s.name }</td>
+							<c:if test="${s.salarySate == 0 }">
+								<td>审核通过</td>
+							</c:if>
+							<c:if test="${s.salarySate == 1 }">
+								<td>审核失败</td>
+							</c:if>
+							<c:if test="${s.salarySate == 2 }">
+								<td>审核中</td>
+							</c:if>
+							<c:if test="${s.salarySate == 3 }">
+								<td>起草</td>
+							</c:if>
+							<td>${fn:substring(s.registerTime,0,16) }</td>
+							<td>
+							<c:if test="${s.salarySate == 1 }">
+							<a href="UserServlet.do?salaryId=${s.salaryId }">修改</a>&nbsp;&nbsp;&nbsp;
+							<a href="UserServlet.do?salaryId=${s.salaryId }">删除</a>
+							</c:if>
+							<c:if test="${s.salarySate == 3 }">
+							<a href="UserServlet.do?salaryId=${s.salaryId }">修改</a>&nbsp;&nbsp;&nbsp;
+							<a href="UserServlet.do?salaryId=${s.salaryId }">删除</a>
+							</c:if>
+							
+							
+								
+								
+							</td>
+						</tr>
+					</c:forEach>
 				</c:if>
+				<tr>
+					<td colspan="20" style="text-align: center;"><a
+						href="bb/salary?pageNum=1">首页</a> <c:choose>
+							<c:when test="${page.pageNum == page.firstPage}">上一页</c:when>
+							<c:otherwise>
+								<a href="bb/salary?pageNum=${page.pageNum-1}">上一页</a>
+							</c:otherwise>
+						</c:choose> <c:if
+							test="${page.navigatepageNums[page.navigateFirstPage-1] != 1 }">...</c:if>
+						<c:forEach items="${page.navigatepageNums}" var="pNum">
+								${pNum }
+							</c:forEach> 
+							<c:if test="${page.lastPage >= 5 }">
+							   <c:if
+								       test="${page.navigatepageNums[page.navigateLastPage-1] != page.total }">...</c:if>
+						    </c:if> 
+						    <c:choose>
+							<c:when test="${page.pageNum == page.lastPage}">下一页</c:when>
+							<c:otherwise>
+								<a href="bb/salary?pageNum=${page.pageNum+1}">下一页</a>
+							</c:otherwise>
+						</c:choose> <c:if test="${page.pageNum == page.lastPage}">尾页</c:if> <c:if
+							test="${page.pageNum != page.total}">
+							<a href="bb/salary?pageNum=${page.lastPage}">尾页</a>
+						</c:if> 共${page.total}条记录，当前显示第${page.pageNum}页 ，总共${page.lastPage}页</td>
+				</tr>
+
 
 				<!--  <tr id="product1">
                         <td>1</td>

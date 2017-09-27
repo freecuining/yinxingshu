@@ -5,14 +5,78 @@
   <cache type="org.mybatis.caches.ehcache.EhcacheCache" />
  <!--配置映射关系 -->
  <resultMap type="com.yxs.bean.TrainBean" id="ain">
-  <id property = "traId" column = "tra_id"/>
-  <result property = "traName" javaType = "String" column = "tra_name" jdbcType = "VARCHAR"/>
-  <result property = "traTeacher" javaType = "String" column ="tra_teacher" jdbcType = "VARCHAR"/>
-  <result property = "traStartTime" javaType = "String" column ="tra_starttime" jdbcType = "DATE"/>
-  <result property = "traEddTime" javaType = "String" column = "tra_eddtime" jdbcType = "DATE"/>
-  <result property = "traRequired" javaType = "String" column = "tra_required" jdbcType = "VARCHAR"/>
-    </resultMap>
-  
 
+  <id property="traId" column="tra_id"/>
+  <result property="traName" javaType="String" column="tra_name" jdbcType="VARCHAR"/>
+  <result property="traTeacher" javaType="String" column="tra_teacher" jdbcType="VARCHAR"/>
+  <result property="traStartTime" javaType="String" column="tra_starttime" jdbcType="DATE"/>
+  <result property="traEddTime" javaType="String" column="tra_eddtime" jdbcType="DATE"/>
+  <result property="traRequired" javaType="String" column="tra_required" jdbcType="VARCHAR"/>
+  <result property="traIntro" javaType= "String" column="tra_intro" jdbcType="CLOB"/>
+  <result property="traResouce" javaType="String" column="tra_resouce" jdbcType="VARCHAR"/>
+  <result property="traState" javaType="Integer" column="tra_state" jdbcType="INTEGER"/>
+  <result property="traOpinion" javaType="String" column="tra_opinion" jdbcType="VARCHAR"/>
+  <result property="traResult" javaType="Integer" column="tra_result" jdbcType="INTEGER"/>
+  <result property="traSummary" javaType="String" column="tra_summary" jdbcType="CLOB"/>
+  <result property="evaluationResult" javaType="String" column ="evaluation_result" jdbcType="CLOB"/>
+  <result property="del" javaType="Integer" column="del" jdbcType ="VARCHAR" />
+</resultMap>
+<!-- sql片段  -->
+<sql  id = "sql_tra">
+ select tra_id,tra_name,tra_teacher,tra_starttime,tra_eddtime,tra_required,tra_intro,tra_resouce,tra_state,tra_opinion,tra_result,tra_summary,evaluation_result ,del from train_tb
+</sql>
+<!--映射到Userdao方法-->
+<insert id = "insertAin" parameterType = "trainBean" useGeneratedKeys = "true" keyColumn = "tra_id" keyProperty = "traId">
+      insert into
+      train
+       (tra_id,tra_name,tra_teacher,tra_starttime,tra_eddtime,tra_required,tra_intro,tra_resouce,tra_state,tra_opinion,tra_result,evaluation_result,del)values(#{traId},#{traName},#{traTeacher},#{traStartTime},#{traEddTime},#{traRequired},#{traIntro},#{traResouce},#{traState},#{traOpinion},#{traResult},#{traSummary},#{evaluationResult},#{del})
+</insert>
+
+<!--<delete  id = "deleteAin" paramterType = "int">
+   delete(<include refid = "sql_tra"/>)where tra_id = #{traId}
+</delete> -->
+<update  id = "updateAin" parameterType = "trainBean">
+      update train set tra_name = #{traName},tra_teacher = #{traTeacher},tra_starttime = #{traStartTime},
+      tra_eddtime = #{traEddTime},tra_required = #{traRequired},tra_intro = #{traIntro},tra_resouce = #{traResouce},tra_state = #{traState},
+      tra_opinion = #{traOpinion},tra_result = #{traResult},tra_summary = #{traSummary},evaluation_result = #{evaluationResult} where tra_id = #{traId}
+</update>
+<select id = "queryAinById" parameterType = "int" resultMap = "ain">
+<include refid = "sql_tra"/>where tra_id = #{traId}  and  del = '1'
+</select>
+<!-- 查询 -->
+<!-- 查询所有 -->
+<select  id = "queryAinAll"  resultMap = "ain">
+<include refid = "sql_tra"/> where del = '1'
+</select>
+<!-- 查询审核状态为审核中的 -->
+<select    id = "queryAinTraState"  resultMap = "ain">
+<include  refid = "sql_tra"/> where tra_state = '审核中' and del = '1'
+</select>
+<!--查询审核状态为审核通过  -->
+<select  id = "queryAinTraResult" resultMap = "ain">
+<include  refid = "sql_tra"/> where tra_state = '审核通过' and del = '1'
+</select>
+<!-- 分页查询  -->
+<!-- 培训计划 -->
+<select  id = "queryFy"  resultMap = "ain">
+<include  refid = "sql_tra" /> where del = '0'
+<if test = "traName ! = null and traName ! = ''.toString()" > and  tra_name like 'concat(concat('%',#{traName}),'%')'</if>
+<if test = "traState ! = null and traState ! = ''.toString()"> and  tra_state like 'concat(concat('%',#{traState}),'%')'</if>
+<if test = "traStartTime ! = null and traStartTime ! = ''.toString()"> and tra_starttime &gt;=#{traStartTime}</if>
+<if test = "traEddTime ! = null and traEddTime ! = ''.toString"> and tra_eddtime &lt; =#{traEddTime} </if>
+</select>
+<!--培训复核  -->
+<select  id = "queryFy2"  resultMap = "ain">
+<include  refid = "sql_tra"/> where del = '0' and tra_state = '审核中'
+<if test = "traName ! = null and traName ! = ''.toString()"> and tra_name like 'concat(concat('%',#{traName}),'%')'</if>
+<if test = "traStartTime ! = null and traStartTime ! = ''.toString()"> and tra_starttime &gt;=#{traStartTime}</if>
+<if test = "traEddTime ! = null and traEddTime ! = ''.toString"> and tra_eddtime &lt; =#{traEddTime} </if>
+</select>
+<!-- 培训反馈 -->
+<select  id = "queryFy3"  resultMap = "ain">
+<include  refid = "sql_tra"/> where del = '0' and tra_state = '审核中'
+<if test = "traName ! = null and traName ! = ''.toString()"> and tra_name like 'concat(concat('%',#{traName}),'%')'</if>
+<if test = "traStartTime ! = null and traStartTime ! = ''.toString()"> and tra_starttime &gt;=#{traStartTime}</if>
+<if test = "traEddTime ! = null and traEddTime ! = ''.toString"> and tra_eddtime &lt; =#{traEddTime} </if>
+</select>
 </mapper>
-

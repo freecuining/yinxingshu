@@ -15,4 +15,27 @@ public interface UserDao {
 	public void updateLoginNum(int userId);
 
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * 崔宁
+	 * 查询所有用户信息
+	 * @return
+	 */
+	public List<UserBean> getAllUser();
 }

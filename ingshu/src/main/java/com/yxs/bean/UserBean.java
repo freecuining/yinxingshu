@@ -21,6 +21,14 @@ import java.io.Serializable;
 		private int loginCount;//登录次数
 		private int del;
 		private String addTime;
+		private DeptBean deptBean;
+		private RoleBean roleBean;
+		
+		
+		public UserBean() {
+			super();
+			// TODO Auto-generated constructor stub
+		}
 		public int getUserId() {
 			return userId;
 		}
@@ -145,11 +153,17 @@ import java.io.Serializable;
 			this.del = del;
 			this.addTime = addTime;
 		}
-		public UserBean() {
-			super();
-			// TODO Auto-generated constructor stub
+		public DeptBean getDeptBean() {
+			return deptBean;
 		}
-		
-		
+		public void setDeptBean(DeptBean deptBean) {
+			this.deptBean = deptBean;
+		}
+		public RoleBean getRoleBean() {
+			return roleBean;
+		}
+		public void setRoleBean(RoleBean roleBean) {
+			this.roleBean = roleBean;
+		}
 		
 	}

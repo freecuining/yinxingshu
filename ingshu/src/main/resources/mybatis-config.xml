@@ -8,8 +8,4 @@
 		<setting name="mapUnderscoreToCamelCase" value="true" /> <!-- 驼峰命名的自动匹配 -->
 		<setting value="true" name="cacheEnabled" /><!--开启二级缓存 -->
 	</settings>
-	<!--分页插件配置    -->
-	 <plugins>
-       <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
-   </plugins>
 </configuration>
