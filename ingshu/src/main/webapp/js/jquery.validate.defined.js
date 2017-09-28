@@ -11,3 +11,11 @@ jQuery.validator.addMethod("mobilePhone", function(valmobile, element) {
 	var reg = /^1[3-8]\d{9}$/;
 	return this.optional(element) || (reg.test(valmobile));
 }, "格式错误");
+jQuery.validator.addMethod("loginName", function(valln, element) {
+	var reg = /^[a-zA-Z]{6,16}$/;
+	return this.optional(element) || (reg.test(valln));
+}, "格式错误");
+jQuery.validator.addMethod("psw", function(valps, element) {
+	var reg = /^\w{6,16}$/;
+	return this.optional(element) || (reg.test(valps));
+}, "格式错误");

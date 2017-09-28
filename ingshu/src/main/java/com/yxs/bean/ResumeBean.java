@@ -4,29 +4,30 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ResumeBean implements Serializable{
+	
 	private int user_Id;//
-    private int resume_Id;// ӦƸְλ����
-    private String name;//����
-    private int resume_Sex;//�Ա�
+    private int resume_Id;// 应聘职位编码
+    private String name;//姓名
+    private int resume_Sex;//性别
     private String resume_Email;//Email
-    private String resume_Phone;//��ϵ�绰
-    private String local_Address;//�������ڵ�
-    private String Home_Assress;//סַ
-    private String political;//������ò
-    private String card_Id;//���֤��
-    private String salary_Require;//н��Ҫ��
-    private String graduate_school;//��ҵԺУ
-    private int education;//ѧ��
-    private String major;    //רҵ
-    private int job_State;//�Ƿ���ְ
-    private int fresh_Student;//�Ƿ���Ӧ����
-    private int work_Year;//��������
-    private String person_Resume;//��������
-    private String preson_File;//��������
-    private int recommend_State;//��Ƹ����
-    private Date recommend_time;//�Ǽ�ʱ��
-    private String resommend_Idea;//�������
-    private String interview_Result;//���Խ��
+    private String resume_Phone;//联系电话
+    private String local_Address;//户口所在地
+    private String Home_Assress;//住址
+    private String political;//政治面貌
+    private String card_Id;//身份证号
+    private String salary_Require;//薪资要求
+    private String graduate_school;//毕业院校
+    private int education;//学历
+    private String major;    //专业
+    private int job_State;//是否在职
+    private int fresh_Student;//是否是应届生
+    private int work_Year;//工作经验
+    private String person_Resume;//个人履历
+    private String preson_File;//建立附件
+    private int recommend_State;//招聘类型
+    private Date recommend_time;//登记时间
+    private String resommend_Idea;//面试意见
+    private String interview_Result;//面试结果
     private int attribute_109;//
     private String attribute_105;//
     private int attribute_92; //   
@@ -223,7 +224,6 @@ public class ResumeBean implements Serializable{
 	public void setAttribute_92(int attribute_92) {
 		this.attribute_92 = attribute_92;
 	}
-
 
     
 }
