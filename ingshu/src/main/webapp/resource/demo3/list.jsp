@@ -24,7 +24,7 @@
             <span>
                 <span style="float: left;">当前位置是：系统管理-》职位设置</span>
                 <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    <a style="text-decoration: none;" href="add.html">【添加】</a>
+                    <a style="text-decoration: none;" href="cnRole/pinsertRole">【添加】</a>
                 </span>
             </span>
         </div>
@@ -63,7 +63,18 @@
                         <td>${st.index+1 }</td>
 						<td>${roleList.roleCode }</td>
                         <td><a href="cnRole/getRoleById?roleId=${roleList.roleId }">${roleList.roleName }</a></td> 
-						<td>${roleList.roleKind }</td> 						
+						<c:if test="${roleList.roleKind == 0 }">
+							<td>管理</td>
+						</c:if>
+						<c:if test="${roleList.roleKind == 1 }">
+							<td>技术</td>
+						</c:if> 
+						<c:if test="${roleList.roleKind == 2 }">
+							<td>实施</td>
+						</c:if> 
+						<c:if test="${roleList.roleKind == 3 }">
+							<td>业务</td>
+						</c:if> 					
                         <td>${roleList.deptName }</td>
 						<c:if test="${roleList.roleState==0 }">
 						<td>禁用</td>
@@ -72,8 +83,8 @@
 						<td>启用</td>
 						</c:if>
                         <td>
-							<a href="add.html">修改</a>						   
-							<a href="#">删除</a>
+							<a href="cnRole/pupdateRole?roleId=${roleList.roleId }">修改</a>						   
+							<a href="cnRole/deleteRole?roleId=${roleList.roleId }">删除</a>
 						</td>                        
                     </tr> 
 					 </c:forEach>
