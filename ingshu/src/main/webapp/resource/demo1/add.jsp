@@ -75,7 +75,6 @@
 							<option value="0">是</option>
 					</select></td>
 				</tr>
-
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="确认">
 						<input type="reset" value="清空"></td>

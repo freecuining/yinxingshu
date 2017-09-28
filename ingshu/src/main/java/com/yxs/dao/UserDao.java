@@ -19,14 +19,22 @@ public interface UserDao {
 	UserBean ub = new UserBean();
 
 	public UserBean login(@Param("loginName") String loginName, @Param("password") String password);
-
+	/**
+	 * 张晓然 登录次数
+	 * @param userId
+	 */
 	public void updateLoginNum(int userId);
+	/**
+	 * 张晓然 修改个人信息
+	 * @param ub
+	 */
+	public boolean updateInfo(UserBean ub);
+	
 
 
 	/**
 	 * 
 	 */
-	
 	public UserBean getUserById(int userId);
 
 	/**
@@ -34,6 +42,7 @@ public interface UserDao {
 	 * 查询所有用户信息
 	 * @return
 	 */
+	public List<UserBean> getAllUser(@Param("userName")String userName,@Param("roleName")String roleName,@Param("deptName")String deptName);
 	public List<UserBean> getAllUser();
 
 }

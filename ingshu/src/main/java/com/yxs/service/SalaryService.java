@@ -11,5 +11,13 @@ public interface SalaryService {
 	 * @return
 	 */
 	public PageInfo getSalary(int pageNum,int pageSize,int pageCount);
-
+	/**
+	 * 查询薪酬编号信息
+	 */
+	public int findCode(); 
+	/**
+	 * 添加工资表信息
+	 */
+	public boolean insertSalary(SalaryBean sb);
+	
 }

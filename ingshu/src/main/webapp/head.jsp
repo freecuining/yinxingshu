@@ -20,7 +20,7 @@
 				银杏树信息技术服务(北京)有限公司</td>
 			<td style="font-weight: bold; color: #fff; padding-top: 20px"
 				align=middle>当前用户：${sessionScope.ub.userName } &nbsp;&nbsp; &nbsp;&nbsp;  <a
-				style="color: #fff" href="login.html" target=_top>退出系统</a>
+				style="color: #fff" href="head" target=_top>退出系统</a>
 			</td>
 			<td align=right width=268><a href="index.html"> <img
 					height=56 src="img/header_right.jpg" width=268></a></td>

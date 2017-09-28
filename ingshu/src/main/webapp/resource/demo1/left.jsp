@@ -15,7 +15,7 @@
 
 <link rel="StyleSheet" href="resource/demo1/dtree.css" type="text/css" />
 
-<script type="text/javascript" src="resource/demo1/dtree.js"></script>
+<script type="text/javascript" src="resource/demo1/dtree/dtree.js"></script>
 
 <script language=javascript>
 	function expand(el) {

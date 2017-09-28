@@ -46,7 +46,7 @@ $(function(){
 	<div class="div_head">
 		<span> <span style="float: left;">当前位置是：薪酬管理-》薪酬标准管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold;"> <a
-				style="text-decoration: none;" href="standard_add.html">【添加】</a>
+				style="text-decoration: none;" href="bb/codeId">【添加】</a>
 		</span>
 		</span>
 	</div>
@@ -102,12 +102,12 @@ $(function(){
 							<td>${fn:substring(s.registerTime,0,16) }</td>
 							<td>
 							<c:if test="${s.salarySate == 1 }">
-							<a href="UserServlet.do?salaryId=${s.salaryId }">修改</a>&nbsp;&nbsp;&nbsp;
-							<a href="UserServlet.do?salaryId=${s.salaryId }">删除</a>
+							<a href="UserServlet.do?salaryId=${s.salaryId }&pageNum=${page.pageNum}">修改</a>&nbsp;&nbsp;&nbsp;
+							<a href="UserServlet.do?salaryId=${s.salaryId }&pageNum=${page.pageNum}">删除</a>
 							</c:if>
 							<c:if test="${s.salarySate == 3 }">
-							<a href="UserServlet.do?salaryId=${s.salaryId }">修改</a>&nbsp;&nbsp;&nbsp;
-							<a href="UserServlet.do?salaryId=${s.salaryId }">删除</a>
+							<a href="UserServlet.do?salaryId=${s.salaryId }&pageNum=${page.pageNum}">修改</a>&nbsp;&nbsp;&nbsp;
+							<a href="UserServlet.do?salaryId=${s.salaryId }&pageNum=${page.pageNum}">删除</a>
 							</c:if>
 							
 							
