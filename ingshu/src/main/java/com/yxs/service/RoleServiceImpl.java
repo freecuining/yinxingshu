@@ -7,8 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.yxs.bean.MenuBean;
 import com.yxs.bean.RoleBean;
-import com.yxs.bean.UserBean;
+import com.yxs.bean.RoleMenuBean;
 import com.yxs.dao.RoleDao;
 
 @Service
@@ -33,11 +34,58 @@ public class RoleServiceImpl implements RoleService {
 	public PageInfo getRoleByParam(int pageNum, int pageSize, int pageCount, String roleName, String deptName) {
 		PageHelper.startPage(pageNum, pageSize);
 		List<RoleBean> roleList = roleDao.getRole(roleName,deptName);
-		for(int i=0;i<roleList.size();i++){
-			System.out.println(roleList.get(i).getRoleName());
-		}
 		PageInfo<Object> info = new PageInfo(roleList,pageCount);
 		return info;
 	}
 
+
+	/**
+	 * 根据职位id查询职位信息
+	 * @param roleId
+	 * @return
+	 */
+	public RoleBean getRoleByRoleId(int roleId) {
+		// TODO Auto-generated method stub
+		return roleDao.getRoleByRoleId(roleId);
+	}
+
+
+	/**
+	 * 查询该职位下的所有菜单信息
+	 * @param roleId
+	 * @return
+	 */
+	public List<MenuBean> getMenuByRoleId(int roleId) {
+		// TODO Auto-generated method stub
+		return roleDao.getMenuByRoleId(roleId);
+	}
+
+
+	/**
+	 * 查询所有职位
+	 * @return
+	 */
+	public List<RoleBean> selectRole() {
+		// TODO Auto-generated method stub
+		return roleDao.selectRole();
+	}
+
+
+	/**
+	 * 删除当前角色之前的权限
+	 * 批量插入,赋予权限
+	 * @param list
+	 * @param roleId
+	 * @return
+	 */
+	public boolean insertManyRoles(List<RoleMenuBean> list,Integer roleId) {
+		boolean allis = false;
+		boolean isok = roleDao.deleteRoleMenu(roleId);
+		boolean is = roleDao.insertManyRoles(list);
+		if(is&&isok){
+			allis = true;
+		}
+		return allis;
+	}
+	
 }

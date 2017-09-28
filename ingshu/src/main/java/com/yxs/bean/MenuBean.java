@@ -11,6 +11,7 @@ public class MenuBean implements Serializable {
 	private Integer menuState;//菜单状态：是否启用
 	private Integer menuDel;//菜单是否被删除
 	private String menuRemark;//菜单备注
+	private Integer menuSelect;
 	public Integer getMenuId() {
 		return menuId;
 	}
@@ -53,4 +54,17 @@ public class MenuBean implements Serializable {
 	public void setMenuRemark(String menuRemark) {
 		this.menuRemark = menuRemark;
 	}
+	public Integer getMenuSelect() {
+		return menuSelect;
+	}
+	public void setMenuSelect(Integer menuSelect) {
+		this.menuSelect = menuSelect;
+	}
+	@Override
+	public String toString() {
+		return "MenuBean [menuId=" + menuId + ", menuName=" + menuName + ", parentMenu=" + parentMenu + ", menuUrl="
+				+ menuUrl + ", menuState=" + menuState + ", menuDel=" + menuDel + ", menuRemark=" + menuRemark
+				+ ", menuSelect=" + menuSelect + "]";
+	}
+	
 }

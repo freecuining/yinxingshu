@@ -1,5 +1,6 @@
 package com.yxs.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.github.pagehelper.PageInfo;
+import com.yxs.bean.DeptBean;
+import com.yxs.bean.MenuBean;
 import com.yxs.bean.RoleBean;
+import com.yxs.bean.RoleMenuBean;
+import com.yxs.service.DeptService;
+import com.yxs.service.MenuService;
 import com.yxs.service.RoleService;
 import com.yxs.util.State;
 
@@ -18,9 +24,21 @@ public class RoleController {
 
 	@Autowired
 	private RoleService roleService;
+	@Autowired
+	private MenuService menuService;
+	@Autowired
+	private DeptService deptService;
 	
 	private PageInfo info;
 	
+	/**
+	 * 分页加模糊查询职位信息
+	 * @param pageNum
+	 * @param roleName
+	 * @param deptName
+	 * @param m
+	 * @return
+	 */
 	@RequestMapping("/getRoles")
 	public String getRoles(Integer pageNum, String roleName, String deptName,Model m){
 		if(pageNum != null){
@@ -35,5 +53,68 @@ public class RoleController {
 		return "/resource/demo3/list.jsp";
 	}
 	
+	@RequestMapping("/getRoleById")
+	public String getRoleById(Integer roleId,Model m){
+		//调用查询职位信息方法
+		RoleBean roleBean = roleService.getRoleByRoleId(roleId);
+		m.addAttribute("roleBean", roleBean);
+		return "/resource/demo3/view.jsp";
+	}
 	
+	
+	@RequestMapping("/pupdateRole")
+	public String pupdateRole(Integer roleId,Model m){
+		RoleBean roleBean = roleService.getRoleByRoleId(roleId);
+		List<MenuBean> menuRoleList = roleService.getMenuByRoleId(roleId);
+		List<MenuBean> menuAllList = menuService.getMenu();
+		for(int i=0;i<menuRoleList.size();i++){
+			MenuBean menuBean1 = menuRoleList.get(i);
+			for(int j=0;j<menuAllList.size();j++){
+				MenuBean menuBean2 = menuAllList.get(j);
+				if(menuBean1.getMenuId()==menuBean2.getMenuId()){
+					menuBean2.setMenuSelect(1);
+				}
+			}
+		}
+		m.addAttribute("menuAllList", menuAllList);
+		m.addAttribute("roleBean", roleBean);
+		return "/resource/demo3/edit.jsp";
+	}
+	
+	
+	@RequestMapping("/updateRole")
+	public String updateRole(Integer roleId,Integer[] menuId,Model m){
+		List<RoleMenuBean> list = new ArrayList<RoleMenuBean>();
+		for(int i=0;i<menuId.length;i++){
+			RoleMenuBean roleMenuBean = new RoleMenuBean();
+			roleMenuBean.setMenuId(menuId[i]);
+			roleMenuBean.setRoleId(roleId);
+			list.add(roleMenuBean);
+		}
+		boolean is = roleService.insertManyRoles(list,roleId);
+		if(is){
+			return "/cnRole/getRoles";
+		}else{
+			return "/cnRole/pupdateRole";
+		}
+		
+	}
+	
+	/**
+	 * 预添加方法
+	 * @param roleId
+	 * @param menuId
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/pinsertRole")
+	public String pInsertRole(Model m){
+		//查询所有部门
+		List<DeptBean> deptList = deptService.getDept();
+		//查书勋所有菜单资源
+		List<MenuBean> menuList = menuService.getMenu();
+		m.addAttribute("deptList",deptList);
+		m.addAttribute("menuList", menuList);
+		return "/resource/demo3/add.jsp";
+	}
 }
