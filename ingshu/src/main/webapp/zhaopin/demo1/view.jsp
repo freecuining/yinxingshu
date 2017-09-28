@@ -13,7 +13,7 @@
     <head>
         <title>薪酬标准管理</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="css/mine.css" type="text/css" rel="stylesheet">
+        <link href="../../css/mine.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -22,7 +22,7 @@
             <span>
                 <span style="float:left">当前位置是：招聘管理》职位发布管理-》查看职位信息</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="demo1">【返回】</a>
+                    <a style="text-decoration: none" href="list.html">【返回】</a>
                 </span>
             </span>
         </div>
@@ -49,27 +49,26 @@
                 <tr>
                     <td>招聘人数：</td>
                      <td>
-					<input type="text" value="${role.roleNum }">	
+					<input type="text" value="5">	
 					</td>
                 </tr>
                 <tr>
                     <td>职位名称：</td>
                      <td>
-						<input type="text" value="${role.roleName }">
+						<input type="text" value="技术培训师">
 					</td>
                 </tr>
                 <tr>
                     <td>职业编码：</td>
                      <td>
-						${role.roleCode }
+						BDQN-BM03
 					</td>
                 </tr>
                 <tr>
                     <td>职位分类：</td>
                      <td>
 						<select>
-							<option><c:if test="${role.roleKind==0 }">管理</c:if></option>
-							<option><c:if test="${role.roleKind==0 }">技术</c:if></option>
+							<option>技术</option>
 						</select>
 					</td>
                 </tr>
@@ -78,21 +77,21 @@
 				<tr>
                     <td>登记人：</td>
                      <td>
-					调用部门的员工信息
+						个个
 					</td>               
                 </tr>
 
 				<tr>
                     <td>登记时间：</td>
                      <td>
-						${role.startTime }
+						2014-11-21
 					</td>                
                 </tr>
 
 				<tr>
                     <td>截止日期：</td>
                     <td>
-                        ${role.eddTime }
+                        2014-12-21
                     </td>                
                 </tr>
 
@@ -100,7 +99,8 @@
                     <td>职位描述：</td>
                     <td>
                        <textarea cols="70" rows="12">
-					   ${role.roleRemark }
+					   1、负责指导java产品技术方向，研发java教育产品。
+					   2、为java产品提供专家级的技术支持。
 					   </textarea>
                     </td>                
                 </tr>
@@ -109,7 +109,17 @@
                     <td>招聘要求：</td>
                     <td>
                        <textarea cols="70" rows="12">
-					${role.roleRequired }
+					  技能要求：
+						1、至少5年以上大型B/S架构软件开发经验。
+						2、精通SSH，有2年以上的使用经验持。
+						3、至少具有一种主流数据库系统的缝隙使用经验，精通sql，熟悉基本的性能优化方法。
+						4、。。。
+						5.。。。
+						素质要求：
+						1、     热爱IT职业教育行业，具有良好的基本技术素质。
+						2、     有较强的学习能力，沟通，表达能力强，有良好工作习惯。
+						3、     。。。
+						4、     。。。
 					   </textarea>
                     </td>                
                 </tr>

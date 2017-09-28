@@ -7,7 +7,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>    
-<!DOCTYPE >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
   <base href="<%=basePath%>">
@@ -16,21 +16,6 @@
         <title>会员列表</title>
 
         <link href="css/mine.css" type="text/css" rel="stylesheet" />
-        <script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
-        <script type="text/javascript">
-			function checkTime() {
-				var st = document.getElementById("st");
-				var et = document.getElementById("et");
-				if (st.value != null && st.value != "" && et.value != null
-						&& et.value != "") {
-					if (st.value > et.value) {
-						st.value = "";
-						et.value = "";
-						alert("请输入正确的时间!");
-					}
-				}
-			}
-		</script>
     </head>
     <body>
         <style>
@@ -40,7 +25,7 @@
             <span>
                 <span style="float: left;">当前位置是：招聘管理-》职位发布管理</span>
                  <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    <a style="text-decoration: none;" href="rec/padd">【添加】</a>
+                    <a style="text-decoration: none;" href="rec/add">【添加】</a>
                 </span>
             </span>
         </div>
@@ -56,12 +41,12 @@
                         <option selected="selected" >-请选择-</option>
 						<option value="0">管理</option>
                         <option value="1">技术</option>
-						<option value="2">业务</option>
+						<option value="2">实施</option>
                     </select>
                    
 					 登记日期: 
-					<input type="text"  id="st" onclick="WdatePicker()" onchange="checkTime()"/>
-                    截止日期:<input type="text"  id="et" onclick="WdatePicker()" onchange="checkTime()"/>
+					<input type="text"  />
+                    截止日期:<input type="text"  />
 					
 					<input value="查询" type="submit" />
 					
@@ -84,10 +69,10 @@
 						<td width="40px;">截止日期</td>						
                         <td align="center" width="70px;">操作</td>
                     </tr>
-                    <c:forEach items="${list }" var="roleList">
+                    <c:forEach items="${roleList }" var="roleList">
                     <tr id="product1">
                         <td>${roleList.roleCode }</td>
-                        <td><a href="rec/view?roleId=${roleList.roleId }">${roleList.roleName }</a></td>
+                        <td><a href="rec/view">${roleList.roleName }</a></td>
                         <c:if test="${roleList.roleKind==0 }"><td>管理</td></c:if>
 						<c:if test="${roleList.roleKind==1 }"><td>技术</td></c:if>
 						<c:if test="${roleList.roleKind==2 }"><td>业务</td></c:if>
@@ -97,12 +82,10 @@
                          <c:if test="${roleList.deptId==3 }"><td>财务部</td></c:if>
                          <c:if test="${roleList.deptId==4 }"><td>技术部</td></c:if>
                          <c:if test="${roleList.deptId==5 }"><td>后勤部</td></c:if>
-                         <%-- <c:if test="${roleList.deptId==6 }"><td></td></c:if>
-                         <c:if test="${roleList.deptId==7 }"><td></td></c:if> --%>
 						<td>${roleList.roleNum }</td> 						
                         <td>${roleList.startTime }</td>
-						<td>${roleList.eddTime }</td>
-                        <td><a href="rec/viewtwo?roleId=${roleList.roleId }">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
+						<td>${roleList.endTime }</td>
+                        <td><a href="rec/viewtwo?roleId=${roleList.roleId }&pageNum=${requestScope.page.pageNum}">变更</a> &nbsp;&nbsp;<a href="dell?">删除</a> </td>                        
                     </tr> 
                     </c:forEach>
 					 <!-- <tr id="product1">
@@ -116,12 +99,32 @@
                         <td><a href="edit.html">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
                     </tr>  -->
 					
-                    <tr>
-                        <td colspan="8" style="text-align: center;">						
-						<a style="text-decoration: none;" href="#">
-                            首页 上一页  ... 7 8 9 10 11 12 ... 下一页 尾页 共1234条 每页显示 10/23 </a>
-                        </td>
-                    </tr>
+                   <tr>
+				<td colspan="20" style="text-align: center;">
+			<span> <a href="demo1?pageNum=1">首页</a> <c:if
+							test="${requestScope.page.getPageNum() == 1 }">
+				上一页
+			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
+							<a
+								href="demo1?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+						</c:if> <c:forEach items="${requestScope.page.getNavigatepageNums()}"
+							var="num">
+							<c:if test="${requestScope.page.getPageNum()==num }">${num }</c:if>
+							<c:if test="${requestScope.page.getPageNum()!=num }">
+								<a href="demo1?pageNum=${num }">${num }</a>
+							</c:if>
+						</c:forEach> <c:if
+							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+				下一页
+			</c:if> <c:if
+							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+							<a
+								href="demo1?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+						</c:if> <a href="demo1?pageNum=${requestScope.page.getPages() }">尾页</a>
+						<span>总共${requestScope.page.getPages()}页
+							总共${requestScope.page.getTotal() }条 </span>
+				</td>
+			</tr>
                 </tbody>
             </table>
         </div>

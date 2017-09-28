@@ -1,9 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
+     <base href="<%=basePath%>">
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
-        <title>薪酬标准管理</title>
+        <title>录用管理</title>
 
         <link href="../../css/mine.css" type="text/css" rel="stylesheet" />
     </head>
@@ -13,10 +23,7 @@
         </style>
         <div class="div_head">
             <span>
-                <span style="float: left;">当前位置是：招聘管理-》面试管理</span>
-                <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    
-                </span>
+                <span style="float: left;">当前位置是：录用管理</span>
             </span>
         </div>
         <div></div>
@@ -32,9 +39,8 @@
 					简历状态: 
 					<select>
 						<option>-请选择-</option>
-						<option>推荐面试</option>
-						<option>推荐二面</option>
-						<option>推荐三面</option>
+						<option>建议录用</option>
+						<option>录用</option>
 					</select>
 					登记日期: 
 					<input type="text" size="20px" />
@@ -54,7 +60,7 @@
 						<td width="100px;">应聘职位</td>
                         <td width="40px;">工作经验</td> 
 						<td width="70px;">登记日期</td>
-						<td width="70px;">简历状态</td>
+						<td width="40px;" >状态</td>
                         <td align="center" width="100px;">操作</td>
                     </tr>
 
@@ -67,9 +73,10 @@
                         <td>高级工程师</td>
 						<td>5年</td>
 						<td>2013-09-08</td>
-						<td>推荐面试</td>
+						<td width="40px;" >建议录用</td>
                         <td>
-							<a href="add.html">面试结果登记</a>						   
+							<a href="add.html">面试结果</a>						   
+						
 						</td>                        
                     </tr> 
 					 <tr id="product1">
@@ -81,9 +88,10 @@
                         <td>技术培训师</td>
 						<td>2年</td>
 						<td>2013-09-08</td>
-						<td>推荐二面</td>
+						<td width="40px;" >建议录用</td>
                         <td>
-							<a href="add.html">面试结果登记</a>								   
+							<a href="add.html">面试结果</a>								   
+							
 						</td>                        
                     </tr> 
 					
@@ -96,9 +104,26 @@
                         <td>人事专员</td>
 						<td>5年</td>
 						<td>2013-09-08</td>
-						<td>推荐三面</td>
+						<td width="40px;" >建议录用</td>
                         <td>
-							<a href="add.html">面试结果登记</a>							   
+							<a href="add.html">面试结果</a>							   
+								
+						</td>                        
+                    </tr> 
+					<tr id="product1">
+                        <td><a href="view.html">李梅</a></td>
+                        <td>女</td>
+						<td>北京财经大学</td>
+                        <td>本科</td> 
+						<td>会计</td> 						
+                        <td>财务主管</td>
+						<td>5年</td>
+						<td>2013-09-08</td>
+						<td width="40px;" >录用</td>
+                        <td>
+						<!--录用状态 没有  面试结果登记-->
+							<a href="ruzhi.html">入职办理</a>
+								
 						</td>                        
                     </tr> 
                     <tr>
