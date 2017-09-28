@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxs.dao.RoleDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<!-- 查询部门下的所有职位 -->
+	<select id="getRoleById" resultType="roleBean">
+		select
+		role_id,dept_id,role_code,role_name,role_kind,start_time,end_time,role_intro,role_remark,role_required,role_state
+		from role_tb where dept_id = #{deptId}
+	</select>
+</mapper>

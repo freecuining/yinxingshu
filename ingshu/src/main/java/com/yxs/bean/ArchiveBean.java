@@ -18,16 +18,12 @@ public class ArchiveBean implements Serializable {
 	private String hireDate;//雇用时间
 	private String transferPosition;//调岗时间
 	private Integer del;//操作状态
-	private Integer deptId;
-	private String deptName;
-
-	private Integer userId;
-	private String userName;
-	private Integer sex;
-	private Integer roleId;
-	private String roleCode;
-	private String roleName;
-	private String roleKind;
+	private String idCard;//身份证号
+	private DeptBean db;
+	private UserBean ub;
+	private RoleBean rb;
+	private SalaryBean sb;
+	private ResumeBean rsb;
 	
 	public Integer getArchiveId() {
 		return archiveId;
@@ -113,53 +109,41 @@ public class ArchiveBean implements Serializable {
 	public void setDel(Integer del) {
 		this.del = del;
 	}
-	public Integer getDeptId() {
-		return deptId;
+	public DeptBean getDb() {
+		return db;
 	}
-	public void setDeptId(Integer deptId) {
-		this.deptId = deptId;
+	public void setDb(DeptBean db) {
+		this.db = db;
 	}
-	public String getDeptName() {
-		return deptName;
+	public UserBean getUb() {
+		return ub;
 	}
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
+	public void setUb(UserBean ub) {
+		this.ub = ub;
 	}
-	public Integer getUserId() {
-		return userId;
+	public RoleBean getRb() {
+		return rb;
 	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setRb(RoleBean rb) {
+		this.rb = rb;
 	}
-	public String getUserName() {
-		return userName;
+	public SalaryBean getSb() {
+		return sb;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setSb(SalaryBean sb) {
+		this.sb = sb;
 	}
-	public Integer getSex() {
-		return sex;
+	public ResumeBean getRsb() {
+		return rsb;
 	}
-	public void setSex(Integer sex) {
-		this.sex = sex;
+	public void setRsb(ResumeBean rsb) {
+		this.rsb = rsb;
 	}
-	public Integer getRoleId() {
-		return roleId;
+	public String getIdCard() {
+		return idCard;
 	}
-	public void setRoleId(Integer roleId) {
-		this.roleId = roleId;
-	}
-	public String getRoleName() {
-		return roleName;
-	}
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
-	public String getRoleKind() {
-		return roleKind;
-	}
-	public void setRoleKind(String roleKind) {
-		this.roleKind = roleKind;
+	public void setIdCard(String idCard) {
+		this.idCard = idCard;
 	}
 	
 }

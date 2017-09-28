@@ -1,31 +1,32 @@
 package com.yxs.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ResumeBean {
+public class ResumeBean implements Serializable{
 	private int user_Id;//
-    private int resume_Id;// Ó¦Æ¸Ö°Î»±àÂë
-    private String name;//ÐÕÃû
-    private int resume_Sex;//ÐÔ±ð
+    private int resume_Id;// Ó¦Æ¸Ö°Î»ï¿½ï¿½ï¿½ï¿½
+    private String name;//ï¿½ï¿½ï¿½ï¿½
+    private int resume_Sex;//ï¿½Ô±ï¿½
     private String resume_Email;//Email
-    private String resume_Phone;//ÁªÏµµç»°
-    private String local_Address;//»§¿ÚËùÔÚµØ
+    private String resume_Phone;//ï¿½ï¿½Ïµï¿½ç»°
+    private String local_Address;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½
     private String Home_Assress;//×¡Ö·
-    private String political;//ÕþÖÎÃæÃ²
-    private String card_Id;//Éí·ÝÖ¤ºÅ
-    private String salary_Require;//Ð½×ÊÒªÇó
-    private String graduate_school;//±ÏÒµÔºÐ£
-    private int education;//Ñ§Àú
+    private String political;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²
+    private String card_Id;//ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½
+    private String salary_Require;//Ð½ï¿½ï¿½Òªï¿½ï¿½
+    private String graduate_school;//ï¿½ï¿½ÒµÔºÐ£
+    private int education;//Ñ§ï¿½ï¿½
     private String major;    //×¨Òµ
-    private int job_State;//ÊÇ·ñÔÚÖ°
-    private int fresh_Student;//ÊÇ·ñÊÇÓ¦½ìÉú
-    private int work_Year;//¹¤×÷¾­Ñé
-    private String person_Resume;//¸öÈËÂÄÀú
-    private String preson_File;//½¨Á¢¸½¼þ
-    private int recommend_State;//ÕÐÆ¸ÀàÐÍ
-    private Date recommend_time;//µÇ¼ÇÊ±¼ä
-    private String resommend_Idea;//ÃæÊÔÒâ¼û
-    private String interview_Result;//ÃæÊÔ½á¹û
+    private int job_State;//ï¿½Ç·ï¿½ï¿½ï¿½Ö°
+    private int fresh_Student;//ï¿½Ç·ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+    private int work_Year;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private String person_Resume;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private String preson_File;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private int recommend_State;//ï¿½ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½
+    private Date recommend_time;//ï¿½Ç¼ï¿½Ê±ï¿½ï¿½
+    private String resommend_Idea;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    private String interview_Result;//ï¿½ï¿½ï¿½Ô½ï¿½ï¿½
     private int attribute_109;//
     private String attribute_105;//
     private int attribute_92; //   

@@ -75,4 +75,13 @@ public class DeptServiceImpl implements DeptService {
 		return deptDao.deleteDeptById(deptId);
 	}
 
+	/**
+	 * 查询所有部门信息不包括含有子部门的部门
+	 * @return
+	 */
+	public List<DeptBean> getDeptNotChildDept() {
+		// TODO Auto-generated method stub
+		return deptDao.getDeptNotChildDept();
+	}
+
 }

@@ -35,9 +35,10 @@ public class UserServiceImpl implements UserService {
 	 * 查询所有用户信息
 	 * @return
 	 */
-	public PageInfo getAllUser(int pageNum,int pageSize,int pageCount) {
+	public PageInfo getAllUser(int pageNum, int pageSize, int pageCount, String userName, String roleName,
+			String deptName) {
 		PageHelper.startPage(pageNum, pageSize);
-		List<UserBean> userList = ud.getAllUser();
+		List<UserBean> userList = ud.getAllUser(userName, roleName, deptName);
 		PageInfo<Object> info = new PageInfo(userList,pageCount);
 		return info;
 	}

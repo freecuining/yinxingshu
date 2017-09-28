@@ -37,5 +37,5 @@ public interface UserDao {
 	 * 查询所有用户信息
 	 * @return
 	 */
-	public List<UserBean> getAllUser();
+	public List<UserBean> getAllUser(@Param("userName")String userName,@Param("roleName")String roleName,@Param("deptName")String deptName);
 }

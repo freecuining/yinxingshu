@@ -2,6 +2,8 @@ package com.yxs.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.github.pagehelper.PageInfo;
 import com.yxs.bean.UserBean;
 
@@ -19,5 +21,5 @@ public interface UserService {
 	 * 查询所有用户信息
 	 * @return
 	 */
-	public PageInfo getAllUser(int pageNum,int pageSize,int pageCount);
+	public PageInfo getAllUser(int pageNum,int pageSize,int pageCount,String userName,String roleName,String deptName);
 }
