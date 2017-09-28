@@ -8,5 +8,7 @@ import com.yxs.bean.LogBean;
 public interface logService {
 
 	
-	public List<ArrayList> getAllChanges(int year,int month);
+	public List<LogBean> getAllChanges();
+	
+	public List<LogBean> getYearChanges(String year);
 }

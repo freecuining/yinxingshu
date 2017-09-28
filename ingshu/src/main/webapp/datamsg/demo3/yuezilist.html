@@ -43,14 +43,15 @@
                         <td colspan="5" style="text-align:center" >职业教育研究院</td>
                     </tr>
 
-                    <tr id="product1" style="font-weight: bold; background-color:#06C">
-                    	<td style="text-align:left; border-top:none;" valign="bottom" colspan="2">时间</td>
-                        <td>产品设计中心</td>
-                         <td>产品研发中心</td>
-                        <td>质量管理部</td>
-                         <td>产品管理部</td>
-                        <td>总计</td>
-                    </tr> 
+                   <tr style="font-weight: bold;height:130px;background-color:#06C">
+						<td style="border-top:none; text-align:left;" valign="bottom">时间</td>
+					<c:forEach begin="0" end="5">
+						<c:forEach items="dlist" var="d">
+						<td>${d.deptShortName}</td>
+						</c:forEach>
+						<td>总计</td>	
+					</c:forEach>
+					</tr>
 					 <tr id="product1">
                         <td style="text-align:center" rowspan="12">2007年</td>
                         <td>一月</td>

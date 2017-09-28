@@ -75,4 +75,9 @@ public class DeptServiceImpl implements DeptService {
 		return deptDao.deleteDeptById(deptId);
 	}
 
+	public int findParentById(int deptId) {
+		// TODO Auto-generated method stub
+		return deptDao.findParentById(deptId);
+	}
+
 }

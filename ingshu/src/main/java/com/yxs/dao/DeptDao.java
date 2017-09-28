@@ -56,4 +56,11 @@ public interface DeptDao {
 	 * @return
 	 */
 	public boolean deleteDeptById(int deptId);
+	
+	/**
+	 * 查询部门的父部门
+	 * @return
+	 */
+	public int findParentById(int deptId);
+	 
 }
