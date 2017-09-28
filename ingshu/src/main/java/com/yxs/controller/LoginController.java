@@ -19,16 +19,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.yxs.bean.MenuBean;
 import com.yxs.bean.UserBean;
+import com.yxs.service.MenuService;
 import com.yxs.service.UserService;
 import com.yxs.util.State;
 
 @Controller
-@SessionAttributes({ "ub", "ipAddress" })
+@SessionAttributes({ "ub", "ipAddress","menuList"})
 public class LoginController {
 
 	@Autowired
 	private UserService us;
+	@Autowired
+	private MenuService menuService;
 	/**
 	 * 登录展现
 	 * @param loginName
@@ -92,6 +96,8 @@ public class LoginController {
 	            	l.add(ub);
 	            	// 成功以后当前登录人的登录次数+1
 					us.updateLoginNum(ub.getUserId());
+					List<MenuBean> menuList = menuService.getMenuByUserId(ub.getUserId());
+					m.addAttribute("menuList", menuList);
 					m.addAttribute("ub", ub);
 	            	sc.setAttribute("uon", l);
 	            	return "/index.jsp";
