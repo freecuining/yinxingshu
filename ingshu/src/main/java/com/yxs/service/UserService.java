@@ -8,10 +8,17 @@ import com.yxs.bean.UserBean;
 public interface UserService {
 
 	public UserBean login(String loginName,String password);
-	
+	/**
+	 * 张晓然 登录次数
+	 * @param userId
+	 */
 	public void updateLoginNum(int userId);
 	
-	
+	/**
+	 * 张晓然 修改个人信息
+	 * @param ub
+	 */
+	public boolean updateInfo(UserBean ub);
 	
 	
 	/**

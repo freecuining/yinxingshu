@@ -16,17 +16,29 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDao ud;
-
+	/**
+	 * 张晓然 登录
+	 */
 	public UserBean login(String loginName, String password) {
 		return ud.login(loginName, password);
 	}
 	
-	//登录次数
+	/**
+	 * 张晓然  
+	 * 登录次数
+	 */
 	public void updateLoginNum(int userId) {
 		ud.updateLoginNum(userId);
 	}
 	
 	
+	/**
+	 * 张晓然
+	 * 修改个人信息
+	 */
+	public boolean updateInfo(UserBean ub){
+		return ud.updateInfo(ub);
+	}
 	
 
 	
@@ -41,4 +53,11 @@ public class UserServiceImpl implements UserService {
 		PageInfo<Object> info = new PageInfo(userList,pageCount);
 		return info;
 	}
+
+
+	
+
+	
+
+	
 }

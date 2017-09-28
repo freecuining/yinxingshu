@@ -11,9 +11,17 @@ import com.yxs.bean.UserBean;
 public interface UserDao {
 
 	public UserBean login(@Param("loginName") String loginName, @Param("password") String password);
-
+	/**
+	 * 张晓然 登录次数
+	 * @param userId
+	 */
 	public void updateLoginNum(int userId);
-
+	/**
+	 * 张晓然 修改个人信息
+	 * @param ub
+	 */
+	public boolean updateInfo(UserBean ub);
+	
 	
 	
 	
