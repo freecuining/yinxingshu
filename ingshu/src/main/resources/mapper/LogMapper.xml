@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxs.dao.LogDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+
+
+	<!-- 查询年记录数目 -->
+	<select id="getAllChanges" resultType="LogBean">
+		SELECT
+		YEAR,LOG_STATE,DEPT_ID,COUNT(*) AS COUNT from LOG_VIEW GROUP BY
+		YEAR,LOG_STATE,DEPT_ID ORDER BY YEAR,LOG_STATE,DEPT_ID
+	</select>
+	<!-- 查询每月记录数目 -->
+	<select id="getYearChanges" resultType="LogBean">
+		SELECT MONTH,LOG_STATE,DEPT_ID,COUNT(*) AS COUNT
+		from (SELECT MONTH,LOG_STATE,DEPT_ID from LOG_VIEW
+		where year=#{year})
+		GROUP BY month,LOG_STATE,DEPT_ID ORDER BY MONTH,LOG_STATE,DEPT_ID
+	</select>
+</mapper>
