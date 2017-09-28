@@ -6,6 +6,7 @@ public class RoleBean implements Serializable {
 
 	private Integer roleId;//角色id
 	private Integer deptId;//部门id
+	private String deptName;//部门名称
 	private String roleCode;//角色编号
 	private String roleName;//角色姓名
 	private String roleKind;//角色分类
@@ -27,6 +28,12 @@ public class RoleBean implements Serializable {
 	}
 	public void setDeptId(Integer deptId) {
 		this.deptId = deptId;
+	}
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
 	}
 	public String getRoleCode() {
 		return roleCode;
