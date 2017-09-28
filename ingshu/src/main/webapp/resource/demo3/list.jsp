@@ -88,32 +88,32 @@
 						</td>                        
                     </tr> 
 					 </c:forEach>
-                    <tr>
-					<td colspan="20" style="text-align: center;"><a
-						href="cnRole/getRoles?pageNum=1">首页</a> <c:choose>
-							<c:when test="${page.pageNum == page.firstPage}">上一页</c:when>
-							<c:otherwise>
-								<a href="cnRole/getRoles?pageNum=${page.pageNum-1}">上一页</a>
-							</c:otherwise>
-						</c:choose> <c:if
-							test="${page.navigatepageNums[page.navigateFirstPage-1] != 1 }">...</c:if>
-						<c:forEach items="${page.navigatepageNums}" var="pNum">
-								${pNum }
-							</c:forEach> 
-							<c:if test="${page.lastPage >= 5 }">
-							   <c:if
-								       test="${page.navigatepageNums[page.navigateLastPage-1] != page.total }">...</c:if>
-						    </c:if> 
-						    <c:choose>
-							<c:when test="${page.pageNum == page.lastPage}">下一页</c:when>
-							<c:otherwise>
-								<a href="cnRole/getRoles?pageNum=${page.pageNum+1}">下一页</a>
-							</c:otherwise>
-						</c:choose> <c:if test="${page.pageNum == page.lastPage}">尾页</c:if> <c:if
-							test="${page.pageNum != page.total}">
-							<a href="cnRole/getRoles?pageNum=${page.lastPage}">尾页</a>
-						</c:if> 共${page.total}条记录，当前显示第${page.pageNum}页 ，总共${page.lastPage}页</td>
-				</tr>
+				 <tr>
+				<td colspan="20" style="text-align: center;">
+			<span> <a href="cnRole/getRoles?pageNum=1">首页</a> <c:if
+							test="${requestScope.page.getPageNum() == 1 }">
+				上一页
+			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
+							<a
+								href="cnRole/getRoles?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+						</c:if> <c:forEach items="${requestScope.page.getNavigatepageNums()}"
+							var="num">
+							<c:if test="${requestScope.page.getPageNum()==num }">${num }</c:if>
+							<c:if test="${requestScope.page.getPageNum()!=num }">
+								<a href="cnRole/getRoles?pageNum=${num }">${num }</a>
+							</c:if>
+						</c:forEach> <c:if
+							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+				下一页
+			</c:if> <c:if
+							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+							<a
+								href="cnRole/getRoles?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+						</c:if> <a href="cnRole/getRoles?pageNum=${requestScope.page.getPages() }">尾页</a>
+						<span>总共${requestScope.page.getPages()}页
+							总共${requestScope.page.getTotal() }条 </span>
+				</td>
+			</tr>
                 </tbody>
             </table>
         </div>

@@ -21,7 +21,7 @@
             <span>
                 <span style="float:left">当前位置是：职位发布管理-》职位发布登记</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="rec/demo1">【返回】</a>
+                    <a style="text-decoration: none" href="javascript:history.back()">【返回】</a>
                 </span>
             </span>
         </div>
@@ -108,16 +108,16 @@
                     <td>
                        <textarea cols="70" rows="12"> 
 					  技能要求：
-				1、至少5年以上大型B/S架构软件开发经验。
-				2、精通SSH，有2年以上的使用经验持。
-				3、至少具有一种主流数据库系统的缝隙使用经验，精通sql，熟悉基本的性能优化方法。
-				4、。。。
-				5.。。。
-				素质要求：
-				1、     热爱IT职业教育行业，具有良好的基本技术素质。
-				2、     有较强的学习能力，沟通，表达能力强，有良好工作习惯。
-				3、     。。。
-				4、     。。。
+						1、至少5年以上大型B/S架构软件开发经验。
+						2、精通SSH，有2年以上的使用经验持。
+						3、至少具有一种主流数据库系统的缝隙使用经验，精通sql，熟悉基本的性能优化方法。
+						4、。。。
+						5.。。。
+						素质要求：
+						1、     热爱IT职业教育行业，具有良好的基本技术素质。
+						2、     有较强的学习能力，沟通，表达能力强，有良好工作习惯。
+						3、     。。。
+						4、     。。。
 					   </textarea>
                     </td>                
                 </tr>

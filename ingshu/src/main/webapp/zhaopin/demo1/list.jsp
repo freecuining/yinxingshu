@@ -77,28 +77,19 @@
 						<c:if test="${roleList.roleKind==1 }"><td>技术</td></c:if>
 						<c:if test="${roleList.roleKind==2 }"><td>业务</td></c:if>
 					
-						<c:if test="${roleList.deptId==1 }"><td>管理部</td></c:if>
-                         <c:if test="${roleList.deptId==2 }"><td>人事部</td></c:if>
-                         <c:if test="${roleList.deptId==3 }"><td>财务部</td></c:if>
-                         <c:if test="${roleList.deptId==4 }"><td>技术部</td></c:if>
-                         <c:if test="${roleList.deptId==5 }"><td>后勤部</td></c:if>
+						<c:forEach items="${deptList }" var="deptList">
+						<c:if test="${roleList.deptId==deptList.deptId }"><td>${deptList.deptName }</td></c:if>
+                         <%-- <c:if test="${roleList.deptId==2 }"><td>${roleList.dept.deptName }</td></c:if>
+                         <c:if test="${roleList.deptId==3 }"><td>${roleList.dept.deptName }</td></c:if>
+                         <c:if test="${roleList.deptId==4 }"><td>${roleList.dept.deptName }</td></c:if>
+                         <c:if test="${roleList.deptId==5 }"><td>${roleList.dept.deptName }</td></c:if> --%>
+                         </c:forEach>
 						<td>${roleList.roleNum }</td> 						
                         <td>${roleList.startTime }</td>
 						<td>${roleList.endTime }</td>
                         <td><a href="rec/viewtwo?roleId=${roleList.roleId }&pageNum=${requestScope.page.pageNum}">变更</a> &nbsp;&nbsp;<a href="dell?">删除</a> </td>                        
                     </tr> 
                     </c:forEach>
-					 <!-- <tr id="product1">
-                        <td>BDQN-BM03</td>
-                        <td><a href="view.html">技术培训师</a></td>
-						<td>技术</td>
-                        <td>产品设计中心</td> 
-						<td>5</td> 						
-                        <td>2013-10-18</td>
-						<td>2013-10-23</td>
-                        <td><a href="edit.html">变更</a> &nbsp;&nbsp;<a href="#">删除</a> </td>                        
-                    </tr>  -->
-					
                    <tr>
 				<td colspan="20" style="text-align: center;">
 			<span> <a href="demo1?pageNum=1">首页</a> <c:if
@@ -106,12 +97,12 @@
 				上一页
 			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
 							<a
-								href="demo1?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+								href="rec/demo1?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
 						</c:if> <c:forEach items="${requestScope.page.getNavigatepageNums()}"
 							var="num">
 							<c:if test="${requestScope.page.getPageNum()==num }">${num }</c:if>
 							<c:if test="${requestScope.page.getPageNum()!=num }">
-								<a href="demo1?pageNum=${num }">${num }</a>
+								<a href="rec/demo1?pageNum=${num }">${num }</a>
 							</c:if>
 						</c:forEach> <c:if
 							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
@@ -119,8 +110,8 @@
 			</c:if> <c:if
 							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
 							<a
-								href="demo1?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
-						</c:if> <a href="demo1?pageNum=${requestScope.page.getPages() }">尾页</a>
+								href="rec/demo1?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+						</c:if> <a href="rec/demo1?pageNum=${requestScope.page.getPages() }">尾页</a>
 						<span>总共${requestScope.page.getPages()}页
 							总共${requestScope.page.getTotal() }条 </span>
 				</td>

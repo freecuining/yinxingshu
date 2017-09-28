@@ -30,7 +30,7 @@
         <div></div>
         <div class="div_search">
             <span>
-                <form action="#" method="post">
+                <form action="cn/viewMenu" method="post">
                     菜单名称: 
 					<input type="text" name="menuname" value=""/>
 					 状态: 
@@ -72,12 +72,32 @@
 						</td>                        
                     </tr>
                     </c:forEach>
-                    <tr>
-                        <td colspan="20" style="text-align: center;">						
-						<a style="text-decoration: none;" href="#">
-                            首页 上一页  ... 7 8 9 10 11 12 ... 下一页 尾页 共1234条 每页显示 10/23 </a>
-                        </td>
-                    </tr>
+                     <tr>
+				<td colspan="20" style="text-align: center;">
+			<span> <a href="cn/viewMenu?pageNum=1">首页</a> <c:if
+							test="${requestScope.page.getPageNum() == 1 }">
+				上一页
+			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
+							<a
+								href="cn/viewMenu?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+						</c:if> <c:forEach items="${requestScope.page.getNavigatepageNums()}"
+							var="num">
+							<c:if test="${requestScope.page.getPageNum()==num }">${num }</c:if>
+							<c:if test="${requestScope.page.getPageNum()!=num }">
+								<a href="cn/viewMenu?pageNum=${num }">${num }</a>
+							</c:if>
+						</c:forEach> <c:if
+							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+				下一页
+			</c:if> <c:if
+							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+							<a
+								href="cn/viewMenu?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+						</c:if> <a href="cn/viewMenu?pageNum=${requestScope.page.getPages() }">尾页</a>
+						<span>总共${requestScope.page.getPages()}页
+							总共${requestScope.page.getTotal() }条 </span>
+				</td>
+			</tr>
                 </tbody>
             </table>
         </div>

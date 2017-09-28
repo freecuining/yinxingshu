@@ -58,4 +58,24 @@ public interface RoleDao {
 	 * @return
 	 */
 	public boolean deleteRoleMenu(int roleId);
+	
+	/**
+	 * 添加职位信息
+	 * @param roleBean
+	 * @return
+	 */
+	public boolean insertRole(RoleBean roleBean);
+	
+	/**
+	 * 查询最大id值
+	 * @return
+	 */
+	public int getMaxRoleId();
+	
+	/**
+	 * 状态删除职位信息
+	 * @param roleId
+	 * @return
+	 */
+	public boolean deleteRole(int roleId);
 }

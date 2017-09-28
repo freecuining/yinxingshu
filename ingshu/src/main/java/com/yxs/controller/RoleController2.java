@@ -24,13 +24,13 @@ public class RoleController2 {
 	private DeptService ds;
 	@RequestMapping("/demo1")
 	public String getRoles(Integer pageNum,Model map) {
-		
 		if(pageNum==null){
 			pageNum=1;
 		}
 		PageInfo page=rs.getRoles(pageNum,State.PAGESIZE,State.PAGECOUNT);
 		List<RoleBean> roleList = page.getList();
-		
+		List<DeptBean> deptList = ds.getDept();
+		map.addAttribute("deptList", deptList);
 		map.addAttribute("roleList", roleList);
         map.addAttribute("page",page); 
 		return "/zhaopin/demo1/list.jsp";

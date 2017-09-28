@@ -30,9 +30,9 @@
                 <td>
                     <table height=100 cellspacing=0 cellpadding=0 width="100%" border=0>
 
-                        <tr>
+                        <!-- <tr>
                          <td><a href="add.html">添加部门</a></td>
-						</tr>
+						</tr> -->
 						
                         <tr>
                             <td style="font-weight: bold; font-size: 16px">admin</td>

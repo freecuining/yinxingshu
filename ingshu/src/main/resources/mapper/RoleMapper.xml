@@ -65,6 +65,27 @@
 	</delete>
 	
 	<!-- 添加职位 -->
+	<insert id="insertRole">
+		insert into
+		 role_tb(role_id,
+               dept_id,
+               role_code,
+               role_name,
+               role_kind,
+               role_intro,
+               role_remark,
+               role_state,
+               role_del) 
+       values(role_seq.nextval,#{deptId},#{roleCode},#{roleName},#{roleKind},#{roleIntro},#{roleRemark},#{roleState},#{roleDel})
+	</insert>
 	
+	<!-- 查询最大id值 -->
+	<select id="getMaxRoleId" resultType="int">
+		select max(role_id) from role_tb
+	</select>
 	
+	<!-- 状态删除职位信息 -->
+	<update id="deleteRole">
+		update role_tb set role_del = 1 where role_id = #{roleId}
+	</update>
 </mapper>

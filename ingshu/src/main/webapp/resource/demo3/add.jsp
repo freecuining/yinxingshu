@@ -10,7 +10,6 @@
 <html>
 <base href="<%=basePath%>">
 <head>
-
 <title>职位管理</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
         <link href="css/mine.css" type="text/css" rel="stylesheet">
@@ -27,12 +26,12 @@
         <div></div>
 
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="cnRole/insertRole" method="post" enctype="multipart/form-data">
 			<table border="1" width="100%" class="table_a">
 				<tr>
 					<td width="120px;">职位编码<span style="color: red">*</span>：
 					</td>
-					<td><input type="text" name="roleCode" value="" readonly="readonly" /></td>
+					<td><input type="text" name="roleCode" value="123" readonly="readonly" /></td>
 				</tr>
 				<tr>
 					<td>职位名称<span style="color: red">*</span>：
@@ -95,8 +94,8 @@
 				<tr>
 					<td>是否启用：</td>
 					<td><select name="roleState">
-							<option value="0" >是</option>
-							<option value="1" >否</option>
+							<option value="1" >是</option>
+							<option value="0" >否</option>
 					</select></td>
 				</tr>
 				<tr>

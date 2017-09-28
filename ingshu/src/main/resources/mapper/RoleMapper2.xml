@@ -41,7 +41,7 @@
 FROM
 	role_tb
 WHERE
-	role_del = 0
+	role_del = 0 and dept_id is not null
 	</sql>
 
 	<select id="getRoles" resultMap="myrole">

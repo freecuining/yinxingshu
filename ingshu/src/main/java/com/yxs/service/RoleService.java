@@ -51,6 +51,25 @@ public interface RoleService {
 	 */
 	public boolean insertManyRoles(List<RoleMenuBean> list,Integer roleId);
 	
+	/**
+	 * 添加职位信息
+	 * @param roleBean
+	 * @return
+	 */
+	public boolean insertRole(RoleBean roleBean,Integer[] menuId);
 	
+	
+	/**
+	 * 查询最大id值
+	 * @return
+	 */
+	public int getMaxRoleId();
+	
+	/**
+	 * 状态删除职位信息
+	 * @param roleId
+	 * @return
+	 */
+	public boolean deleteRole(int roleId);
 	
 }

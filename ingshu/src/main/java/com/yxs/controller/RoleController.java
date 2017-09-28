@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.pagehelper.PageInfo;
 import com.yxs.bean.DeptBean;
@@ -117,4 +118,39 @@ public class RoleController {
 		m.addAttribute("menuList", menuList);
 		return "/resource/demo3/add.jsp";
 	}
+	
+	/**
+	 * 添加一个职位
+	 * @param roleBean
+	 * @param menuId
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/insertRole")//@RequestParam("menuId")
+	public String insertRole(RoleBean roleBean,Integer[] menuId,Model m){
+		roleBean.setRoleDel(0);
+		boolean is = roleService.insertRole(roleBean,menuId);
+		if(is){
+			return "/cnRole/getRoles";
+		}else{
+			return "/cnRole/pinsertRole";
+		}
+	}
+	
+	/**
+	 * 删除职位信息
+	 * @param roleBean
+	 * @param menuId
+	 * @param m
+	 * @return
+	 */
+	@RequestMapping("/deleteRole")//@RequestParam("menuId")
+	public String deleteRole(Integer roleId,Model m){
+		boolean is = roleService.deleteRole(roleId);
+		if(is){
+			return "/cnRole/getRoles";
+		}else{
+			return "/cnRole/getRoles";
+		}
+	} 
 }

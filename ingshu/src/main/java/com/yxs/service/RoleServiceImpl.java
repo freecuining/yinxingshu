@@ -1,5 +1,6 @@
 package com.yxs.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,57 @@ public class RoleServiceImpl implements RoleService {
 			allis = true;
 		}
 		return allis;
+	}
+
+
+	/**
+	 * 添加职位信息
+	 * 同时赋予权限
+	 * @param roleBean
+	 * @return
+	 */
+	public boolean insertRole(RoleBean roleBean,Integer[] menuId) {
+		boolean isok = false;
+		boolean is2 = false;
+		//先插入角色表信息
+		boolean is = roleDao.insertRole(roleBean);
+		List<RoleMenuBean> list = new ArrayList<RoleMenuBean>();
+		int id = 0;
+		if(is){
+			 id = roleDao.getMaxRoleId();
+			 for(int i=0;i<menuId.length;i++){
+				 RoleMenuBean roleMenuBean = new RoleMenuBean();
+				 roleMenuBean.setRoleId(id);
+				 roleMenuBean.setMenuId(menuId[i]);
+				 list.add(roleMenuBean);
+			 }
+			 is2 = roleDao.insertManyRoles(list);
+			 if(is2){
+				 isok = true;
+			 }else{
+				 isok = false;
+			 }
+		}else{
+			isok = false;
+		}
+		return isok;
+	}
+
+
+	/**
+	 * 查询最大id值
+	 * @return
+	 */
+	public int getMaxRoleId() {
+		// TODO Auto-generated method stub
+		return roleDao.getMaxRoleId();
+	}
+
+
+	@Override
+	public boolean deleteRole(int roleId) {
+		// TODO Auto-generated method stub
+		return roleDao.deleteRole(roleId);
 	}
 	
 }
