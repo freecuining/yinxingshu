@@ -1,7 +1,7 @@
 /*--------------------------------------------------|
 | dTree 2.05 | www.destroydrop.com/javascript/tree/ |
 |---------------------------------------------------|
-| Copyright (c) 2002-2003 Geir Landrö               |
+| Copyright (c) 2002-2003 Geir Landrï¿½               |
 |                                                   |
 | This script can be used freely as long as all     |
 | copyright messages are intact.                    |
@@ -41,20 +41,20 @@ function dTree(objName) {
 		inOrder					: false
 	}
 	this.icon = {
-		root				: 'img/base.gif',
-		folder			: 'img/folder.gif',
-		folderOpen	: 'img/folderopen.gif',
-		node				: 'img/page.gif',
-		empty				: 'img/empty.gif',
-		line				: 'img/line.gif',
-		join				: 'img/join.gif',
-		joinBottom	: 'img/joinbottom.gif',
-		plus				: 'img/plus.gif',
-		plusBottom	: 'img/plusbottom.gif',
-		minus				: 'img/minus.gif',
-		minusBottom	: 'img/minusbottom.gif',
-		nlPlus			: 'img/nolines_plus.gif',
-		nlMinus			: 'img/nolines_minus.gif'
+		root				: 'resource/demo1/img/base.gif',
+		folder			: 'resource/demo1/img/folder.gif',
+		folderOpen	: 'resource/demo1/img/folderopen.gif',
+		node				: 'resource/demo1/img/page.gif',
+		empty				: 'resource/demo1/img/empty.gif',
+		line				: 'resource/demo1/img/line.gif',
+		join				: 'resource/demo1/img/join.gif',
+		joinBottom	: 'resource/demo1/img/joinbottom.gif',
+		plus				: 'resource/demo1/img/plus.gif',
+		plusBottom	: 'resource/demo1/img/plusbottom.gif',
+		minus				: 'resource/demo1/img/minus.gif',
+		minusBottom	: 'resource/demo1/img/minusbottom.gif',
+		nlPlus			: 'resource/demo1/img/nolines_plus.gif',
+		nlMinus			: 'resource/demo1/img/nolines_minus.gif'
 	};
 	this.obj = objName;
 	this.aNodes = [];

@@ -34,7 +34,7 @@
 					<tr>
 						<td height=10></td>
 					</tr>
-				</table> <c:forEach items="${sessionScope.ml }" var="m" varStatus="st">
+				</table> <c:forEach items="${sessionScope.menuList }" var="m" varStatus="st">
 					<c:if test="${m.parentMenu == 0 }">
 						<table cellspacing=0 cellpadding=0 width=150 border=0>
 							<tr height=22>
@@ -51,7 +51,7 @@
 
 					<table id="child${m.menuId}" style="display: none" cellspacing=0 cellpadding=0
 						width=150 border=0>
-						<c:forEach items="${sessionScope.ml }" var="mm">
+						<c:forEach items="${sessionScope.menuList }" var="mm">
 							<c:if test="${mm.parentMenu == m.menuId }">
 								<tr height=20>
 									<td align=middle width=30><img height=9
@@ -68,7 +68,7 @@
 
 
 
-				</c:forEach>  <table cellspacing=0 cellpadding=0 width=150 border=0>
+				</c:forEach> <!--  <table cellspacing=0 cellpadding=0 width=150 border=0>
 					<tr height=22>
 						<td style="padding-left: 30px" background=./img/menu_bt.jpg>
 							<a class=menuparent onclick=expand(1) href="javascript:void(0);">个人信息</a>
@@ -351,6 +351,6 @@
 			</td>
 			<td width=1 bgcolor=#d1e6f7></td>
 		</tr>
-	</table>
+	</table> -->
 </body>
 </html>

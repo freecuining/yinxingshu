@@ -2,6 +2,7 @@ package com.yxs.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.yxs.bean.DeptBean;
@@ -56,4 +57,10 @@ public interface DeptDao {
 	 * @return
 	 */
 	public boolean deleteDeptById(int deptId);
+	
+	/**
+	 * 查询所有部门信息不包括含有子部门的部门
+	 * @return
+	 */
+	public List<DeptBean> getDeptNotChildDept();
 }

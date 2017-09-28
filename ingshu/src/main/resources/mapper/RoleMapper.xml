@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxs.dao.RoleDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<!-- 查询部门下的所有职位 -->
+	<select id="getRoleById" resultType="roleBean">
+		select
+		role_id,dept_id,role_code,role_name,role_kind,start_time,end_time,role_intro,role_remark,role_required,role_state
+		from role_tb where dept_id = #{deptId}
+	</select>
+	
+	
+	<select id="getRole" resultType="roleBean">
+	select
+    r.role_id,d.dept_id,d.dept_name,r.role_code,r.role_name,r.role_kind,r.start_time,r.end_time,r.role_intro,r.role_remark,r.role_required,r.role_state
+    from role_tb r,dept_tb d where r.dept_id = d.dept_id and r.role_del = 0
+         <if test="roleName!=null and roleName!=&quot;&quot;">
+         	and r.role_name like concat(concat('%',#{roleName}),'%')
+         </if>
+         <if test="deptName!=null and deptName!=&quot;&quot;">
+        	 and d.dept_name like concat(concat('%',#{deptName}),'%')
+         </if>
+         
+	</select>
+</mapper>

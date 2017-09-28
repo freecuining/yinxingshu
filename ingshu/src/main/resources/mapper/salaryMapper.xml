@@ -31,4 +31,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		salary_id,salary_code,salary_name,salary_maker,salary_register,register_time,base_pay,add_pay,traffic_pay,phone_pay,food_pay,house_pay,away_pay,overtime_pay,salary_remark,salary_state,salary_del,salary_total
 		from salary_tb
 	</select>
+	<!-- 添加 -->
+	<insert id="insertSalary">
+		<!-- 自动获得最后一个主键的值 -->
+		<selectKey keyProperty="salaryId" order="BEFORE" resultType="int">
+			select salary_seq.nextval from dual
+		</selectKey>
+	
+		insert into salary_tb
+		(SALARY_ID,SALARY_CODE,SALARY_NAME,SALARY_MAKER,SALARY_REGISTER,REGISTER_TIME,BASE_PAY,ADD_PAY,TRAFFIC_PAY,PHONE_PAY,FOOD_PAY,HOUSE_PAY,AWAY_PAY,OVERTIME_PAY,SALARY_REMARK,SALARY_STATE,SALARY_DEL,SALARY_TOTAL)
+		values(#{salaryId},#{code},#{name},#{maker},#{register},
+		to_date(#{registerTime},'yyyy-mm-dd hh24:mi'),#{basePay},#{addPay},#{trafficPay},#{phonePay},#{footPay},
+		#{housePay},#{awayPay},#{overTimePay},#{salaryRemark},#{salarySate},
+		#{salaryDel},#{salaryTotal})
+	</insert>
+	<!--  查询薪酬编号-->
+	<select id="findCode" resultType="int" >
+		<!-- select salary_code.nextval from dual -->
+		select "NVL"(max(salary_code), 10001)  from SALARY_TB
+	</select>
 </mapper>

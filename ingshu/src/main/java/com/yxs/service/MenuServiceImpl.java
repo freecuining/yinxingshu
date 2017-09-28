@@ -21,5 +21,15 @@ public class MenuServiceImpl implements MenuService {
 		// TODO Auto-generated method stub
 		return menuDao.getMenu();
 	}
+	
+	/**
+	 * 根据用户id查询当前用户下的所有菜单
+	 * @param userId
+	 * @return
+	 */
+	public List<MenuBean> getMenuByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return menuDao.getMenuByUserId(userId);
+	}
 
 }

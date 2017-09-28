@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxs.dao.ArchiveDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<resultMap type="com.yxs.bean.ArchiveBean" id="myArchive">
+		<id column="archive_id" property="archiveId" />
+		<result column="archive_code" property="archiveCode" />
+		<result column="archivetime" property="archiveTime" />
+		<result column="audit_state" property="auditState" />
+		<result column="archive_state" property="archiveState" />
+		<result column="bank" property="bank" />
+		<result column="bank_card" property="bankCard" />
+		<result column="social_card" property="socialCard" />
+		<result column="family_infor" property="familyInfor" />
+		<result column="positive_time" property="positiveTime" />
+		<result column="leave_time" property="leaveTime" />
+		<result column="hiredate" property="hireDate" />
+		<result column="transfer_position" property="transferPosition" />
+		<result column="del" property="del" />
+
+		<result column="user_id" property="ub.userId" />
+		<result column="user_name" property="ub.userName" />
+		<result column="sex" property="ub.sex" />
+	
+	    <result column="dept_id" property="db.deptId" />
+		<result column="dept_name" property="db.deptName" />
+
+		<result column="role_id" property="rb.roleId" />
+		<result column="role_name" property="rb.roleName" />
+		<result column="role_kind " property="rb.roleKind" />
+		<result column="role_code" property="rb.roleCode" />
+
+        <result column="resume_id" property="rsb.resume_Id"/>
+        <result column="resume_email" property="rsb.resume_Email"/>
+        <result column="resume_phone" property="rsb.resume_Phone"/>
+        <result column="home_address" property="rsb.Home_Assress"/>
+        <result column="card_id" property="rsb.card_Id"/>
+		<result column="local_address" property="rsb.local_Address" />
+		<result column="political" property="rsb.political" />
+		<result column="education" property="rsb.education" />
+		<result column="major" property="rsb.major" />
+		<result column="graduate_school" property="rsb.graduate_school" />
+		<result column="person_resume" property="rsb.person_Resume" />
+		<result column="preson_file" property="rsb.preson_File" />
+
+		<result column="salary_id" property="sb.salaryId" />
+		<result column="salary_name" property="sb.name" />
+	</resultMap>
+	<sql id="mySelect">
+	 select
+		a.archive_id,
+		a.archive_code,
+		a.bank,
+		a.bank_card,
+		a.social_card,
+		a.positive_time,
+		a.archive_state,
+		a.family_infor,
+		d.dept_id,
+		d.dept_name,
+		u.user_id,
+		u.user_name,
+		u.sex,
+		r.role_id,
+		r.role_name,
+		r.role_code,
+	    rs.resume_id,
+	    rs.resume_email,
+	    rs.resume_phone,
+	    rs.home_address,
+	    rs.card_id,
+		rs.local_address,
+		rs.political,
+		rs.graduate_school,
+		rs.major,
+		rs.education,
+		rs.person_resume,
+		rs.person_file,
+		s.salary_id,
+		s.salary_name
+		from archive_tb a,dept_tb d,role_tb r,user_tb u,resume_tb rs,salary_tb s
+	</sql>
+	<select id="getAllArchive" resultMap="myArchive">
+		select a.archive_id,
+		a.archive_code,
+		a.archivetime,
+		a.audit_state,
+		a.archive_state,
+		a.bank,
+		a.bank_card,
+		a.social_card,
+		a.family_infor,
+		a.positive_time,
+		a.leave_time,
+		a.hiredate,
+		a.transfer_position,
+		a.del,
+		u.user_id,
+		u.user_name,
+		u.sex,
+		d.dept_id,
+		d.dept_name,
+		r.role_id,
+		r.role_name,
+		r.role_kind
+		from archive_tb a, user_tb u, role_tb r, dept_tb d
+		where a.user_id = u.user_id
+		and u.user_id = d.dept_id
+		and a.role_id = r.role_id
+		and a.del = 0
+	</select>
+
+	<select id="getKanArchive" resultMap="myArchive">
+		<include refid="mySelect"/>
+		 where
+		a.user_id=u.user_id and
+	    a.role_id=r.role_id and a.resume_id=rs.resume_id and
+		u.user_id=d.dept_id and a.salary_id=s.salary_id and 
+		a.archive_id=#{archiveId}
+
+	</select>
+	
+	<select id="getPupdate" resultMap="myArchive">
+	   where
+		a.user_id=u.user_id and
+	    a.role_id=r.role_id and a.resume_id=rs.resume_id and
+		u.user_id=d.dept_id and a.salary_id=s.salary_id and 
+		a.archive_id=#{archiveId}
+	</select>
+	
+	
+	
+	<!-- 查询档案中没有账号的用户，，崔宁 -->
+	<resultMap type="com.yxs.bean.ArchiveBean" id="cnArchive">
+		<id column="archive_id" property="archiveId"/>
+		<result column="name" property="rsb.name"/>
+	    <result column="dept_id" property="db.deptId" />
+		<result column="dept_name" property="db.deptName" />
+		<result column="role_id" property="rb.roleId" />
+		<result column="role_name" property="rb.roleName" />
+		<result column="id_card" property="idCard" />
+        <result column="resume_email" property="rsb.resume_Email"/>
+        <result column="resume_phone" property="rsb.resume_Phone"/>
+        <result column="home_address" property="rsb.Home_Assress"/>
+	</resultMap>
+	<select id="getArchiveNotUser" resultMap="cnArchive">
+		select 
+		a.archive_id,
+		r.name,
+       d.dept_id,
+       d.dept_name,
+       ro.role_id,
+       ro.role_name,
+       a.id_card,
+       r.resume_phone,
+       r.resume_email,
+       r.home_address
+  from archive_tb a, resume_tb r,
+  dept_tb d,role_tb ro
+ where a.resume_id = r.resume_id
+ and a.dept_id = d.dept_id
+ and a.role_id = ro.role_id
+   and a.user_id = 0
+	</select>
+	<!-- 查询档案中没有账号的用户，，崔宁 -->
+</mapper>

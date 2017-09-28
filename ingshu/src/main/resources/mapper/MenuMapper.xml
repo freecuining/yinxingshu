@@ -9,4 +9,19 @@
 		from menu_tb
 		where menu_del = 0
 	</select>
+	
+	<!-- 根据用户id查询当前用户下的所有菜单信息 -->
+	<select id="getMenuByUserId" resultType="menuBean">
+		       select m.menu_id,
+           m.menu_name,
+           m.menu_url,
+           m.parent_menu,
+           m.menu_state,
+           m.menu_del,
+           m.menu_remark
+      from menu_tb m, role_tb r, role_menu rm
+     where m.menu_id = rm.menu_id
+       and r.role_id = rm.role_id
+       and r.role_id = (select role_id from user_role where user_id = #{userId})
+	</select>
 </mapper>

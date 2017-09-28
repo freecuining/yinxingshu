@@ -21,4 +21,11 @@ public interface MenuDao {
 	 * @return
 	 */
 	public MenuBean getMenuById(int menuId);
+	
+	/**
+	 * 根据用户id查询当前用户下的所有菜单
+	 * @param userId
+	 * @return
+	 */
+	public List<MenuBean> getMenuByUserId(int userId);
 }

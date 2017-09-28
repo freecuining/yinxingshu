@@ -29,6 +29,7 @@
 			<artifactId>spring-jdbc</artifactId>
 			<version>4.3.10.RELEASE</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
@@ -132,4 +133,14 @@
 			</plugin>
 		</plugins>
 	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>4.3.10.RELEASE</version>
+				<type>pom.lastUpdated</type>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
