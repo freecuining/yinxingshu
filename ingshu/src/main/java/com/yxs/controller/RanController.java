@@ -20,6 +20,7 @@ import com.yxs.service.UserService;
  *
  */
 @Controller
+@RequestMapping("/ran")
 public class RanController {
 	@Autowired
 	private UserService us;
@@ -27,16 +28,18 @@ public class RanController {
 	public String head(HttpServletRequest request,Model m){
 		HttpSession session = request.getSession();
 		UserBean ub = (UserBean)session.getAttribute("ub");
-		ServletContext sc = request.getSession().getServletContext();
-		List<UserBean> l = (List)sc.getAttribute("uon");
-		for(int i=0;i<l.size();i++){
-			UserBean u = l.get(i);
-			if(u != null && ub!=null && u.getUserId() == ub.getUserId()){
-				l.remove(i);
-				break;
+		if(ub != null){
+			ServletContext sc = request.getSession().getServletContext();
+			List<UserBean> l = (List)sc.getAttribute("uon");
+			for(int i=0;i<l.size();i++){
+				UserBean u = l.get(i);
+				if(u != null && ub!=null && u.getUserId() == ub.getUserId()){
+					l.remove(i);
+					break;
+				}
 			}
+			sc.setAttribute("uon", l);
 		}
-		sc.setAttribute("uon", l);
 		session.invalidate();
 		return "redirect:/login.jsp";
 	}

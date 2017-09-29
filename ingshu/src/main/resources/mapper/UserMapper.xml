@@ -15,7 +15,7 @@
 		<result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
 		<result column="user_email" jdbcType="VARCHAR" property="userEmail" />
 		<result column="address" jdbcType="VARCHAR" property="address" />
-		<result column="img" jdbcType="VARCHAR" property="img" />
+		<result column="user_img" jdbcType="VARCHAR" property="img" />
 		<result column="user_remark" jdbcType="VARCHAR" property="userRemark" />
 		<result column="login_count" jdbcType="INTEGER" property="loginCount" />
 		<result column="user_del" jdbcType="INTEGER" property="del" />
@@ -39,6 +39,9 @@
 		where user_id=#{userId}
 	</update>
 
+	<update id="updatePs">
+	update user_tb set password=#{password} where user_id=#{userId}
+	</update>
 
 	<resultMap id="myUser" type="com.yxs.bean.UserBean">
 		<id column="user_id" property="userId" />
@@ -71,24 +74,35 @@
 		u.phone phone,
 		u.user_del user_del,
 		d.dept_id dept_id,
-		d.dept_name dept_name,
+		d.dept_name
+		dept_name,
 		r.role_id role_id,
 		r.role_name role_name
-		from user_tb u, dept_tb d, role_tb r,user_role ur
+		from user_tb u,
+		dept_tb d, role_tb r,user_role ur
 		where u.dept_id = d.dept_id
-		and d.dept_id = r.dept_id
+		and
+		d.dept_id = r.dept_id
 		and u.user_id = ur.user_id
-		and r.role_id = ur.role_id
+		and r.role_id =
+		ur.role_id
 		and u.user_del = 0
-         <if test="userName!=null and userName!=&quot;&quot;">
-         	and u.user_name like concat(concat('%',#{userName}),'%')
-         </if>
-         <if test="roleName!=null and roleName!=&quot;&quot;">
-         	and r.role_name like concat(concat('%',#{roleName}),'%')
-         </if>
-         <if test="deptName!=null and deptName!=&quot;&quot;">
-        	 and d.dept_name like concat(concat('%',#{deptName}),'%')
-         </if>
+		<if test="userName!=null and userName!=&quot;&quot;">
+			and u.user_name like concat(concat('%',#{userName}),'%')
+		</if>
+		<if test="roleName!=null and roleName!=&quot;&quot;">
+			and r.role_name like concat(concat('%',#{roleName}),'%')
+		</if>
+		<if test="deptName!=null and deptName!=&quot;&quot;">
+			and d.dept_name like concat(concat('%',#{deptName}),'%')
+		</if>
+	</select>
+
+	<select id="getUserById" resultMap="loginran">
+		select
+		user_id,dept_id,user_code,loginname,password,user_name,sex,id_card,phone,mobile_phone,user_email,address,user_img,user_remark,login_count,user_del,add_time
+		from user_tb
+		where user_id = #{userId}
 	</select>
 	
 </mapper>

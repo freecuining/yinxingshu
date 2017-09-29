@@ -43,8 +43,13 @@ public class UserServiceImpl implements UserService {
 	public boolean updateInfo(UserBean ub){
 		return ud.updateInfo(ub);
 	}
-	
-
+	/**
+	 * 张晓然
+	 * 密码修改
+	 */
+	public boolean updaPs(UserBean ub) {
+		return ud.updatePs(ub);
+	}
 	
 	/**
 	 * 崔宁
@@ -58,6 +63,13 @@ public class UserServiceImpl implements UserService {
 		PageInfo<Object> info = new PageInfo(userList,pageCount);
 		return info;
 	}
+
+	public UserBean getUserById(int userId) {
+		// TODO Auto-generated method stub
+		return ud.getUserById(userId);
+	}
+
+	
 
 
 	

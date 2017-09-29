@@ -30,7 +30,12 @@ public interface UserDao {
 	 */
 	public boolean updateInfo(UserBean ub);
 	
-
+	/**张晓然
+	 * 密码修改
+	 * @param password
+	 * @return
+	 */
+	public boolean updatePs(UserBean ub);
 
 	/**
 	 * 
