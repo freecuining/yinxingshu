@@ -27,4 +27,5 @@ public interface State {
 	public static final int CHANGEPOSITION = 3;//调岗
 	public static final int OUTEMP = 4;//离职
 	
+
 }
