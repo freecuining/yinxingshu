@@ -9,7 +9,7 @@
 		from role_tb where dept_id = #{deptId}
 	</select>
 	
-	
+	<!-- 模糊查询职位信息 -->
 	<select id="getRole" resultType="roleBean">
 	select
     r.role_id,d.dept_id,d.dept_name,r.role_code,r.role_name,r.role_kind,r.start_time,r.end_time,r.role_intro,r.role_remark,r.role_required,r.role_state
@@ -22,4 +22,70 @@
          </if>
          
 	</select>
+	
+	<select id="getRoleByRoleId" resultType="roleBean">
+		select
+    r.role_id,d.dept_id,d.dept_name,r.role_code,r.role_name,r.role_kind,r.start_time,r.end_time,r.role_intro,r.role_remark,r.role_required,r.role_state
+    from role_tb r,dept_tb d where r.dept_id=d.dept_id and r.role_id = #{roleId} and r.dept_id is not null
+	</select>
+	
+	<!-- 根据职位id查询职位信息以及菜单权限 -->
+	<select id="getMenuByRoleId" resultType="menuBean">
+		select m.menu_id,
+           m.menu_name,
+           m.menu_url,
+           m.parent_menu,
+           m.menu_state,
+           m.menu_del,
+           m.menu_remark
+      from menu_tb m, role_tb r, role_menu rm
+     where m.menu_id = rm.menu_id
+       and r.role_id = rm.role_id
+       and r.role_id = #{roleId}
+	</select>
+	
+	<select id="selectRole" resultType="roleBean">
+		select
+		role_id,dept_id,role_code,role_name,role_kind,start_time,end_time,role_intro,role_remark,role_required,role_state
+		from role_tb where role_del != 0
+	</select>
+	
+	
+	<!-- 批量插入role_menu -->
+	<insert id="insertManyRoles">
+		insert  all  
+		<foreach collection="list" item="l">
+            into role_menu(role_id,menu_id) values(#{l.roleId},#{l.menuId})
+        </foreach>
+        select * from dual
+	</insert>
+	
+	<delete id="deleteRoleMenu">
+		delete from role_menu where role_id = #{roleId}
+	</delete>
+	
+	<!-- 添加职位 -->
+	<insert id="insertRole">
+		insert into
+		 role_tb(role_id,
+               dept_id,
+               role_code,
+               role_name,
+               role_kind,
+               role_intro,
+               role_remark,
+               role_state,
+               role_del) 
+       values(role_seq.nextval,#{deptId},#{roleCode},#{roleName},#{roleKind},#{roleIntro},#{roleRemark},#{roleState},#{roleDel})
+	</insert>
+	
+	<!-- 查询最大id值 -->
+	<select id="getMaxRoleId" resultType="int">
+		select max(role_id) from role_tb
+	</select>
+	
+	<!-- 状态删除职位信息 -->
+	<update id="deleteRole">
+		update role_tb set role_del = 1 where role_id = #{roleId}
+	</update>
 </mapper>

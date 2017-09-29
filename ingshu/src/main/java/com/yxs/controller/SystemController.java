@@ -57,8 +57,18 @@ public class SystemController {
 	 * @return
 	 */
 	@RequestMapping("/viewMenu")
-	public String showMenu(Model m){
-		List<MenuBean> menuList = menuService.getMenu();
+	public String showMenu(Integer pageNum, String menuName, Integer menuState,Model m){
+		if(menuState == null){
+			menuState = 999;
+		}
+		if(pageNum != null){
+			info = menuService.getMenuBy(pageNum, State.PAGESIZE, State.PAGECOUNT, menuName, menuState);
+		}else{
+			pageNum=1;
+			info = menuService.getMenuBy(pageNum, State.PAGESIZE, State.PAGECOUNT, menuName, menuState);
+		}
+		List<MenuBean> menuList = info.getList();
+		m.addAttribute("page", info);
 		m.addAttribute("menuList", menuList);
 		return "/resource/demo8/list.jsp";
 	}

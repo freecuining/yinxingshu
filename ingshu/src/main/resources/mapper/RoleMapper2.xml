@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxs.dao.RoleDao2">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<resultMap id="myrole" type="com.yxs.bean.RoleBean">
+		<id column="role_id" property="roleId" />
+		<result column="dept_id" property="deptId" />
+		<result column="role_code" property="roleCode" />
+		<result column="role_name" property="roleName" />
+		<result column="role_kind" property="roleKind" />
+		<result column="role_num" property="roleNum" />
+		<result column="start_time" property="startTime" />
+		<result column="end_time" property="endTime" />
+		<result column="role_intro" property="roleIntro" />
+		<result column="role_remark" property="roleRemark" />
+		<result column="role_required" property="roleRequired" />
+		<result column="role_state" property="roleState" />
+		<result column="role_del" property="roleDel" />
+		<result column="dept_name" property="dept.deptName" />
+		<result column="role_recrittype" property="roleRecritType" />
+		<association property="dept" javaType="com.yxs.bean.DeptBean"
+			column="dept_id" select="com.yxs.dao.DeptDao.getDeptById"></association>
+	</resultMap>
+
+	<sql id="selectRole">
+		SELECT
+	ROLE_ID,
+	DEPT_ID,
+	ROLE_CODE,
+	ROLE_NAME,
+	ROLE_KIND,
+	ROLE_NUM,
+	START_TIME,
+	END_TIME,
+	ROLE_INTRO,
+	ROLE_REMARK,
+	ROLE_REQUIRED,
+	ROLE_STATE,
+	ROLE_DEL,
+	ROLE_RECRITTYPE
+FROM
+	role_tb
+WHERE
+	role_del = 0 and dept_id is not null
+	</sql>
+
+	<select id="getRoles" resultMap="myrole">
+	
+	    <include refid="selectRole"/>
+	   <!--  <trim prefix="where" prefixOverrides="and">
+	       <if test="roleDel==0">role_id=#{roleId}</if>
+	    </trim> -->
+	</select>
+	<!-- 根据用户id得到roleid -->
+	<select id="getRoleId" resultType="int">
+		select role_id from user_role where user_id=#{userId}
+	</select>
+	<select id="getRole" resultMap="myrole">
+		<include refid="selectRole" />
+		and role_id = #{roleId}
+	</select>
+	<select id="pupdateRole" resultMap="myrole">
+		<include refid="selectRole" />
+		and role_id = #{roleId}
+	</select>
+	<update id="updateRole">
+		<if test="roleId!=0">
+			update role_tb
+			<trim prefix="set" suffixOverrides=",">
+				<if test="roleNum!=0">
+					role_num=#{roleNum},
+				</if>
+				<if test="roleRemark!=null and roleRemark!=&quot;&quot;">
+					role_remark=#{roleRemark},
+				</if>
+				<if test="roleRequired!=null and roleRequired!=&quot;&quot;">
+					role_required=#{roleRequired},
+				</if>
+			</trim>
+			where role_id=#{roleId}
+		</if>
+	</update>
+
+	<!-- <select id="paddRole" resultMap="myrole"> <include refid="selectRole"/> 
+		</select> -->
+
+	<insert id="addRole">
+		insert into
+		role_tb(ROLE_ID,DEPT_ID,ROLE_CODE,ROLE_NAME,STARTTIME,EDDTIME,ROLE_INTRO,ROLE_REMARK,ROLE_REQUIRED,ROLE_STATE,ROLE_DEL,ROLE_NUM)
+		values(#{roleId},#{deptId},#{roleCode},#{roleName},#{roleKind},#{startTime},#{eddTime},#{roleIntro},#{roleRemark},#{roleRequired},#{roleState},#{roleDel},#{roleNum})
+	</insert>
+	<update id="deleteRole">
+		update role_tb set
+		ROLE_ID=#{roleId},DEPT_ID=#{deptId},ROLE_CODE={roleCode},ROLE_NAME=#{roleName},ROLE_KIND=#{roleKind},ROLE_NUM=#{roleNum},STARTTIME=#{startTime},EDDTIME=#{eddTime},ROLE_INTRO=#{roleIntro},ROLE_REMARK=#{roleRemark},ROLE_REQUIRED=#{roleRequired},ROLE_STATE=#{roleState},ROLE_DEL=#{roleDel},ROLE_RECRITTYP=#{roleRecritType}
+		where ROLE_ID=#{roleId} and ROLE_DEL=1
+	</update>
+</mapper>

@@ -33,7 +33,7 @@
 		}
 	}
 	
-		$(function(){
+		/* $(function(){
 			$("#deptId").change(function(){
 				var deptId = $("#deptId").val();
 				$.ajax({
@@ -46,10 +46,21 @@
 					},
 					success:function(res){
 						alert(res.roleName);
+						alert(res);
+		                var city = eval_r(res);
+		                alert(city);
+		                var opts = "";
+		                $("#city").empty();
+		                for (var i = 0; i < city.length; i++) {
+		                    opts += " < option >" + city[i].Name + " </ option > ";
+		                }
+		                alert(city.length);
+		                $("#city").append(opts);
+		                alert(opts);
 					}
 				});
 			});
-		});
+		}); */
 	
 </script>
 </head>

@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -126,17 +127,28 @@ public class LoginController {
 	@RequestMapping("/updatemsg")
 	public String updateInfo(UserBean ub, Model m, @RequestParam("touxiang") MultipartFile file,
 			HttpServletRequest request) throws IllegalStateException, IOException {
+		HttpSession session = request.getSession();
 		// 保存文件路径
-		String path = request.getSession().getServletContext().getRealPath("/touxiang/");
+		String path = session.getServletContext().getRealPath("/touxiang/");
 		// 上传文件名
 		long time = new Date().getTime();
-		String filename = file.getOriginalFilename()+time;
+		String filename = time+file.getOriginalFilename();
 		// 将上传文件保存到一个目标文件当中
 		file.transferTo(new File(path + File.separator +  filename));
 		//修改个人信息
-		ub.setImg(filename);
+		ub.setImg("touxiang/"+filename);
 		us.updateInfo(ub);
+		//获取更新之后的当前登录人对象
+		UserBean ub2 = us.getUserById(ub.getUserId());
+		m.addAttribute("ub", ub2);
 		return "/index.jsp";
+	}
+	
+	@RequestMapping("upps")
+	public String updatePs(UserBean ub,Model m){
+		us.updaPs(ub);
+		m.addAttribute("ub",ub);
+		return "/ran/head";
 	}
 
 }

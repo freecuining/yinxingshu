@@ -23,21 +23,21 @@
             <span>
                 <span style="float: left;">当前位置是：系统管理-》菜单管理</span>
                 <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    <a style="text-decoration: none;" href="add.html">【添加】</a>
+                    <a style="text-decoration: none;" href="cn/pinsertMenu">【添加】</a>
                 </span>
             </span>
         </div>
         <div></div>
         <div class="div_search">
             <span>
-                <form action="#" method="post">
+                <form action="cn/viewMenu" method="post">
                     菜单名称: 
-					<input type="text" name="menuname" value=""/>
+					<input type="text" name="menuName" value=""/>
 					 状态: 
-					<select name="menustate">
+					<select name="menuState">
 						<option value="999">请选择</option>
-						<option value="0">启用</option>
-						<option value="1">禁用</option>
+						<option value="1">启用</option>
+						<option value="0">禁用</option>
 					</select>
                     <input value="查询" type="submit" />
 					
@@ -58,7 +58,7 @@
                     <tr id="product1">
                     <td><input type="checkbox" /></td>
                         <td>${st.index+1 }</td>
-						<td><a href="view.html">${ml.menuName }</a></td>
+						<td><a href="cn/lookMenu?menuId=${ml.menuId }">${ml.menuName }</a></td>
                         <td>${ml.menuUrl }</td> 
 						<c:if test="${ml.menuState==1 }">
 							<td>启用</td>
@@ -67,17 +67,37 @@
 							<td>停用</td>
 						</c:if>					
                         <td>
-							<a href="add.html">修改</a>						   
-							<a href="#">删除</a>
+							<a href="cn/pupdateMenu?menuId=${ml.menuId }">修改</a>						   
+							<a href="cn/deleteMenu?menuId=${ml.menuId }">删除</a>
 						</td>                        
                     </tr>
                     </c:forEach>
-                    <tr>
-                        <td colspan="20" style="text-align: center;">						
-						<a style="text-decoration: none;" href="#">
-                            首页 上一页  ... 7 8 9 10 11 12 ... 下一页 尾页 共1234条 每页显示 10/23 </a>
-                        </td>
-                    </tr>
+                     <tr>
+				<td colspan="20" style="text-align: center;">
+			<span> <a href="cn/viewMenu?pageNum=1">首页</a> <c:if
+							test="${requestScope.page.getPageNum() == 1 }">
+				上一页
+			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
+							<a
+								href="cn/viewMenu?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+						</c:if> <c:forEach items="${requestScope.page.getNavigatepageNums()}"
+							var="num">
+							<c:if test="${requestScope.page.getPageNum()==num }">${num }</c:if>
+							<c:if test="${requestScope.page.getPageNum()!=num }">
+								<a href="cn/viewMenu?pageNum=${num }">${num }</a>
+							</c:if>
+						</c:forEach> <c:if
+							test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+				下一页
+			</c:if> <c:if
+							test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+							<a
+								href="cn/viewMenu?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+						</c:if> <a href="cn/viewMenu?pageNum=${requestScope.page.getPages() }">尾页</a>
+						<span>总共${requestScope.page.getPages()}页
+							总共${requestScope.page.getTotal() }条 </span>
+				</td>
+			</tr>
                 </tbody>
             </table>
         </div>
