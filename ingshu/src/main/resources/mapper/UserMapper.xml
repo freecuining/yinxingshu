@@ -104,4 +104,5 @@
 		from user_tb
 		where user_id = #{userId}
 	</select>
+	
 </mapper>

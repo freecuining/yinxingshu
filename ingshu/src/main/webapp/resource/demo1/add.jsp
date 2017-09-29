@@ -24,7 +24,7 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="cn/insertDept" method="post" enctype="multipart/form-data">
+		<form action="cn/insertDept" method="post" enctype="multipart/form-data" target="_top">
 		<input type="hidden" name="deptId" value="${deptId }"/>
 			<table border="1" width="100%" class="table_a">
 				<tr>

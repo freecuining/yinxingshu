@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxs.dao.LogDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+
+
+	<!-- 查询年记录数目 -->
+	<select id="getAllChanges" resultType="LogBean">
+		SELECT
+		YEAR,LOG_STATE,DEPT_ID,COUNT(*) AS COUNT from LOG_VIEW GROUP BY
+		YEAR,LOG_STATE,DEPT_ID ORDER BY YEAR,LOG_STATE,DEPT_ID
+	</select>
+	<!-- 查询每月记录数目 -->
+	<select id="getYearChanges" resultType="LogBean">
+		SELECT MONTH,LOG_STATE,DEPT_ID,COUNT(*) AS COUNT
+		from (SELECT MONTH,LOG_STATE,DEPT_ID from LOG_VIEW
+		where year=#{year})
+		GROUP BY month,LOG_STATE,DEPT_ID ORDER BY MONTH,LOG_STATE,DEPT_ID
+	</select>
+	<insert id="insertLog" parameterType="com.yxs.bean.LogBean">
+		
+		insert into log_tb(log_id,archive_id,change_time,log_state,log_remark)
+		values(log_seq.nextval,#{archiveId},#{changeTime},#{logState},#{logRemark})
+	
+	</insert>
+	<select id="getFindAll" resultType="com.yxs.bean.ResumeBean">
+	SELECT "NAME",RESUME_SEX,CARD_ID,EDUCATION,GRADUATE_SCHOOL,WORK_YEAR,ATTRIBUTE_MIANSHI,RESUME_PHONE,MAJOR
+		FROM RESUME_TB
+		where 1=1
+		<if test="user != null and user != &quot;&quot;">
+			and name like concat(concat('%',#{userName}),'%')
+		</if>
+	</select>
+	<select id="getEducation" resultType="com.yxs.bean.EducationBean">
+	 SELECT EDUCATION_ID,LEARNED,"MASTER",REGULAR,JUNIOR,"TIME",AMOUNT from EDUCATION_TB
+	</select>
+	<select id="getYear" resultType="com.yxs.bean.YearBean">
+	SELECT YEAR_ID,Dept_tb.DEPT_ID,EDUCATION_ID,LEARNED,MASTER,REGULAR,JUNIOR,AMOUNT,dept_name from YEAR_TB,dept_tb 
+	where year_tb.dept_id=Dept_tb.dept_id and year_id = #{year}
+	</select>
+	<select id="queryAll" resultType="com.yxs.bean.DiplomaBean">
+	SELECT
+		DEPT_NAME,ARCHIVE_CODE,USER_NAME,SEX,ROLE_NAME,salary_name,
+		MOBILE_PHONE,ARCHIVE_STATE,ARCHIVETIME
+		from DEPT_TB ,
+		ARCHIVE_TB,USER_TB ,
+		ROLE_TB ,RESUME_TB ,
+		SALARY_TB ,USER_ROLE 
+		where
+		DEPT_TB.dept_id=ARCHIVE_TB.dept_id and ARCHIVE_TB.user_id=USER_TB.user_id
+		and USER_TB.USER_ID = USER_ROLE.USER_ID and ROLE_TB.ROLE_ID = USER_ROLE.ROLE_ID
+		and
+		USER_TB.user_id=RESUME_TB.USER_ID and ARCHIVE_TB.SALARY_ID=SALARY_TB.SALARY_ID
+		<if test="deptId != null and deptId != &quot;&quot; and deptId!=999 ">
+			and DEPT_TB.dept_id=#{deptId}
+		</if>
+		<if test="userName != null and userName != &quot;&quot;">
+			and USER_TB.USER_NAME like concat(concat('%',#{userName}),'%')
+		</if>
+		<if test="archiveState != null and archiveState != 999">
+			and ARCHIVE_TB.ARCHIVE_STATE = #{archiveState}
+		</if>
+		<if test="oneTime != null and oneTime != &quot;&quot;">
+			and ARCHIVE_TB.ARCHIVETIME <![CDATA[>=]]>
+			to_date (#{oneTime},'yyyy-mm-dd')
+		</if>
+
+		<if test="stateTime != null and stateTime != &quot;&quot;">
+			and ARCHIVE_TB.ARCHIVETIME <![CDATA[<=]]>
+			to_date (#{stateTime},'yyyy-mm-dd')
+		</if>
+		order by DEPT_TB.dept_id
+	</select>
+</mapper>

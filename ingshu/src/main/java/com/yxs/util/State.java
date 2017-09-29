@@ -20,4 +20,12 @@ public interface State {
 	public static final int LOSER = 1; // 审核失败
 	public static final int AUDITING = 2; //审核中
 	public static final int DRAFT = 3;   //起草
+	
+	public static final int INEMP = 0;//入职
+	public static final int BEEMP = 1;//转正
+	public static final int CHANGESALARY = 2;//调薪
+	public static final int CHANGEPOSITION = 3;//调岗
+	public static final int OUTEMP = 4;//离职
+	
+
 }

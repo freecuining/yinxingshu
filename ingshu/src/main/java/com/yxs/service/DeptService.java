@@ -57,6 +57,11 @@ public interface DeptService {
 	 * @return
 	 */
 	public boolean deleteDeptById(int deptId);
+	/**
+	 * 查询部门的父部门
+	 * @return
+	 */
+	public int findParentById(int deptId);
 	
 	/**
 	 * 查询所有部门信息不包括含有子部门的部门

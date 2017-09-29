@@ -27,4 +27,37 @@ public interface MenuService {
 	 * @return
 	 */
 	public List<MenuBean> getMenu();
+	
+	
+
+	/**
+	 * 查看单个菜单信息
+	 * @param menuId
+	 * @return
+	 */
+	public MenuBean getMenuById(int menuId);
+	
+	
+	/**
+	 * 添加菜单信息
+	 * @param menuBean
+	 * @return
+	 */
+	public boolean insertMenu(MenuBean menuBean);
+	
+	
+	/**
+	 * 修改菜单信息
+	 * @param menuBean
+	 * @return
+	 */
+	public boolean updateMenuById(MenuBean menuBean);
+	
+	/**
+	 * 删除菜单
+	 * @param menuId
+	 * @return
+	 */
+	public boolean deleteMenuById(int menuId);
+
 }

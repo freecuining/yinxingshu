@@ -23,7 +23,7 @@
             <span>
                 <span style="float: left;">当前位置是：系统管理-》菜单管理</span>
                 <span style="float: right; margin-right: 8px; font-weight: bold;">
-                    <a style="text-decoration: none;" href="add.html">【添加】</a>
+                    <a style="text-decoration: none;" href="cn/pinsertMenu">【添加】</a>
                 </span>
             </span>
         </div>
@@ -32,12 +32,12 @@
             <span>
                 <form action="cn/viewMenu" method="post">
                     菜单名称: 
-					<input type="text" name="menuname" value=""/>
+					<input type="text" name="menuName" value=""/>
 					 状态: 
-					<select name="menustate">
+					<select name="menuState">
 						<option value="999">请选择</option>
-						<option value="0">启用</option>
-						<option value="1">禁用</option>
+						<option value="1">启用</option>
+						<option value="0">禁用</option>
 					</select>
                     <input value="查询" type="submit" />
 					
@@ -58,7 +58,7 @@
                     <tr id="product1">
                     <td><input type="checkbox" /></td>
                         <td>${st.index+1 }</td>
-						<td><a href="view.html">${ml.menuName }</a></td>
+						<td><a href="cn/lookMenu?menuId=${ml.menuId }">${ml.menuName }</a></td>
                         <td>${ml.menuUrl }</td> 
 						<c:if test="${ml.menuState==1 }">
 							<td>启用</td>
@@ -67,8 +67,8 @@
 							<td>停用</td>
 						</c:if>					
                         <td>
-							<a href="add.html">修改</a>						   
-							<a href="#">删除</a>
+							<a href="cn/pupdateMenu?menuId=${ml.menuId }">修改</a>						   
+							<a href="cn/deleteMenu?menuId=${ml.menuId }">删除</a>
 						</td>                        
                     </tr>
                     </c:forEach>

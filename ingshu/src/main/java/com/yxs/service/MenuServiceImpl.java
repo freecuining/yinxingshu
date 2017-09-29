@@ -45,4 +45,46 @@ public class MenuServiceImpl implements MenuService {
 	public List<MenuBean> getMenu(){
 		return menuDao.getMenu();
 	}
+
+
+
+	/**
+	 * 查看单个菜单信息
+	 * @param menuId
+	 * @return
+	 */
+	public MenuBean getMenuById(int menuId) {
+		// TODO Auto-generated method stub
+		return menuDao.getMenuById(menuId);
+	}
+
+	/**
+	 * 添加菜单信息
+	 * @param menuBean
+	 * @return
+	 */
+	public boolean insertMenu(MenuBean menuBean) {
+		// TODO Auto-generated method stub
+		return menuDao.insertMenu(menuBean);
+	}
+
+	/**
+	 * 修改菜单信息
+	 * @param menuBean
+	 * @return
+	 */
+	public boolean updateMenuById(MenuBean menuBean) {
+		// TODO Auto-generated method stub
+		return menuDao.updateMenuById(menuBean);
+	}
+
+	/**
+	 * 删除菜单
+	 * @param menuId
+	 * @return
+	 */
+	public boolean deleteMenuById(int menuId) {
+		// TODO Auto-generated method stub
+		return menuDao.deleteMenuById(menuId);
+	}
 }

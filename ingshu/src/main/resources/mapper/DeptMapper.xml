@@ -84,6 +84,13 @@
 		update dept_tb set dept_del = 1 where dept_id = #{deptId}
 	</update>
 	
+
+	<!-- 根据部门id查询父部门 -->
+	<select id="findParentById" resultType="java.lang.Integer">
+		select parent_dept from dept_tb where  dept_id = #{deptId}
+	</select>
+	
+
 	<!-- 查询部门信息不包括含有子部门的部门 -->
 	<select id="getDeptNotChildDept" resultType="deptBean">
 	select dept_id,
@@ -101,4 +108,5 @@
     		dept_del = 0
     	and dept_id not in(select distinct(parent_dept) from dept_tb where parent_dept != 0)
     	</select>
+
 </mapper>
