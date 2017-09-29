@@ -1,9 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
         <title>薪酬标准管理</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="../../css/mine.css" type="text/css" rel="stylesheet">
+        <link href="css/mine.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -12,7 +22,7 @@
             <span>
                 <span style="float:left">当前位置是：招聘管理》职位发布管理-》查看职位信息</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="list.html">【返回】</a>
+                    <a style="text-decoration: none" href="javascript:history.back()">【返回】</a>
                 </span>
             </span>
         </div>

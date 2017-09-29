@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yxs.dao.ResumeDao">
+	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
+	<resultMap type="com.yxs.bean.ResumeBean" id="myresume">
+		<id column="resume_id" property="resumeId" />
+		<result column="user_id" property="userId" />
+		<result column="name" property="name" />
+		<result column="resume_sex" property="resumeSex" />
+		<result column="resume_email" property="resumeEmail" />
+		<result column="resume_phone" property="resumePhone" />
+		<result column="local_address" property="localAddress" />
+		<result column="home_address" property="homeAddress" />
+		<result column="political" property="political" />
+		<result column="card_id" property="cardId" />
+		<result column="salary_require" javaType="String" property="salaryRequire" />
+		<result column="graduate_school" property="graduateSchool" />
+		<result column="education" property="education" />
+		<result column="major" property="major" />
+		<result column="jobstate" property="jobState" />
+		<result column="fresh_student" property="freshStudent" />
+		<result column="work_year" property="workYear" />
+		<result column="person_resume" property="personResume" />
+		<result column="person_file" property="personFile" />
+		<result column="recommend_state" property="recommendState" />
+		<result column="recommend_time" property="recommendTime" />
+		<result column="recommend_idea" property="recommendIdea" />
+		<result column="interview_result" property="interviewResult" />
+		<result column="interview_time" property="interviewTime" />
+		<result column="resolution_time" property="resolutionTime" />
+		<result column="role_id" property="roleId" />
+		<result column="user_id" property="userId" />
+		<result column="role_name" property="role.roleName" />
+		<result column="starttime" property="role.startTime" />
+		<result column="attibute_mianshi" property="attributeMianshi"/>
+		<result column="resume_del" property="resumeDel"/>
+		<collection property="role" javaType="com.yxs.bean.RoleBean"
+			column="role_id" select="com.yxs.Dao.RoleDao.getRole"></collection>
+	</resultMap>
+	<sql id="selectResume">
+		SELECT
+		RESUME_ID,USER_ID,NAME,RESUME_SEX,RESUME_EMAIL,RESUME_PHONE,LOCAL_ADDRESS,
+		HOME_ADDRESS,POLITICAL,CARD_ID,SALARY_REQUIRE,GRADUATE_SCHOOL,EDUCATION,MAJOR,
+		JOB_STATE,FRESH_STUDENT,WORK_YEAR,PERSON_RESUME,PERSON_FILE,RECOMMEND_STATE,
+		RECOMMEND_TIME,RECOMMEND_IDEA,INTERVIEW_RESULT,INTERVIEW_TIME,RESOLUTION_TIME,ATTRIBUTE_MIANSHI,RESUME_DEL
+		FROM RESUME_TB
+	</sql>
+
+	<select id="getResume" resultMap="myresume">
+		<include refid="selectResume" />
+	</select>
+
+	<select id="viewResume" resultMap="myresume">
+		<include refid="selectResume" />
+		where resume_id=#{resumeId} and resume_del=0
+	</select>
+
+	<select id="pupdateResume" resultMap="myresume">
+		<include refid="selectResume" />
+		where resume_id=#{resumeId} and resume_del=0
+	</select>
+    
+    <update id="updateResume">
+         update resume_tb set resume_id=#{resumeId},user_id=#{userId},name=#{name},resume_sex=#{resumeSex},resume_email=${resumeEamil},resume_phone=#{resumePhone},local_address=#{localAddress},home_address=#{homeAddress},political=#{political},card_id=#{cardId},salary_require=#{salaryRequire},graduate_school=#{graduteSchool},education=#{education},major=#{major},job_state=#{jobState},fresh_student=#{freshStudent},work_year=#{workYear},person_resume=#{personResume},person_file=#{personFile},recommend_state=#{recommendState},recommend_time=#{recommendTime},recommend_idea=#{recommendIdea},interview_result=#{interviewResult},interview_time=#{interviewTime},resolution_time=#{resolutionTime},attribute_mianshi=#{attributeMianshi},resume_del=#{resumeDel} where resume_id=#{resumeId}
+    </update>
+    
+	<!-- <insert id="addResume">
+		insert into resume_tb
+		(resume_id,user_id,name,resume_sex,resume_email,resume_phone,local_address,home_address,political,card_id,salary_require,education,major,job_state,fresh_student,work_year,person_resume,person_file,recommend_state,recommend_time,resommend_idea,interview_result,interview_time,resolution_time,attribute_mianshi,resume_del)
+		values
+		(#{resumeId},#{userId},#{name},#{resumeSex},#{resumeEmail},#{resumePhone},#{localAddress},#{homeAddress),#{political},#{cardId},#{salaryRequire},#{graduateSchool},#{education},#{major},#{jobState},#{freshStudent},#{workYear},#{personResume},#{personFile},#{recommendState},#{resommendTime},#{recommendIdea},#{interviewResult},#{interviewTime},#{resolutionTime},#{attributeMianshi},#{resumeDel})
+	</insert> -->
+    
+</mapper>	
+	

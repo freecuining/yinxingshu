@@ -3,6 +3,21 @@
 <mapper namespace="com.yxs.dao.MenuDao">
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
 	<!-- 查询所有菜单信息 -->
+	<select id="getMenuBy" resultType="menuBean">
+		select menu_id, menu_name,
+		menu_url, menu_state, menu_del, menu_remark
+		from menu_tb
+		where menu_del = 0
+		<if test="menuName!=null and menuName!=&quot;&quot;">
+         	and menu_name like concat(concat('%',#{menuName}),'%')
+         </if>
+         <if test="menuState!=null and menuState!=&quot;&quot; and menuState!=999">
+        	 and menu_state like concat(concat('%',#{menuState}),'%')
+         </if>
+	</select>
+	
+	
+	<!-- 查询所有菜单信息 -->
 	<select id="getMenu" resultType="menuBean">
 		select menu_id, menu_name,
 		menu_url, menu_state, menu_del, menu_remark

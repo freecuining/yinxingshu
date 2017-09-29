@@ -2,6 +2,7 @@ package com.yxs.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.yxs.bean.MenuBean;
 
 public interface MenuService {
@@ -10,7 +11,7 @@ public interface MenuService {
 	 * 查询所有菜单
 	 * @return
 	 */
-	public List<MenuBean> getMenu();
+	public PageInfo getMenuBy(int pageNum,int pageSize,int pageCount, String menuName,int menuState);
 	
 	
 	/**
@@ -19,4 +20,11 @@ public interface MenuService {
 	 * @return
 	 */
 	public List<MenuBean> getMenuByUserId(int userId);
+	
+	
+	/**
+	 * 查询所有菜单
+	 * @return
+	 */
+	public List<MenuBean> getMenu();
 }

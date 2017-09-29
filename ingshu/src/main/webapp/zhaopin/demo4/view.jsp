@@ -1,6 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
     <head>
+     <base href="<%=basePath%>">
         <title>薪酬标准管理</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
         <link href="../../css/mine.css" type="text/css" rel="stylesheet">
@@ -23,22 +33,19 @@
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">应聘职位名称：</td>
-                    <td><select>
-						<option>---请选择---</option>
-						<option>---技术培训师---</option>
-					</select></td>
+                    <td><input type="text" name="f_goods_name" value="高级开发工程师" /></td>
                 </tr>
                 <tr>
                     <td>应聘职位编码：</td>
                     <td>
-                       <input type="text" name="f_goods_name" value="jspx0001" /> 
+                       <input type="text" name="f_goods_name" value="a1006" /> 
                     </td>
                 </tr>
                
                 <tr>
                     <td>职位分类：</td>
                     <td>
-						<input type="text" name="f_goods_price" value="技术" /></td>
+						<input type="text" name="f_goods_price"  /></td>
                 </tr>
                 <tr>
                     <td>姓名：</td>
@@ -205,7 +212,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-						<input type="button" value="确认">
+						<input type="button" value="返回">
                     </td>
                 </tr>  
             </table>

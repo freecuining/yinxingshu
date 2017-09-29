@@ -1,10 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
-
 	<head>
 		<title>职位发布登记</title>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8">
-		<link href="../../css/mine.css" type="text/css" rel="stylesheet">
+		<link href="css/mine.css" type="text/css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -106,16 +114,16 @@
 						<td>
 							<textarea cols="70" rows="12"> 
 					  技能要求：
-				1、至少5年以上大型B/S架构软件开发经验。
-				2、精通SSH，有2年以上的使用经验持。
-				3、至少具有一种主流数据库系统的缝隙使用经验，精通sql，熟悉基本的性能优化方法。
-				4、。。。
-				5.。。。
-				素质要求：
-				1、     热爱IT职业教育行业，具有良好的基本技术素质。
-				2、     有较强的学习能力，沟通，表达能力强，有良好工作习惯。
-				3、     。。。
-				4、     。。。
+						1、至少5年以上大型B/S架构软件开发经验。
+						2、精通SSH，有2年以上的使用经验持。
+						3、至少具有一种主流数据库系统的缝隙使用经验，精通sql，熟悉基本的性能优化方法。
+						4、。。。
+						5.。。。
+						素质要求：
+						1、     热爱IT职业教育行业，具有良好的基本技术素质。
+						2、     有较强的学习能力，沟通，表达能力强，有良好工作习惯。
+						3、     。。。
+						4、     。。。
 					   </textarea>
 						</td>
 					</tr>

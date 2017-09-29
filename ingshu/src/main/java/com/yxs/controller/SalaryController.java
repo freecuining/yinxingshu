@@ -19,13 +19,13 @@ import com.yxs.util.State;
 public class SalaryController {
 	@Autowired
 	private SalaryService ss;
-	@RequestMapping("/salary")
 	/**
 	 * 展现
 	 * @param request
 	 * @param m
 	 * @return
 	 */
+	@RequestMapping("/salary")
 	public String list(HttpServletRequest request,Model m){
 		int pageNum=1;//起始页
 		String pn = request.getParameter("pageNum");
