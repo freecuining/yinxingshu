@@ -26,7 +26,7 @@
         <div></div>
 
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="cnRole/insertRole" method="post" enctype="multipart/form-data">
+            <form action="cnRole/insertRole" method="post" enctype="multipart/form-data" target="_top">
 			<table border="1" width="100%" class="table_a">
 				<tr>
 					<td width="120px;">职位编码<span style="color: red">*</span>：

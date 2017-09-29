@@ -36,4 +36,25 @@ public interface MenuDao {
 	 * @return
 	 */
 	public List<MenuBean> getMenuByUserId(int userId);
+	
+	/**
+	 * 添加菜单信息
+	 * @param menuBean
+	 * @return
+	 */
+	public boolean insertMenu(MenuBean menuBean);
+	
+	/**
+	 * 修改菜单信息
+	 * @param menuBean
+	 * @return
+	 */
+	public boolean updateMenuById(MenuBean menuBean);
+	
+	/**
+	 * 删除菜单
+	 * @param menuId
+	 * @return
+	 */
+	public boolean deleteMenuById(int menuId);
 }

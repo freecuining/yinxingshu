@@ -4,7 +4,7 @@
 	<cache type="org.mybatis.caches.ehcache.EhcacheCache" />
 	<!-- 查询所有菜单信息 -->
 	<select id="getMenuBy" resultType="menuBean">
-		select menu_id, menu_name,
+		select menu_id, menu_name,parent_menu,
 		menu_url, menu_state, menu_del, menu_remark
 		from menu_tb
 		where menu_del = 0
@@ -19,7 +19,7 @@
 	
 	<!-- 查询所有菜单信息 -->
 	<select id="getMenu" resultType="menuBean">
-		select menu_id, menu_name,
+		select menu_id, menu_name,parent_menu,
 		menu_url, menu_state, menu_del, menu_remark
 		from menu_tb
 		where menu_del = 0
@@ -39,4 +39,30 @@
        and r.role_id = rm.role_id
        and r.role_id = (select role_id from user_role where user_id = #{userId})
 	</select>
+	
+	<select id="getMenuById" resultType="menuBean">
+		select menu_id, menu_name,
+		menu_url, menu_state, menu_del, menu_remark
+		from menu_tb
+		where menu_del = 0 and menu_id = #{menuId}
+	</select>
+	
+	<!-- 添加菜单信息 -->
+	<insert id="insertMenu">
+		insert into 
+		menu_tb(menu_id,menu_name,parent_menu,menu_url,menu_state,menu_del,menu_remark) 
+		values(menu_seq.nextval,#{menuName},#{parentMenu},#{menuUrl},${menuState},#{menuDel},#{menuRemark})
+	</insert>
+	
+	<!-- 修改菜单信息 -->
+	<update id="updateMenuById">
+		update menu_tb 
+		set menu_name=#{menuName},menu_url=#{menuUrl},menu_state=#{menuState},menu_remark=#{menuRemark}
+		where menu_id = #{menuId}
+	</update>
+	
+	<!-- 删除菜单 -->
+	<update id="deleteMenuById">
+		update menu_tb set menu_del=1 where menu_id = #{menuId}
+	</update>
 </mapper>
