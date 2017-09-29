@@ -11,6 +11,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="css/admin.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#btn").click(function(){
+		var is = confirm("确认退出吗?");
+		if(is){
+			window.location.href="ran/head";
+		}
+	});
+});
+</script>
 </head>
 <body>
 	<table cellspacing=0 cellpadding=0 width="100%"
@@ -20,7 +31,7 @@
 				银杏树信息技术服务(北京)有限公司</td>
 			<td style="font-weight: bold; color: #fff; padding-top: 20px"
 				align=middle>当前用户：${sessionScope.ub.userName } &nbsp;&nbsp; &nbsp;&nbsp;  <a
-				style="color: #fff" href="head" target=_top>退出系统</a>
+				id="btn" style="color: #fff" target="_top">退出系统</a>
 			</td>
 			<td align=right width=268><a href="index.html"> <img
 					height=56 src="img/header_right.jpg" width=268></a></td>

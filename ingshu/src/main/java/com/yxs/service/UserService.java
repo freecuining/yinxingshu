@@ -29,7 +29,12 @@ public interface UserService {
 	 * @param ub
 	 */
 	public boolean updateInfo(UserBean ub);
-	
+	/**张晓然
+	 * 密码修改
+	 * @param password
+	 * @return
+	 */
+	public boolean updaPs(UserBean ub);
 	
 	/**
 	 * 崔宁
@@ -37,4 +42,9 @@ public interface UserService {
 	 * @return
 	 */
 	public PageInfo getAllUser(int pageNum,int pageSize,int pageCount,String userName,String roleName,String deptName);
+
+	/**崔宁
+	 * 根据用户编号获取用户信息
+	 */
+	public UserBean getUserById(int userId);
 }

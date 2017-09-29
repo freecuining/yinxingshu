@@ -89,7 +89,7 @@
 		</tr>
 		<tr>
 			<td align=right>ip地址：</td>
-			<td style="color: #880000">${ipAddress }</td>
+			<td style="color: #880000">${sessionScope.ipAddress }</td>
 		</tr>
 		<tr>
 			<td align=right>身份过期：</td>

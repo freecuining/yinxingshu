@@ -14,6 +14,7 @@
 <meta http-equiv="content-type" content="text/html;charset=utf-8">
 <link href="css/mine.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/ran/jquerylogin.js"></script>
 <script type="text/javascript">
 	$(function(){
 		$("#btn").click(function(){
@@ -38,7 +39,7 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="updatemsg" method="post"
+		<form action="updatemsg" method="post" target="_top"
 			enctype="multipart/form-data" id="myForm">
 			<input type="hidden" name="userId" value="${sessionScope.ub.userId }">
 			<table border="1" width="100%" class="table_a">
@@ -51,7 +52,7 @@
 					<td>性别</td>
 					<td>
 							<input type="radio" name="sex" value="1" <c:if test="${sessionScope.ub.sex ==1 }">checked</c:if> />男
-							<input type="radio" name="sex" value="0" <c:if test="${sessionScope.ub.sex ==0 }"></c:if> />女
+							<input type="radio" name="sex" value="0" <c:if test="${sessionScope.ub.sex ==0 }">checked</c:if> />女
 					</td>
 				</tr>
 
@@ -77,8 +78,8 @@
 				</tr>
 				<tr>
 					<td>更换头像：</td>
-					<td><img alt="" src="${sessionScope.ub.img }"><input type="file" name="touxiang"
-						value="" /></td>
+					<td><img alt="" src="${sessionScope.ub.img }">
+					<input type="file" name="touxiang" value="" /></td>
 				</tr>
 				<tr>
 					<td>备注：</td>
