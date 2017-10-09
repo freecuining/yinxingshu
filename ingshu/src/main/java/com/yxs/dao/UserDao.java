@@ -14,10 +14,6 @@ import com.yxs.bean.UserBean;
 @Repository
 public interface UserDao {
 
-
-	@Autowired
-	UserBean ub = new UserBean();
-
 	public UserBean login(@Param("loginName") String loginName, @Param("password") String password);
 	/**
 	 * 张晓然 登录次数
@@ -48,6 +44,5 @@ public interface UserDao {
 	 * @return
 	 */
 	public List<UserBean> getAllUser(@Param("userName")String userName,@Param("roleName")String roleName,@Param("deptName")String deptName);
-	public List<UserBean> getAllUser();
 
 }

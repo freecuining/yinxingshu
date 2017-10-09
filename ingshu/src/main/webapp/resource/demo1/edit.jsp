@@ -28,7 +28,7 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="cn/updateDept" method="post" enctype="multipart/form-data" target="_top">
+		<form action="cn/updateDept" method="post" enctype="multipart/form-data" target="_right">
 		<input type="hidden" name="deptId" value="${deptBean.deptId }"/>
 			<table border="1" width="100%" class="table_a">
 			

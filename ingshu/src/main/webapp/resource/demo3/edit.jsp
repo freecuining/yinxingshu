@@ -31,7 +31,7 @@
 	<div></div>
 
 	<div style="font-size: 13px; margin: 10px 5px">
-		<form action="cnRole/updateRole" method="post" enctype="multipart/form-data" target="_top">
+		<form action="cnRole/updateRole" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="roleId" value="${roleBean.roleId }"
 						readonly="readonly" />
 			<table border="1" width="100%" class="table_a">

@@ -63,18 +63,12 @@ public class UserServiceImpl implements UserService {
 		PageInfo<Object> info = new PageInfo(userList,pageCount);
 		return info;
 	}
-
+	
+	/**
+	 * 根据用户id查询用户信息
+	 */
 	public UserBean getUserById(int userId) {
 		// TODO Auto-generated method stub
 		return ud.getUserById(userId);
 	}
-
-	
-
-
-	
-
-	
-
-	
 }
