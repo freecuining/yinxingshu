@@ -26,7 +26,7 @@
         </div>
         <div></div>
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="cn/insertMenu" method="post" enctype="multipart/form-data" target="_top">
+            <form action="cn/insertMenu" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">菜单名称<span style="color:red">*</span>：</td>

@@ -26,7 +26,7 @@
         </div>
         <div></div>
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="cn/updateMenu" method="post" enctype="multipart/form-data" target="_top">
+            <form action="cn/updateMenu" method="post" enctype="multipart/form-data">
             <input type="hidden" name="menuId" value="${menuBean.menuId }"/>
             <table border="1" width="100%" class="table_a">
                 <tr>

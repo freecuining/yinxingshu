@@ -78,4 +78,5 @@ public interface RoleDao {
 	 * @return
 	 */
 	public boolean deleteRole(int roleId);
+	
 }

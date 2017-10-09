@@ -114,6 +114,8 @@ public class RoleController {
 		List<DeptBean> deptList = deptService.getDept();
 		//查书勋所有菜单资源
 		List<MenuBean> menuList = menuService.getMenu();
+		int maxId = roleService.getMaxRoleId();
+		m.addAttribute("maxId", maxId);
 		m.addAttribute("deptList",deptList);
 		m.addAttribute("menuList", menuList);
 		return "/resource/demo3/add.jsp";
