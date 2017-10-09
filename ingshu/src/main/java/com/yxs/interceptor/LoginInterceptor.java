@@ -22,8 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		// TODO Auto-generated method stub
 		String uri = request.getRequestURI();//获得请求路径
 		String path = request.getContextPath();//获得当前项目路径
-		System.out.println(uri);
-		System.out.println(path);
+
 		if(uri.equals(path+"/login.jsp")  ||  uri.equals(path+"/login")){
 			return true;
 		}else{
@@ -34,7 +33,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 				return true;
 			}else{
 				//判断cookie
-				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				response.sendRedirect("/login.jsp");
 				return false;
 			}
 		}

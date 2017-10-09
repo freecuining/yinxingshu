@@ -16,6 +16,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.yxs.bean.TrainBean;
 import com.yxs.service.TrainService;
+import com.yxs.util.State;
+
 
 @Controller
 @RequestMapping("Ain")
@@ -71,14 +73,14 @@ public class TrainController {
 		return this.queryAinAll(1);
 }
 	//模块二中的培训复核状态值变成审核通过
-	@RequestMapping("updateAin3.do")
+	@RequestMapping("updateAin3")
 	public ModelAndView updateMon3(int tbId) {
 		TrainBean train = trainService.queryAinById(tbId);
 		train.setTraState(1);//审核通过
 		trainService.updateAin(train);
 		return this.queryAinAll(1);
 		}
-    @RequestMapping("queryAinById.do")
+    @RequestMapping("queryAinById")
 	public String queryMonById(@ModelAttribute int tbId) {
 		trainService.queryAinById(tbId);
 		return "/datamsg/demo/preUpdate.jsp";
@@ -90,12 +92,12 @@ public class TrainController {
 		//分页
 		Integer  pageSize = 5;
 		//为true代表有总条数的统计
-		Page page = PageHelper.startPage(nowPage,pageSize,true);
+		Page page = PageHelper.startPage(nowPage,State.PAGESIZE,true);
 		
 		List<TrainBean> beans = trainService.queryAinAll();
 		//总体条数
 		Integer totalCount = Integer.parseInt(page.getTotal()+"");
-		Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+		Integer totalPage = totalCount % State.PAGESIZE == 0 ? totalCount / State.PAGESIZE : totalCount / State.PAGESIZE + 1;
 		ModelAndView modelAndView = new ModelAndView("/peixun/peixunjihua/list.jsp");
 		modelAndView.addObject("beans",beans);
 		modelAndView.addObject("nowPage",nowPage);
@@ -110,10 +112,10 @@ public class TrainController {
 		//分页
 		Integer pageSize = 5 ;
 		//为true代表有总条数的统计
-		Page page = PageHelper.startPage(nowPage,pageSize,true);
+		Page page = PageHelper.startPage(nowPage,State.PAGESIZE,true);
 		List<TrainBean> beans = trainService.queryAinTraState();
 		Integer totalCount = Integer.parseInt(page.getTotal() + "");//总条数
-		Integer totalPage = totalCount % pageSize == 0 ? totalCount  / pageSize :totalCount / pageSize + 1 ;
+		Integer totalPage = totalCount % State.PAGESIZE == 0 ? totalCount  / State.PAGESIZE :totalCount / State.PAGESIZE + 1 ;
 		ModelAndView modelAndView = new ModelAndView ("/peixun/peixunfuhe/list.jsp");
 	    modelAndView.addObject("beans",beans);
 	    modelAndView.addObject("nowPage",nowPage);
@@ -126,10 +128,10 @@ public class TrainController {
 	public ModelAndView queryAinTraResult(@RequestParam(defaultValue = "1") Integer nowPage){
 		Integer pageSize = 5 ;
 		//为true 代表的有总条数的统计
-		Page page = PageHelper.startPage(nowPage,pageSize,true);
+		Page page = PageHelper.startPage(nowPage,State.PAGESIZE,true);
 		List<TrainBean>  beans = trainService.queryAinTraResult();
 		Integer totalCount = Integer.parseInt(page.getTotal() + "");//总体条数
-		Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1 ;
+		Integer totalPage = totalCount % State.PAGESIZE == 0 ? totalCount / State.PAGESIZE : totalCount / State.PAGESIZE + 1 ;
 		ModelAndView modelAndView = new ModelAndView("/peixun/peixunfankui/list.jsp");
 	    modelAndView.addObject("beans",beans);
 	    modelAndView.addObject("nowPage",nowPage);
@@ -149,10 +151,10 @@ public class TrainController {
 			map.put("traEddTime", traEddTime);
 
 			Integer pageSize = 5;
-			Page page = PageHelper.startPage(nowPage, pageSize, true);
+			Page page = PageHelper.startPage(nowPage, State.PAGESIZE, true);
 			List<TrainBean> beans = trainService.queryFY(map);
 			Integer totalCount = Integer.parseInt(page.getTotal() + "");// 总体条数
-			Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+			Integer totalPage = totalCount % State.PAGESIZE == 0 ? totalCount / State.PAGESIZE : totalCount / State.PAGESIZE + 1;
 
 			ModelAndView modelAndView = new ModelAndView("/peixun/peixunjihua/list.jsp");
 			modelAndView.addObject("beans", beans);
@@ -175,10 +177,10 @@ public class TrainController {
 					map.put("traEddTime", traEddTime);
 
 					Integer pageSize = 5;
-					Page page = PageHelper.startPage(nowPage, pageSize, true);
+					Page page = PageHelper.startPage(nowPage, State.PAGESIZE, true);
 					List<TrainBean> beans = trainService.queryFY2(map);
 					Integer totalCount = Integer.parseInt(page.getTotal() + "");// 总体条数
-					Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+					Integer totalPage = totalCount % State.PAGESIZE == 0 ? totalCount / State.PAGESIZE : totalCount / State.PAGESIZE + 1;
 
 					ModelAndView modelAndView = new ModelAndView("/peixun/peixunfuhe/list.jsp");
 					modelAndView.addObject("beans", beans);
@@ -199,11 +201,11 @@ public class TrainController {
 							map.put("traStartTime", traStartTime);
 							map.put("traEddTime", traEddTime);
 
-							Integer pageSize = 5;
-							Page page = PageHelper.startPage(nowPage, pageSize, true);
+							
+							Page page = PageHelper.startPage(nowPage,State.PAGESIZE , true);
 							List<TrainBean> beans = trainService.queryFY3(map);
 							Integer totalCount = Integer.parseInt(page.getTotal() + "");// 总体条数
-							Integer totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+							Integer totalPage = totalCount % State.PAGESIZE == 0 ? totalCount / State.PAGESIZE : totalCount / State.PAGESIZE + 1;
 
 							ModelAndView modelAndView = new ModelAndView("/peixun/peixunfankui/list.jsp");
 							modelAndView.addObject("beans", beans);

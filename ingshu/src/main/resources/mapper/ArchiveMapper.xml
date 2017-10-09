@@ -108,9 +108,10 @@
 		and u.user_id = d.dept_id
 		and a.role_id = r.role_id
 		and a.del = 0
+		<if test="archiveName!=null and archiveName!=''.toString()">archive_name like '%#{archiveName}%'  </if>
 	</select>
 
-	<select id="getKanArchive" resultMap="myArchive">
+	<select id="getArchiveById" resultMap="myArchive">
 		<include refid="mySelect"/>
 		 where
 		a.user_id=u.user_id and
@@ -120,16 +121,7 @@
 
 	</select>
 	
-	<select id="getPupdate" resultMap="myArchive">
-	   where
-		a.user_id=u.user_id and
-	    a.role_id=r.role_id and a.resume_id=rs.resume_id and
-		u.user_id=d.dept_id and a.salary_id=s.salary_id and 
-		a.archive_id=#{archiveId}
-	</select>
-	
-	
-	
+
 	<!-- 查询档案中没有账号的用户，，崔宁 -->
 	<resultMap type="com.yxs.bean.ArchiveBean" id="cnArchive">
 		<id column="archive_id" property="archiveId"/>

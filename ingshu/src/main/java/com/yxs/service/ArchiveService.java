@@ -2,18 +2,24 @@ package com.yxs.service;
 
 import java.util.List;
 
+import com.github.pagehelper.PageInfo;
 import com.yxs.bean.ArchiveBean;
 
 
 public interface ArchiveService {
+	
 
-     public List<ArchiveBean> getAllArchive();
+	/**
+	 * 查询所有档案
+	 * @return  档案list
+	 */
+     public PageInfo<Object> getAllArchive(String pageNum,String name);
      
-     public ArchiveBean getKanArchive(Integer archiveId);
-     
-     public ArchiveBean getPupdate(Integer archiveId);
-     
-     
+     /**
+      * 通过Id查询档案
+      * 
+      */
+     public ArchiveBean getArchiveById(int archiveId);
      
      /**
  	 * 崔宁
