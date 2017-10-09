@@ -42,7 +42,7 @@
 	
 	<select id="getMenuById" resultType="menuBean">
 		select menu_id, menu_name,
-		menu_url, menu_state, menu_del, menu_remark
+		menu_url,parent_menu, menu_state, menu_del, menu_remark
 		from menu_tb
 		where menu_del = 0 and menu_id = #{menuId}
 	</select>

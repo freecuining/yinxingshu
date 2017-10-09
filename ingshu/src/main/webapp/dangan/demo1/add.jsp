@@ -1,41 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>薪酬标准管理添加</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+ <title>薪酬标准管理添加</title>
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <link href="../../css/mine.css" type="text/css" rel="stylesheet">
+        <link href="css/mine.css" type="text/css" rel="stylesheet">
+        
     </head>
 
     <body>
 
         <div class="div_head">
             <span>
-                <span style="float:left">当前位置是： -》人事档案管理 -》复审档案</span>
+                <span style="float:left">当前位置是：-》人事档案管理 -》添加档案</span>
                 <span style="float:right;margin-right: 8px;font-weight: bold">
-                    <a style="text-decoration: none" href="list.html">【返回】</a>
+                    <a style="text-decoration: none" href="javascript:history.back()">【返回】</a>
                 </span>
             </span>
         </div>
         <div></div>
 
         <div style="font-size: 13px;margin: 10px 5px">
-            <form action="./admin.php?c=goods&a=add" method="post" enctype="multipart/form-data">
+            <form action="../../ac/add" method="post" enctype="multipart/form-data">
             <table border="1" width="100%" class="table_a">
                 <tr>
                     <td width="120px;">档案编码<span style="color:red">*</span>：</td>
-                    <td><input type="text" name="f_goods_name" value="BDQN000001" /></td>
+                    <td><input type="text" name="archiveCode" value="" /></td>
                 </tr>
                 <tr>
                     <td>所属部门<span style="color:red">*</span>：</td>
                     <td>
-                       <input type="text" name="f_goods_name" value="产品设计中心" /> 
+                       <input type="text" name="" value="" /> 
                     </td>
                 </tr>
                
                 <tr>
                     <td>档案状态<span style="color:red">*</span>：</td>
                     <td>
-						<select>
+						<select name="archiveState">
 							<option>--请选择--</option>
 							<option>试用期</option>
 							<option>正式员工</option>
@@ -47,13 +57,13 @@
                 <tr>
                     <td>职位名称<span style="color:red">*</span>：</td>
                     <td>
-						<input type="text" readonly name="f_goods_image" value="技术培训师" />
+						<input type="text" readonly name="" value="" />
 					</td>
                 </tr>
                 <tr>
                     <td>职位编码<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="" readonly value="BM0011" />
+                        <input type="text" name="" readonly value="" />
                     </td>
                 </tr>
 
@@ -61,60 +71,60 @@
 				<tr>
                     <td>姓名<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image"  value="张华"/>
+                        <input type="text" name=""  value=""/>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>性别<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="radio" checked value="1"/>男 <input type="radio" value="0"/>女
+                       <input type="radio" checked value="0"/>男 <input type="radio" value="1"/>女
                     </td>                
                 </tr>
 
 				<tr>
                     <td>EMAIL<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="**@sina.com"/>
+                        <input type="text" name="" value=""/>
                     </td>                
                 </tr>
 
 				<tr>
                     <td>联系电话<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="13988877753" />
+                        <input type="text" name="" value="" />
                     </td>                
                 </tr>
 
 				<tr>
                     <td>住址<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="北京市朝阳区团结湖101号" />
+                        <input type="text" name="" value="" />
                     </td>                
                 </tr>
 				<tr>
                     <td>身份证号<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="4118876546897865689" />
+                        <input type="text" name="" value="" />
                     </td>                
                 </tr>
 				<tr>
                     <td>户口所在地：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="北京市" />
+                        <input type="text" name="" value="" />
                     </td>                
                 </tr>
 				<tr>
                     <td>政治面貌：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="党员"/>
+                        <input type="text" name="" value=""/>
                     </td>                
                 </tr>	
 
 				<tr>
                     <td>毕业院校<span style="color:red">*</span>：</td>
                     <td>
-						 <input type="text" readonly name="f_goods_name" value="北京航空航天大学" />
+						 <input type="text" readonly name="" value="" />
                     </td>
                 </tr>
 
@@ -122,7 +132,7 @@
 				<tr>
                     <td>专业<span style="color:red">*</span>：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="计算机应用与科学"/>
+                        <input type="text" name="" value=""/>
                     </td>                
                 </tr>
 				<tr>
@@ -151,31 +161,31 @@
 				<tr>
                     <td>开户行：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="工行北京市团结湖支行"/>
+                        <input type="text" name="" value=""/>
                     </td>                
                 </tr>
 				<tr>
                     <td>银行卡号：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="63304578623159"/>
+                        <input type="text" name="" value="63304578623159"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>社保卡号：</td>
                     <td>
-                        <input type="text" name="f_goods_image" value="63304578623159"/>
+                        <input type="text" name="" value="63304578623159"/>
                     </td>                
                 </tr>
 				<tr>
                     <td>登记人：</td>
                     <td>
-                        <input type="text" readonly name="f_goods_image" value="当前登录人" />
+                        <input type="text" readonly name="" value="" />
                     </td>                
                 </tr>
 				<tr>
                     <td>建档时间：</td>
                     <td>
-                        <input type="text" readonly name="f_goods_image" value="当前系统时间  年月日"/>
+                        <input type="text" readonly name="" value=""/>
                     </td>                
                 </tr>
 				<tr>
@@ -199,14 +209,14 @@
 				<tr>
                     <td>简历附件：</td>
                     <td>
-                        <input type="file" name="f_goods_image" value=""/>
+                        <input type="file" name="" value=""/>
                     </td>                
                 </tr>
 				
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="button" value="复核">
-						<input type="reset" value="重置">
+                        <input type="submit" value="添加"/>
+						<input type="reset" value="清空"/>
                     </td>
                 </tr>  
             </table>

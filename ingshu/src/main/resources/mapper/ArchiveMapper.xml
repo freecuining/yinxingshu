@@ -82,32 +82,33 @@
 	</sql>
 	<select id="getAllArchive" resultMap="myArchive">
 		select a.archive_id,
-		a.archive_code,
-		a.archivetime,
-		a.audit_state,
-		a.archive_state,
-		a.bank,
-		a.bank_card,
-		a.social_card,
-		a.family_infor,
-		a.positive_time,
-		a.leave_time,
-		a.hiredate,
-		a.transfer_position,
-		a.del,
-		u.user_id,
-		u.user_name,
-		u.sex,
-		d.dept_id,
-		d.dept_name,
-		r.role_id,
-		r.role_name,
-		r.role_kind
-		from archive_tb a, user_tb u, role_tb r, dept_tb d
-		where a.user_id = u.user_id
-		and u.user_id = d.dept_id
-		and a.role_id = r.role_id
-		and a.del = 0
+    a.archive_code,
+    a.archivetime,
+    a.audit_state,
+    a.archive_state,
+    a.bank,
+    a.bank_card,
+    a.social_card,
+    a.family_infor,
+    a.positive_time,
+    a.leave_time,
+    a.hiredate,
+    a.transfer_position,
+    a.del,
+    u.user_id,
+    u.user_name,
+    u.sex,
+    d.dept_id,
+    d.dept_name,
+    r.role_id,
+    r.role_name,
+    r.role_kind
+    from archive_tb a, user_tb u, role_tb r, dept_tb d,user_role ur
+    where a.user_id = u.user_id
+    and u.dept_id = d.dept_id
+    and ur.role_id = r.role_id
+    and u.user_id = ur.user_id
+    and a.del = 0
 		<if test="archiveName!=null and archiveName!=''.toString()">archive_name like '%#{archiveName}%'  </if>
 	</select>
 
@@ -154,5 +155,26 @@
  and a.role_id = ro.role_id
    and a.user_id = 0
 	</select>
+	
+	<select id="getPupdate" resultMap="myArchive">
+	<include refid="mySelect"/>
+	   where
+		a.user_id=u.user_id and
+	    a.role_id=r.role_id and a.resume_id=rs.resume_id and
+		u.user_id=d.dept_id and a.salary_id=s.salary_id and 
+		a.archive_id=#{archiveId}
+	</select>
 	<!-- 查询档案中没有账号的用户，，崔宁 -->
+	<update id="getUpdateArchiven">
+	    update archive_tb set archive_code=#{archiveCode},bank=#{bank},bank_card=#{bankCard},social_card=#{socialCard},positive_time=#{positiveTime} where 
+	    archive_id=#{archiveId} and del=0
+	</update>
+	
+	<update id="getDeleteArchive">
+	    update archive_tb set del=1 where archive_id=#{archiveId}
+	</update>
+	
+	<insert id="getAddArchive">
+	   insert into archive_tb(archive_code) values (#{archiveCode})
+	</insert>
 </mapper>

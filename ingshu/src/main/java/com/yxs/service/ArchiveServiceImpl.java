@@ -45,6 +45,29 @@ public class ArchiveServiceImpl implements ArchiveService {
 		return ad.getArchiveById(archiveId);
 	}
 
+
+    public Boolean getUpdateArchiven(ArchiveBean aa) {
+		
+		return ad.getUpdateArchiven(aa);
+	}
+
+
+	public ArchiveBean getPupdate(Integer archiveId) {
+		
+		return ad.getPupdate(archiveId);
+	}
+
+
+	public Boolean getDeleteArchive(Integer archiveId) {
+		
+		return ad.getDeleteArchive(archiveId);
+}
+
+
 	
+	public boolean getAddArchive(String archiveCode) {
+		
+		return ad.getAddArchive(archiveCode);
+	}
 	
 }

@@ -36,6 +36,21 @@
                 </tr>
                 <tr>
                     <td>上级菜单<span style="color:red">*</span>：</td>
+                    <td>
+                   <c:choose>
+                   			<c:when test="${menuBean.parentMenu==0 }">
+                   				顶级菜单
+                   			</c:when>
+                   			<c:otherwise>
+                   				<c:forEach items="${menuList }" var="menuList">
+                   					<c:if test="${menuList.menuId==menuBean.parentMenu }">
+                   						${menuList.menuName }
+                   					
+                   					</c:if>
+                   				</c:forEach>
+                   			</c:otherwise>
+                   </c:choose>
+                   	</td>
                    <%--  <c:if test="${menBean.parentMenu == 0 }"><td>顶级菜单</td></c:if>
                     <c:forEach items="${menuList }" var="menuList">
                       	<c:if test="${menBean.parentMenu != 0 && menuBean.parentMenu == menuList.menuId}">

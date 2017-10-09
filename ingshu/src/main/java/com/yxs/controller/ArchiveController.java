@@ -41,9 +41,60 @@ public class ArchiveController {
 	public String lookArchive(Model m,int archiveId){
 		
 		ArchiveBean ab = as.getArchiveById(archiveId);
-		m.addAttribute("archb", ab);
+		m.addAttribute("an", ab);
 		return "/dangan/demo1/view.jsp";
 		
+		
+	}
+	
+	
+	/**
+	 * 变更前的查询
+	 * 
+	 **/
+	@RequestMapping("/pupdate")
+	public String getUpdateBefore(Model m,Integer archiveId){
+		ArchiveBean ar=as.getPupdate(archiveId);
+	    m.addAttribute("ar",ar);
+	    return "/dangan/demo1/biangeng.jsp";
+	}
+	/**
+	 * 
+	 * 实现变更
+	 * 
+	 */
+	@RequestMapping("/update")
+	public String getUpdateArchiven(Model m,ArchiveBean archiveBean){
+		Boolean is=true;
+		 is=as.getUpdateArchiven(archiveBean);
+		 if(is){
+			 return "/ac/viewarchive";
+		 }else{
+			 return "/ac/pupdate";
+		 }
+	}
+	
+	@RequestMapping("/delete")
+	public String getDeleteArchive(Integer archiveId){
+		boolean is=as.getDeleteArchive(archiveId);
+		if(is){
+			return "/ac/viewarchive";	
+		}else{
+			return "/ac/viewarchive";
+		}
+		
+	 }
+	
+	@RequestMapping("/add")
+	public String getAddArchive(String archiveCode){
+	
+		
+		boolean is=as.getAddArchive(archiveCode);
+		if(is){
+			return "/ac/viewarchive";
+		}else{
+			return "/dangan/demo1/add.jsp";
+		}
 		
 	}
 	

@@ -27,4 +27,12 @@ public interface ArchiveService {
  	 * @return
  	 */
  	public List<ArchiveBean> getArchiveNotUser();
+ 	
+ 	public ArchiveBean getPupdate(Integer archiveId);
+    
+    public Boolean getUpdateArchiven(ArchiveBean aa);
+    
+    public Boolean getDeleteArchive(Integer archiveId);
+
+	public boolean getAddArchive(String archiveCode);
 }

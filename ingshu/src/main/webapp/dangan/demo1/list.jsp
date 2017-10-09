@@ -24,7 +24,7 @@
 	<div class="div_head">
 		<span> <span style="float: left;">当前位置是：人事管理-》人事档案管理</span> <span
 			style="float: right; margin-right: 8px; font-weight: bold;"> <a
-				style="text-decoration: none;" href="add.html">【档案登记】</a>
+				style="text-decoration: none;" href="dangan/demo1/add.jsp">【档案登记】</a>
 		</span>
 		</span>
 	</div>
@@ -69,7 +69,7 @@
 					<td>档案状态</td>
 					<td align="center" width="100px;">操作</td>
 				</tr>
-				<c:forEach items="${l }" var="ab">
+				<c:forEach items="${archl }" var="ab">
 					<tr id="product1">
 						<td><input type="checkbox" /></td>
 						<td>${ab.archiveCode}</td>
@@ -95,15 +95,35 @@
 								<c:when test="${ab.archiveState == 4 }">实习员工</c:when>
 							</c:choose></td>
 
-						<td><a href="ac/pupdate?archiveId=${ab.archiveId }">变更</a> <a href="ac/view?archiveId=${ab.archiveId }">明细</a>
-							<a href="#">删除</a></td>
+						<td><a href="archive/pupdate?archiveId=${ab.archiveId }">变更</a> <a href="archive/view?archiveId=${ab.archiveId }">明细</a>
+							<a href="archive/delete?archiveId=${ab.archiveId }">删除</a></td>
 					</tr>
 				</c:forEach>
 
 				<tr>
-					<td colspan="20" style="text-align: center;"><a
-						style="text-decoration: none;" href="#"> 首页 上一页 ... 7 8 9 10
-							11 12 ... 下一页 尾页 共1234条 每页显示 10/23 </a></td>
+					<td colspan="20" style="text-align: center;"><span> <a
+							href="archive/list?pageNum=1">首页</a> <c:if
+								test="${requestScope.page.getPageNum() == 1 }">
+				上一页
+			</c:if> <c:if test="${requestScope.page.getPageNum() > 1 }">
+								<a
+									href="archive/list?pageNum=${requestScope.page.getPageNum()-1 }">上一页</a>
+							</c:if> <c:forEach items="${requestScope.page.getNavigatepageNums()}"
+								var="num">
+								<c:if test="${requestScope.page.getPageNum()==num }">${num }</c:if>
+								<c:if test="${requestScope.page.getPageNum()!=num }">
+									<a href="archive/list?pageNum=${num }">${num }</a>
+								</c:if>
+							</c:forEach> <c:if
+								test="${requestScope.page.getPageNum()==requestScope.page.getPages()}">
+				下一页
+			</c:if> <c:if
+								test="${requestScope.page.getPageNum() < requestScope.page.getPages() }">
+								<a
+									href="archive/list?pageNum=${requestScope.page.getPageNum()+1 }">下一页</a>
+							</c:if> <a href="archive/list?pageNum=${requestScope.page.getPages() }">尾页</a>
+							<span>总共${requestScope.page.getPages()}页
+								总共${requestScope.page.getTotal() }条 </span></td>
 				</tr>
 			</tbody>
 		</table>

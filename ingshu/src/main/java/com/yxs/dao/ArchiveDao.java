@@ -28,4 +28,28 @@ public interface ArchiveDao {
 	 * @return
 	 */
 	public List<ArchiveBean> getArchiveNotUser();
+	/**
+	 * 变更前的查询
+	 * 
+	 **/
+	public ArchiveBean getPupdate(Integer archiveId);
+
+	/**
+	 * 
+	 * 实现变更
+	 * 
+	 */
+	public Boolean getUpdateArchiven(ArchiveBean aa); 
+	
+	/**
+	 * 删除
+	 * @return 
+	 */
+	public Boolean getDeleteArchive(Integer archiveId);
+    
+	/**
+     * 添加
+     * @return
+     */
+	public boolean getAddArchive(String archiveCode);
 }
