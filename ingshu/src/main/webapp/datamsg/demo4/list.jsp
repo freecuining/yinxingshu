@@ -41,7 +41,7 @@ td {
 	<div class="div_search">
 		<span>
 			<form action="chuben" method="get">
-				员工姓名： <input type="text" name="name" value="${sessionScope.rb.name }" /> <input
+				员工姓名： <input type="text" name="name" value="${sessionScope.rb.userName }" /> <input
 					value="查询" type="submit" /> <input value="清除" type="button"
 					onclick="qingchu()">
 			</form>
@@ -64,7 +64,7 @@ td {
 				<c:forEach items="${l }" var="l">
 					<tr id="product1">
 
-						<td>${l.name }</td>
+						<td>${l.userName }</td>
 						<td><c:if test="${l.resumeSex==0 }">男</c:if> <c:if
 								test="${l.resumeSex==1 }">女</c:if></td>
 						<td>${l.resumePhone }</td>

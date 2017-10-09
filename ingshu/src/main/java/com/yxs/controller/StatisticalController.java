@@ -149,11 +149,13 @@ public class StatisticalController {
 	}
 
 	@RequestMapping("/chuben")
-	public String getquetyAll(Model m, ResumeBean rb, @RequestParam(value = "pageNum", required = false) int pageNum,
+	public String getquetyAll(Model m, ResumeBean rb, @RequestParam(value = "pageNum", required = false) String pn,
 			HttpServletRequest request, @RequestParam(value = "flag", required = false) String query) {
-		if (pageNum <= 0) {
-			pageNum = 1;
-		}
+		
+		int pageNum = 1;
+		if (pn != null && pn != "") {
+			pageNum = Integer.parseInt(pn);
+		} 
 		if ("query".equals(query)) {
 			request.getSession().removeAttribute("rb");
 		}
@@ -169,10 +171,9 @@ public class StatisticalController {
 	public String queryAll(@RequestParam(value = "pageNum", required = false) String pn, Model m, DiplomaBean db,
 			@RequestParam(value = "query", required = false) String query, HttpServletRequest request) {
 		int pageNum = 1;
-		if (pn == null || pn == "") {
-		} else {
+		if (pn != null && pn != "") {
 			pageNum = Integer.parseInt(pn);
-		}
+		} 
 		if ("query".equals(query)) {
 			request.getSession().removeAttribute("db");
 		}
