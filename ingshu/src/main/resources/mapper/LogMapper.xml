@@ -27,7 +27,7 @@
 	SELECT "NAME",RESUME_SEX,CARD_ID,EDUCATION,GRADUATE_SCHOOL,WORK_YEAR,ATTRIBUTE_MIANSHI,RESUME_PHONE,MAJOR
 		FROM RESUME_TB
 		where 1=1
-		<if test="user != null and user != &quot;&quot;">
+		<if test="userName != null and user != &quot;&quot;">
 			and name like concat(concat('%',#{userName}),'%')
 		</if>
 	</select>
