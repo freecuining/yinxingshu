@@ -1,6 +1,16 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
 <!DOCTYPE>
 <html>
-    <head>
+
+<head>
+<base href="<%=basePath%>">
+<head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
         <title>数据分析</title>
@@ -48,54 +58,7 @@
                        <td></td>
                        <td></td>              
                     </tr> 
-					 <tr id="product1">
-                       <td><a href="">2008年</a></td>
-                       <td></td>
-                       <td></td>
-                       <td></td> 
-                       <td></td>
-                       <td></td>              
-                    </tr> 
-					<tr id="product1">
-                       <td><a href="">2009年</a></td>
-                       <td></td>
-                       <td></td>
-                       <td></td> 
-                       <td></td>
-                       <td></td>              
-                    </tr> 
-					<tr id="product1">
-                       <td><a href="">2010年</a></td>
-                       <td></td>
-                       <td></td>
-                       <td></td> 
-                       <td></td>
-                       <td></td>              
-                    </tr> 
-                    <tr id="product1">
-                       <td><a href="">2011年</a></td>
-                       <td></td>
-                       <td></td>
-                       <td></td> 
-                       <td></td>
-                       <td></td>              
-                    </tr> 
-                    <tr id="product1">
-                       <td><a href="">2012年</a></td>
-                       <td></td>
-                       <td></td>
-                       <td></td> 
-                       <td></td>
-                       <td></td>              
-                    </tr> 
-                    <tr id="product1">
-                       <td><a href="">2013年</a></td>
-                       <td></td>
-                       <td></td>
-                       <td></td> 
-                       <td></td>
-                       <td></td>              
-                    </tr> 
+					
                 </tbody>
             </table>
         </div>

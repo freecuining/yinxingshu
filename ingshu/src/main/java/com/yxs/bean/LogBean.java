@@ -10,7 +10,17 @@ public class LogBean implements Serializable{
 	private int logState;//更改状态
 	private Date changeTime;//更改时间
 	private String logRemark;//记录描述
+	
 	private int deptId;//部门Id
+	private int count;//数量
+	private int year;//年
+	private int month;//月份
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getArchiveId() {
 		return ArchiveId;
 	}
@@ -53,6 +63,17 @@ public class LogBean implements Serializable{
 		this.logRemark = logRemark;
 	}
 	
-
+	public int getYear() {
+		return year;
+	}
+	public void setYear(int year) {
+		this.year = year;
+	}
+	public int getMonth() {
+		return month;
+	}
+	public void setMonth(int month) {
+		this.month = month;
+	}
 
 }
